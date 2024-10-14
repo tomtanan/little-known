@@ -1,7 +1,83 @@
 /*
  * Helper Functions
  */
-function wrapWords(node) {
+const generateCoordinates = (numCoords) => {
+  // Validate input
+  if (typeof numCoords !== 'number' || numCoords <= 0) {
+    throw new Error('Invalid input: numCoords must be a positive number.');
+  }
+
+  const coordinates = [];
+
+  // Define max values based on window dimensions
+  const maxX = window.innerWidth * 1.3;
+  const maxY = window.innerHeight * 1.3;
+  const min = 200;  // Set minimum value to 200
+  const diff = 100; // Set minimum difference to 100
+
+  // Helper function to generate a random number within a range
+  const getRandomInRange = (min, max) => Math.random() * (max - min) + min;
+
+  // Helper function to check if the new value is sufficiently different
+  const isDifferentEnough = (value, array) => 
+  array.every(existingValue => Math.abs(existingValue - value) >= diff);
+
+  for (let i = 0; i < numCoords; i++) {
+    let x, y;
+
+    // Generate unique X coordinate
+    do {
+      x = getRandomInRange(min, maxX);
+    } while (!isDifferentEnough(x, coordinates.map(coord => coord[0])));
+
+    // Generate unique Y coordinate
+    do {
+      y = getRandomInRange(min, maxY);
+    } while (!isDifferentEnough(y, coordinates.map(coord => coord[1])));
+
+    // Check conditions for window dimensions
+    const xLessThanWidth = x < window.innerWidth;
+    const yLessThanHeight = y < window.innerHeight;
+
+    // Generate new values based on window dimensions if both are below thresholds
+    if (xLessThanWidth && yLessThanHeight) {
+      y = getRandomInRange(window.innerHeight, maxY);
+      x = getRandomInRange(window.innerWidth, maxX);
+    } else if (xLessThanWidth) {
+      y = getRandomInRange(window.innerHeight, maxY);
+    } else if (yLessThanHeight) {
+      x = getRandomInRange(window.innerWidth, maxX);
+    }
+
+    coordinates.push([x, y]); // Store the coordinate pair
+  }
+
+  return coordinates; // Return the array of coordinates
+};
+
+const getMirroredCoordinates = (coordinates) => {
+  return coordinates.map(([x, y]) => {
+    // Calculate mirrored X coordinate
+    let mirroredX = x - window.innerWidth;
+    if (mirroredX >= 0) {
+      mirroredX = -Math.max(200, Math.min(500, mirroredX));
+    } else {
+      mirroredX = -500; // Ensures it goes to -500 if below 0
+    }
+
+    // Calculate mirrored Y coordinate
+    let mirroredY = y - window.innerHeight;
+    if (mirroredY >= 0) {
+      mirroredY = Math.max(-300, Math.min(300, mirroredY));
+    } else {
+      mirroredY = -300; // Ensures it goes to -300 if below 0
+    }
+
+    return [mirroredX, mirroredY];
+  });
+};
+
+const wrapWords = (node) => {
   if (!node) return; // Exit if node is null or undefined
 
   // Case 1: Handling TEXT_NODEs
@@ -271,8 +347,52 @@ class VideoTabController {
 // Initialize the ScrollSnapController and AutoRotatingSlideshow when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.js-nav-link');
+  const images = document.querySelectorAll('.slideshow-image');
   const textElements = document.querySelectorAll('.js-gsap-text');
+  
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const coords = generateCoordinates(images.length);
+  const mirCoords = getMirroredCoordinates(coords);
   let aboutTextLoaded = false;
+  
+  console.log(coords);
+
+  images.forEach((img, index) => {
+    const baseSpeed = 20;  // Base speed for the animation
+    const speedVariation = Math.random() * 0.2 + 0.9;  // Very small variation (0.9 to 1.1)
+    const speed = baseSpeed / speedVariation;
+    const startX = coords[index][0];
+    const startY = coords[index][1];
+    const endX = mirCoords[index][0];
+    const endY = mirCoords[index][1];
+    
+    console.log(index + ' END X: ' + endX + ' &&& END Y: ' + endY);
+
+    gsap.set(img, { 
+      x: startX, 
+      y: startY
+    });
+    
+    function moveImage() {      
+      gsap.to(img, {
+        x: endX,  // Move leftward
+        y: endY,  // Move upward
+        duration: speed,
+        ease: 'none',
+        onComplete: () => {
+          gsap.set(img, { 
+            x: startX, 
+            y: startY
+          });
+          
+          moveImage();
+        }
+      });
+    }
+    
+    moveImage();
+  });
   
   textElements.forEach((text) => {
     Array.from(text.childNodes).forEach(child => wrapWords(child));
