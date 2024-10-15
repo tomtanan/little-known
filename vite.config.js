@@ -8,6 +8,7 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
       styles: resolve(__dirname, 'src/styles'),
       components: resolve(__dirname, 'src/components'),
+      scripts: resolve(__dirname, 'src/scripts'),
       utils: resolve(__dirname, 'src/utils'),
     },
   },

@@ -1,9 +1,13 @@
-import { createButton } from 'components/button.js';
-import { greet } from 'utils/helpers.js';
+import { ScrollSnapController } from 'components/ScrollSnapController';
+// import { VideoTabController } from 'components/VideoTabController.js';
+import 'scripts/init'; 
 import 'styles/main.css';
 
-const button = createButton('Click Me!', () => {
-  document.getElementById('message').textContent = greet();
+document.addEventListener('DOMContentLoaded', () => {
+  // Scroll snapping
+  new ScrollSnapController('.js-section-wrapper');
 });
 
-document.getElementById('app').appendChild(button);
+// window.addEventListener('load', () => {
+//   new VideoTabController('.js-tab', '.js-pane', '.js-progress-bar');
+// });
