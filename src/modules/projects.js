@@ -13,11 +13,15 @@ export default function projects(el) {
   // GSAP timeline for progress bar animation
   const animateProgressBar = (duration) => {
     gsap.killTweensOf(progressBar); // Kill any existing GSAP animation on the progress bar
-    gsap.fromTo(progressBar, { width: '0%' }, { width: '100%', duration, ease: 'linear' });
+    gsap.fromTo(
+      progressBar,
+      { width: '0%' },
+      { width: '100%', duration, ease: 'linear' }
+    );
   };
 
   // Pause all videos
-  const pauseAllVideos = () => videos.forEach(video => video.pause());
+  const pauseAllVideos = () => videos.forEach((video) => video.pause());
 
   // Play video if available and animate progress bar based on its duration
   const playVideo = (video) => {
@@ -32,7 +36,9 @@ export default function projects(el) {
       if (video.readyState >= 1) {
         playAndAnimate();
       } else {
-        video.addEventListener('loadedmetadata', playAndAnimate, { once: true });
+        video.addEventListener('loadedmetadata', playAndAnimate, {
+          once: true,
+        });
       }
     } else {
       // No video, animate the progress bar with fallback duration
@@ -40,34 +46,25 @@ export default function projects(el) {
     }
   };
 
-  // Handle the pane fade in/out transition and execute callback after the transition
-  const transitionPanes = (currentPane, newPane, onComplete) => {
-    gsap.timeline()
-      .to(currentPane, { opacity: 0, duration: 0.2 })
-      .set(newPane, { opacity: 0 }) // Set new pane to be invisible
-      .to(newPane, { opacity: 1, duration: 0.2, onComplete }); // Fade in the new pane
-  };
-
-  // Show a specific project with transition and play video
+  // Show a specific project (immediate transition)
   const showProject = (index) => {
-    if (!tabs[index] || !panes[index]) return console.error('Invalid project index:', index);
+    if (!tabs[index] || !panes[index])
+      return console.error('Invalid project index:', index);
 
-    const currentPane = panes[currentProject];
     const newPane = panes[index];
     const newVideo = $('video', newPane);
 
-    pauseAllVideos(); // Pause all videos before transition
+    pauseAllVideos(); // Pause all videos before switching
 
-    transitionPanes(currentPane, newPane, () => {
-      // Update the active classes
-      tabs.forEach((tab) => removeClass(tab, 'active'));
-      panes.forEach((pane) => removeClass(pane, 'active'));
+    // Remove active state from all tabs and panes
+    tabs.forEach((tab) => removeClass(tab, 'active'));
+    panes.forEach((pane) => removeClass(pane, 'active'));
 
-      addClass(tabs[index], 'active');
-      addClass(newPane, 'active');
+    // Add active state to the selected tab and pane
+    addClass(tabs[index], 'active');
+    addClass(newPane, 'active');
 
-      playVideo(newVideo); // Play the video for the new pane
-    });
+    playVideo(newVideo); // Play the video for the new pane
 
     currentProject = index; // Update the current project index
   };
