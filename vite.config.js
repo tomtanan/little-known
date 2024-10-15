@@ -16,4 +16,11 @@ export default defineConfig({
     open: true, // Automatically opens the default browser when the server starts
     port: 3000, // Specify the port number for the development server (default is 3000)
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined, // Disable code splitting, everything will be bundled together
+      },
+    },
+  },
 });
