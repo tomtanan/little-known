@@ -6,3 +6,19 @@
 .section {
   position: relative;
 }
+
+/* Correct height issue on iOS for elements with 100vh */
+@supports (-webkit-touch-callout: none) {
+  .sections-wrapper {
+    height: 100dvh;
+  }
+  .section {
+    height: 100dvh;
+  }
+}
+
+/* Basic styling for word animations with gsap */
+.word {
+  display: inline-block; /* This allows the y animation to apply */
+  opacity: 0;
+}
