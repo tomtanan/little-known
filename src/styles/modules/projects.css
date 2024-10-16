@@ -20,3 +20,67 @@
 .projects-details-item.active {
   display: block;
 }
+.scroll-text {
+  animation: float 1s ease-in-out infinite;
+}
+.scroll-button .letter {
+  display: inline-block;
+}
+.scroll-button:hover .scroll-text {
+  animation: none;
+}
+.scroll-button:hover .letter,
+.scroll-button:focus .letter {
+  background: linear-gradient(
+    90deg,
+    rgba(229, 65, 36, 1) 20%,
+    rgba(219, 134, 39, 1) 40%,
+    rgba(248, 238, 98, 1) 60%,
+    rgba(0, 170, 194, 1) 80%,
+    rgba(1, 174, 77, 1) 100%
+  );
+  background-size: 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave 1s ease infinite, gradient 1s ease infinite;
+}
+.scroll-button:hover .letter:nth-child(1),
+.scroll-button:focus .letter:nth-child(1) {
+  animation-delay: 0;
+}
+.scroll-button:hover .letter:nth-child(2),
+.scroll-button:focus .letter:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.scroll-button:hover .letter:nth-child(3),
+.scroll-button:focus .letter:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.scroll-button:hover .letter:nth-child(4),
+.scroll-button:focus .letter:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.scroll-button:hover .letter:nth-child(5),
+.scroll-button:focus .letter:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.scroll-button:hover .letter:nth-child(6),
+.scroll-button:focus .letter:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.scroll-button:hover .letter:nth-child(7),
+.scroll-button:focus .letter:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.scroll-button:hover .letter:nth-child(8),
+.scroll-button:focus .letter:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.scroll-button:hover .letter:nth-child(9),
+.scroll-button:focus .letter:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.scroll-button:hover .letter:nth-child(10),
+.scroll-button:focus .letter:nth-child(10) {
+  animation-delay: 0.45s;
+}

@@ -45,7 +45,7 @@ export default function projects(el) {
         const playAndAnimate = () => {
           try {
             video.currentTime = 0;
-            video.play();
+            // video.play();
             animateProgressBar(video.duration || 8);
           } catch (error) {
             console.error('Error playing video:', error);

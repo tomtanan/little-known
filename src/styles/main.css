@@ -1,4 +1,5 @@
 @import 'variables/global';
+@import 'libs/animation';
 @import 'libs/global';
 @import 'modules/nav';
 @import 'modules/projects';
