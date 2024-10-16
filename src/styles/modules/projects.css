@@ -1,7 +1,11 @@
+.project-tab {
+  opacity: 0;
+}
 .project-tab.active {
-  opacity: 1;
+  opacity: 1 !important;
 }
 .project-pane.active {
+  opacity: 1;
   z-index: 2;
 }
 .project-video {
@@ -10,5 +14,9 @@
   object-fit: cover;
   position: absolute;
   top: 0;
+  transition: opacity 0.2s ease;
   width: 100%;
+}
+.projects-details-item.active {
+  display: block;
 }
