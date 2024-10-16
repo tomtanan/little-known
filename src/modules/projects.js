@@ -1,5 +1,6 @@
 import { $, $$ } from 'select-dom';
 import { addClass, removeClass } from 'utils/helpers';
+import { initMouseHover } from 'components/MouseHoverController.js';
 import { gsap } from 'gsap';
 
 export default function projects(el) {
@@ -43,26 +44,24 @@ export default function projects(el) {
     try {
       if (video) {
         const playAndAnimate = () => {
-          try {
-            video.currentTime = 0;
-            // video.play();
+          video.currentTime = 0;
+          video.play().then(() => {
+            // Play succeeded
             animateProgressBar(video.duration || 8);
-          } catch (error) {
+          }).catch((error) => {
             console.error('Error playing video:', error);
-            animateProgressBar(8); // Fallback to default duration if there's an error
-          }
+            animateProgressBar(8); // Fallback duration
+          });
         };
-
-        // Check if metadata is already loaded
+  
+        // If metadata is already loaded
         if (video.readyState >= 1) {
           playAndAnimate();
         } else {
-          video.addEventListener('loadedmetadata', playAndAnimate, {
-            once: true,
-          });
+          video.addEventListener('loadedmetadata', playAndAnimate, { once: true });
         }
       } else {
-        // No video, animate the progress bar with fallback duration
+        // No video, fallback
         animateProgressBar(8);
       }
     } catch (error) {
@@ -155,7 +154,11 @@ export default function projects(el) {
     addClass(document.body, 'no-scroll');
 
     // Open projects modal with animation
-    gsap.to(modal, { top: 0, duration: 0.4, ease: 'power1.in' });
+    gsap.to(modal, {
+      top: 0,
+      duration: 0.4,
+      ease: 'power1.in',
+    });
   };
 
   // Close projects modal
@@ -235,4 +238,7 @@ export default function projects(el) {
   } catch (error) {
     console.error('Error during initialization:', error);
   }
+
+  // Initialize text following the user mouse when hovering the Projects pane
+  initMouseHover(el, '.js-projects-hover-text', '.projects-tabs-content');
 }
