@@ -7,12 +7,16 @@ export class ScrollSnapController {
   /**
    * Creates an instance of ScrollSnapController.
    *
-   * @param {string} scrollContainerSelector - A CSS selector string to select the scrollable container.
+   * @param {string} scrollContainerSelector - A CSS selector string to select the scrollable container (can be an ID or a class).
    *
    * @throws {Error} Throws an error if the scroll container is not found or if there are no sections to scroll through.
    */
   constructor(scrollContainerSelector) {
-    this.scrollContainer = $(scrollContainerSelector);
+    // Detect if the selector is an ID (starts with '#') or a class (starts with '.')
+    const isIdSelector = scrollContainerSelector.startsWith('#');
+    this.scrollContainer = isIdSelector
+      ? $(scrollContainerSelector)
+      : $(`.${scrollContainerSelector.replace('.', '')}`);
 
     // Error handling: if container not found, throw an error
     if (!this.scrollContainer) {
@@ -21,7 +25,7 @@ export class ScrollSnapController {
       );
     }
 
-    // Use $$ from select-dom to select all sections inside the container
+    // Use $$ from select-dom to select all sections inside the container (same logic for class or ID)
     this.sections = $$('.js-section', this.scrollContainer);
 
     // Error handling: if no sections found, throw an error
@@ -71,7 +75,7 @@ export class ScrollSnapController {
         setTimeout(() => {
           this.handleScroll(event.deltaY);
           isScrolling = false;
-        }, 150); 
+        }, 150);
       }
     };
 
@@ -90,7 +94,6 @@ export class ScrollSnapController {
     this.scrollContainer.addEventListener('touchmove', (event) => {
       const deltaY = this.startY - event.touches[0].clientY;
       if (Math.abs(deltaY) > 30) {
-        // Only trigger if swipe is significant
         event.preventDefault();
         debounceScroll({ deltaY });
       }
@@ -120,7 +123,7 @@ export class ScrollSnapController {
 /**
  * Initializes ScrollSnapController for the given container.
  *
- * @param {string} containerSelector - The CSS selector of the scrollable container.
+ * @param {string} containerSelector - The CSS selector of the scrollable container (ID or class).
  */
 export function initScrollSnap(containerSelector) {
   new ScrollSnapController(containerSelector);
