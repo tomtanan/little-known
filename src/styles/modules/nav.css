@@ -1,0 +1,18 @@
+.nav-text::before {
+  background-color: var(--white);
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 1px;
+  left: auto;
+  position: absolute;
+  right: 0;
+  transition: width 0.2s ease;
+  width: 0;
+}
+.nav-link:hover .nav-text::before, 
+.nav-link.w--current .nav-text::before {
+  left: 0;
+  right: auto;
+  width: 100%;
+}

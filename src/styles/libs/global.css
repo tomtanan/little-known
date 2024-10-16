@@ -1,3 +1,7 @@
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* Basic styling for sections */
 .sections-wrapper {
   height: 100vh;

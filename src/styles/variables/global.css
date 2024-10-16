@@ -1,6 +1,5 @@
 /* variables.css */
 :root {
-  --primary-color: #000;
-  --secondary-color: #fff;
-  --font-family: Arial, sans-serif;
+  --black: #0c0c0c;
+  --white: #fff;
 }

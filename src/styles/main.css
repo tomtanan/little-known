@@ -1,3 +1,5 @@
+@import 'variables/global';
 @import 'libs/global';
+@import 'modules/nav';
 @import 'modules/projects';
 @import 'modules/about';
