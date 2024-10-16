@@ -1,5 +1,6 @@
-import { initScrollSnap } from 'components/scrollSnapController.js';
+import { initScrollSnap } from 'components/ScrollSnapController.js';
+import { $ } from 'select-dom';
 import 'scripts/init';
 import 'styles/main.css';
 
-initScrollSnap('#sections-wrapper');
+initScrollSnap($('#sections-wrapper'));

@@ -7,25 +7,20 @@ export class ScrollSnapController {
   /**
    * Creates an instance of ScrollSnapController.
    *
-   * @param {string} scrollContainerSelector - A CSS selector string to select the scrollable container (can be an ID or a class).
+   * @param {HTMLElement} container - A DOM element that represents the scrollable container.
    *
-   * @throws {Error} Throws an error if the scroll container is not found or if there are no sections to scroll through.
+   * @throws {Error} Throws an error if the scroll container or the sections inside it are not found.
    */
-  constructor(scrollContainerSelector) {
-    // Detect if the selector is an ID (starts with '#') or a class (starts with '.')
-    const isIdSelector = scrollContainerSelector.startsWith('#');
-    this.scrollContainer = isIdSelector
-      ? $(scrollContainerSelector)
-      : $(`.${scrollContainerSelector.replace('.', '')}`);
+  constructor(container) {
+    // Directly assign the container element passed to the constructor
+    this.scrollContainer = container;
 
-    // Error handling: if container not found, throw an error
+    // Error handling: if the container element is not valid, throw an error
     if (!this.scrollContainer) {
-      throw new Error(
-        `Scroll container not found for selector: "${scrollContainerSelector}"`
-      );
+      throw new Error('Scroll container element is not valid.');
     }
 
-    // Use $$ from select-dom to select all sections inside the container (same logic for class or ID)
+    // Use $$ from select-dom to select all sections inside the container
     this.sections = $$('.js-section', this.scrollContainer);
 
     // Error handling: if no sections found, throw an error
@@ -121,10 +116,10 @@ export class ScrollSnapController {
 }
 
 /**
- * Initializes ScrollSnapController for the given container.
+ * Initializes ScrollSnapController for the given container element.
  *
- * @param {string} containerSelector - The CSS selector of the scrollable container (ID or class).
+ * @param {HTMLElement} container - The DOM element of the scrollable container.
  */
-export function initScrollSnap(containerSelector) {
-  new ScrollSnapController(containerSelector);
+export function initScrollSnap(container) {
+  new ScrollSnapController(container);
 }
