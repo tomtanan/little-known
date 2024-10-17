@@ -30,11 +30,11 @@
 .mouse-hover-text .letter {
   background: linear-gradient(
     90deg,
-    rgba(229, 65, 36, 1) 20%,
-    rgba(219, 134, 39, 1) 40%,
-    rgba(248, 238, 98, 1) 60%,
-    rgba(0, 170, 194, 1) 80%,
-    rgba(1, 174, 77, 1) 100%
+    var(--red) 20%,
+    var(--orange) 40%,
+    var(--yellow) 60%,
+    var(--blue) 80%,
+    var(--green) 100%
   );
   background-size: 500%;
   -webkit-background-clip: text;

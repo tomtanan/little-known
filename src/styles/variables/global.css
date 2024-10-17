@@ -2,6 +2,11 @@
 :root {
   --black: #0c0c0c;
   --white: #fff;
+  --red: rgba(229, 65, 36, 1);
+  --orange: rgba(219, 134, 39, 1);
+  --yellow: rgba(248, 238, 98, 1);
+  --blue: rgba(0, 170, 194, 1);
+  --green: rgba(1, 174, 77, 1);
 
   .letter:nth-child(1) {
     --delay: 0s;
