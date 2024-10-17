@@ -15,7 +15,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
-      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.58591017d.css"
+      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.cf76c6ce5.css"
       rel="stylesheet"
       type="text/css" />
     <script type="text/javascript">
@@ -35,45 +35,51 @@
     <link
       href="https://cdn.prod.website-files.com/img/webclip.png"
       rel="apple-touch-icon" />
-    <!-- [Attributes by Finsweet] CMS Tabs -->
-    <!-- <script async src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmstabs@1/cmstabs.js"></script> -->
     <style>
-      /* Global */
       .sections-wrapper {
         height: 100vh;
         overflow-y: scroll;
       }
-      .word {
-        display: inline-block; /* This allows the y animation to apply */
-        opacity: 0;
+      .section {
+        position: relative;
       }
-      /* Projects Section */
-      .bg-video {
-        height: 100%;
-        left: 0;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-      /* Correct height issue on iOS for elements with 100vh */
       @supports (-webkit-touch-callout: none) {
-        .sections-wrapper {
-          height: 100dvh;
-        }
+        .sections-wrapper,
         .section {
           height: 100dvh;
         }
       }
-      /* About Section */
+      .word {
+        display: inline-block;
+        opacity: 0;
+      }
+      .project-tab.active {
+        opacity: 1;
+      }
+      .project-pane.active {
+        z-index: 2;
+      }
+      .project-video {
+        height: 100%;
+        left: 0;
+        -o-object-fit: cover;
+           object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      .about-text::-moz-selection, .about-text *::-moz-selection {
+        background-color: #f7d6e0;
+        color: #fe1a20;
+      }
       .about-text::selection,
       .about-text *::selection {
-        background-color: #f7d6e0; /* Background color when text is highlighted */
-        color: #fe1a20; /* Text color when highlighted */
+        background-color: #f7d6e0;
+        color: #fe1a20;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-m7j8ScVT.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D3FwcpSb.css">
+    <script type="module" crossorigin src="/assets/index-BwOixp77.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B0OWfSDa.css">
   </head>
   <body class="body" cz-shortcut-listen="true">
     <div
@@ -101,29 +107,18 @@
           <a
             href="/"
             aria-current="page"
-            class="nav-link js-nav-link w-nav-link w--current"
-            style="max-width: 1200px"
-            >commercials</a
+            class="nav-link js-nav-link w-inline-block w--current"
+            ><div class="nav-text">commercials</div></a
+          ><a href="#" class="nav-link js-nav-link w-inline-block"
+            ><div class="nav-text">film&nbsp;+ tv</div></a
+          ><a href="#" class="nav-link js-nav-link w-inline-block"
+            ><div class="nav-text">photography</div></a
+          ><a href="#" class="nav-link js-nav-link w-inline-block"
+            ><div class="nav-text">about</div></a
           ><a
             href="#"
-            class="nav-link js-nav-link w-nav-link"
-            style="max-width: 1200px"
-            >film + tv</a
-          ><a
-            href="#"
-            class="nav-link js-nav-link w-nav-link"
-            style="max-width: 1200px"
-            >photography</a
-          ><a
-            href="#"
-            class="nav-link js-nav-link w-nav-link"
-            style="max-width: 1200px"
-            >about</a
-          ><a
-            href="#"
-            class="nav-link nav-link-contact js-nav-link w-nav-link"
-            style="max-width: 1200px"
-            >contact</a
+            class="nav-link nav-link-contact js-nav-link w-inline-block"
+            ><div class="nav-text">contact</div></a
           >
         </nav>
         <div
@@ -145,42 +140,138 @@
         id="Projects"
         data-module="projects"
         class="section projects js-section">
-        <div fs-cmstabs-element="list" class="projects-tabs-menu w-dyn-list">
+        <div class="projects-modal js-projects-modal">
+          <div
+            fs-cmstabs-element="list"
+            class="projects-tabs-details w-dyn-list">
+            <div role="list" class="projects-tabs-details-list w-dyn-items">
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>Adidas</h1>
+                  <p>
+                    Step up your game with Adidas, the brand that combines
+                    cutting-edge sports technology with trendsetting style.
+                    Whether you're running, training, or just making a
+                    statement, Adidas offers the gear and footwear that keeps
+                    you performing at your peak.
+                  </p>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>McDonald's</h1>
+                  <p>
+                    Craving something delicious? McDonald's has you covered with
+                    a wide variety of mouthwatering meals, from our iconic Big
+                    Mac to our crispy fries. With fresh ingredients and a menu
+                    full of favorites, we make satisfying your hunger quick,
+                    easy, and fun!
+                  </p>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>Powerade</h1>
+                  <p>
+                    Fuel your body with Powerade, the ultimate sports drink
+                    designed to help you hydrate and replenish essential
+                    electrolytes. Whether you're hitting the gym or powering
+                    through a tough day, Powerade provides the boost you need to
+                    stay energized and perform at your best.
+                  </p>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>U by Kotex</h1>
+                  <p>
+                    Stay confident and comfortable with U by Kotex, the feminine
+                    care brand that supports you through every moment. With
+                    innovative designs and superior protection, our pads,
+                    liners, and tampons provide a perfect fit for your body, so
+                    you can focus on what really matters.
+                  </p>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>UGG</h1>
+                  <p>
+                    Discover ultimate comfort and style with UGG, the brand
+                    known for its luxurious sheepskin boots and apparel. From
+                    iconic footwear to cozy loungewear, UGG combines timeless
+                    design with unparalleled softness, perfect for every season.
+                  </p>
+                </div>
+              </div>
+              <div
+                role="listitem"
+                class="project-details js-project-details w-dyn-item">
+                <div class="project-details-item js-project-details">
+                  <h1>White Claw</h1>
+                  <p>
+                    Experience pure refreshment with White Claw Hard Seltzer, a
+                    sparkling drink with a hint of natural fruit flavor and just
+                    the right amount of alcohol. Low in calories, gluten-free,
+                    and bursting with crisp, clean taste, it's the perfect
+                    companion for any occasion.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a
+            href="#"
+            class="projects-details-close js-projects-details-close w-button"
+            >Close</a
+          >
+        </div>
+        <div class="projects-tabs-menu w-dyn-list">
           <div role="list" class="projects-tabs-list w-dyn-items">
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">Adidas</div></a
               >
             </div>
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">McDonald's</div></a
               >
             </div>
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">Powerade</div></a
               >
             </div>
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">U by Kotex</div></a
               >
             </div>
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">UGG</div></a
               >
             </div>
-            <div role="listitem" class="project-tab-item w-dyn-item">
+            <div role="listitem" class="project-details w-dyn-item">
               <a href="#" class="project-tab js-project-tab w-inline-block"
                 ><div class="project-tab-name">White Claw</div></a
               >
             </div>
           </div>
         </div>
-        <div fs-cmstabs-element="list" class="projects-tabs-content w-dyn-list">
-          <div role="list" class="project-tabs-content-list w-dyn-items">
+        <div class="projects-tabs-content js-projects-content w-dyn-list">
+          <div role="list" class="projects-tabs-content-list w-dyn-items">
             <div
               role="listitem"
               class="project-pane js-project-pane w-dyn-item">
@@ -189,8 +280,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/1004461400/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=f3cbcb1ad6eddf6981911bd8f34e9dfd25981794daa9a546adf3dca458f86aa4"
                     type="video/mp4" />
@@ -205,8 +295,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/1005885252/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=a6f2cca60736957f73bacddb003a42d5ecb99c828606d6d2ad269139efc10e1b"
                     type="video/mp4" />
@@ -221,8 +310,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/1008004427/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=28e2928e913cc8564fef11efe7426f04cae5104186dece77177999d4f88e2aea"
                     type="video/mp4" />
@@ -237,8 +325,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/1007988669/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=e0fd52fd228d54cca7c3e4f9cf81c2860af6456d4c807317acd3c44aa3d3b640"
                     type="video/mp4" />
@@ -253,8 +340,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/1008883180/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=824961a233dc48a1d4763fb89c5e3dc703ebcb3d7ff86607ac06e6935465dc5b"
                     type="video/mp4" />
@@ -269,8 +355,7 @@
                   class="project-video js-project-video"
                   playsinline=""
                   loop=""
-                  muted=""
-                  preload="auto">
+                  muted="">
                   <source
                     src="https://player.vimeo.com/progressive_redirect/playback/985591157/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=0ff32819d07754a693c362138ecba143b56d8a6019bf81940e8a8c15df5933e1"
                     type="video/mp4" />
@@ -279,391 +364,41 @@
             </div>
           </div>
         </div>
+        <div class="mouse-hover js-mouse-hover-projects">
+          <div class="mouse-hover-text w-embed">
+            <span class="letter">c</span><span class="letter">l</span
+            ><span class="letter">i</span><span class="letter">c</span
+            ><span class="letter">k</span> <span class="letter">&amp;</span>
+            <span class="letter">p</span><span class="letter">l</span
+            ><span class="letter">a</span><span class="letter">y</span>
+          </div>
+        </div>
         <div class="progress-bar">
           <div class="progress-bar-indicator js-progress-bar"></div>
         </div>
+        <a href="#" class="scroll-button w-inline-block"
+          ><div class="scroll-text w-embed">
+            <span class="letter">s</span><span class="letter">c</span
+            ><span class="letter">r</span><span class="letter">o</span
+            ><span class="letter">l</span><span class="letter">l</span>
+            <span class="letter">d</span><span class="letter">o</span
+            ><span class="letter">w</span><span class="letter">n</span>
+          </div></a
+        >
       </section>
       <section data-module="about" class="section about js-section">
         <div class="w-layout-blockcontainer container w-container">
           <div class="about-wrapper js-about">
             <p class="about-text js-gsap-text">
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >Little</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >Known</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >offers</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >editing,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >VFX,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >color</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >grading,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >sound</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >design,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >and</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >retouching,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >among</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >other</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >finishing</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >services.</span
-              >
+              Little Known offers editing, VFX, color grading, sound design, and
+              retouching, among other finishing services.
             </p>
             <p class="about-text about-text-bottom js-gsap-text">
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >Brit</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >is</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >represented</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >by</span
-              >
+              Brit is represented by
               <a href="#" class="about-text-link"
-                ><span
-                  class="red word"
-                  style="
-                    translate: none;
-                    rotate: none;
-                    scale: none;
-                    transform: translate(0px, 0px);
-                    opacity: 1;
-                  "
-                  >FANCY</span
-                ></a
-              ><span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >,</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >providing</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >a</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >creative</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >partnership</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >that</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >can</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >guide</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >your</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >project</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >to</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >the</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >finish</span
-              >
-              <span
-                class="word"
-                style="
-                  translate: none;
-                  rotate: none;
-                  scale: none;
-                  transform: translate(0px, 0px);
-                  opacity: 1;
-                "
-                >line.</span
-              >
+                ><span class="red">FANCY</span></a
+              >, providing a creative partnership that can guide your project to
+              the finish line.
             </p>
           </div>
         </div>
@@ -674,109 +409,55 @@
             sizes="100px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7.webp 750w"
             alt=""
-            class="slideshow-image image-1"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(113.185px, -241.002px, 0px);
-            " /><img
+            class="slideshow-image image-1" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp"
             loading="lazy"
             sizes="(max-width: 479px) 100vw, 300px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp 750w"
             alt=""
-            class="slideshow-image image-2"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(657.107px, -67.1292px, 0px);
-            " /><img
+            class="slideshow-image image-2" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5.webp"
             loading="lazy"
             sizes="150px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5.webp 750w"
             alt=""
-            class="slideshow-image image-3"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(1209.79px, 139.484px, 0px);
-            " /><img
+            class="slideshow-image image-3" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7.webp"
             loading="lazy"
             sizes="200px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7.webp 750w"
             alt=""
-            class="slideshow-image image-4"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(1742.97px, 273.227px, 0px);
-            " /><img
+            class="slideshow-image image-4" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp"
             loading="lazy"
             sizes="200px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp 750w"
             alt=""
-            class="slideshow-image image-5"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(543.298px, 437.029px, 0px);
-            " /><img
+            class="slideshow-image image-5" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258cb1f49016575a14dc_BTS-14.webp"
             loading="lazy"
             sizes="(max-width: 479px) 100vw, 250px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258cb1f49016575a14dc_BTS-14-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258cb1f49016575a14dc_BTS-14.webp 750w"
             alt=""
-            class="slideshow-image image-6"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(1349.26px, 660.763px, 0px);
-            " /><img
+            class="slideshow-image image-6" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1.webp"
             loading="lazy"
             sizes="(max-width: 479px) 100vw, 300px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1.webp 750w"
             alt=""
-            class="slideshow-image image-7"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(2000.71px, 307.012px, 0px);
-            " /><img
+            class="slideshow-image image-7" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5.webp"
             loading="lazy"
             sizes="200px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b8a18a878949a709a_BTS-5.webp 750w"
             alt=""
-            class="slideshow-image image-8"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(2744.6px, 298.753px, 0px);
-            " /><img
+            class="slideshow-image image-8" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c022ee42d2954f836_BTS-4.webp"
             loading="lazy"
             sizes="(max-width: 479px) 100vw, 250px"
             srcset="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c022ee42d2954f836_BTS-4-p-500.webp 500w, https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c022ee42d2954f836_BTS-4.webp 750w"
             alt=""
-            class="slideshow-image image-9"
-            style="
-              translate: none;
-              rotate: none;
-              scale: none;
-              transform: translate3d(3550.11px, 520.811px, 0px);
-            " />
+            class="slideshow-image image-9" />
         </div>
         <div class="overlay"></div>
       </section>
@@ -789,6 +470,5 @@
     <script
       src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/js/webflow.8d78b86a9.js"
       type="text/javascript"></script>
-
   </body>
 </html>
