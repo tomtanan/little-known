@@ -27,7 +27,6 @@
   animation: none;
 }
 .scroll-button:hover .letter,
-.scroll-button:focus .letter,
 .mouse-hover-text .letter {
   background: linear-gradient(
     90deg,
@@ -42,56 +41,7 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.scroll-button:hover .letter:nth-child(1),
-.scroll-button:focus .letter:nth-child(1),
-.mouse-hover-text .letter:nth-child(1) {
-  animation-delay: 0;
-}
-.scroll-button:hover .letter:nth-child(2),
-.scroll-button:focus .letter:nth-child(2),
-.mouse-hover-text .letter:nth-child(2) {
-  animation-delay: 0.05s;
-}
-.scroll-button:hover .letter:nth-child(3),
-.scroll-button:focus .letter:nth-child(3),
-.mouse-hover-text .letter:nth-child(3) {
-  animation-delay: 0.1s;
-}
-.scroll-button:hover .letter:nth-child(4),
-.scroll-button:focus .letter:nth-child(4),
-.mouse-hover-text .letter:nth-child(4) {
-  animation-delay: 0.15s;
-}
-.scroll-button:hover .letter:nth-child(5),
-.scroll-button:focus .letter:nth-child(5),
-.mouse-hover-text .letter:nth-child(5) {
-  animation-delay: 0.2s;
-}
-.scroll-button:hover .letter:nth-child(6),
-.scroll-button:focus .letter:nth-child(6),
-.mouse-hover-text .letter:nth-child(6) {
-  animation-delay: 0.25s;
-}
-.scroll-button:hover .letter:nth-child(7),
-.scroll-button:focus .letter:nth-child(7),
-.mouse-hover-text .letter:nth-child(7) {
-  animation-delay: 0.3s;
-}
-.scroll-button:hover .letter:nth-child(8),
-.scroll-button:focus .letter:nth-child(8),
-.mouse-hover-text .letter:nth-child(8) {
-  animation-delay: 0.35s;
-}
-.scroll-button:hover .letter:nth-child(9),
-.scroll-button:focus .letter:nth-child(9),
-.mouse-hover-text .letter:nth-child(9) {
-  animation-delay: 0.4s;
-}
-.scroll-button:hover .letter:nth-child(10),
-.scroll-button:focus .letter:nth-child(10),
-.mouse-hover-text .letter:nth-child(10) {
-  animation-delay: 0.45s;
-}
-.mouse-hover-text .letter:nth-child(11) {
-  animation-delay: 0.5s;
+.scroll-button:hover .letter,
+.mouse-hover-text .letter {
+  animation-delay: var(--delay);
 }

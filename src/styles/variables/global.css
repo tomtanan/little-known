@@ -2,4 +2,38 @@
 :root {
   --black: #0c0c0c;
   --white: #fff;
+
+  .letter:nth-child(1) {
+    --delay: 0s;
+  }
+  .letter:nth-child(2) {
+    --delay: 0.05s;
+  }
+  .letter:nth-child(3) {
+    --delay: 0.1s;
+  }
+  .letter:nth-child(4) {
+    --delay: 0.15s;
+  }
+  .letter:nth-child(5) {
+    --delay: 0.2s;
+  }
+  .letter:nth-child(6) {
+    --delay: 0.25s;
+  }
+  .letter:nth-child(7) {
+    --delay: 0.3s;
+  }
+  .letter:nth-child(8) {
+    --delay: 0.35s;
+  }
+  .letter:nth-child(9) {
+    --delay: 0.4s;
+  }
+  .letter:nth-child(10) {
+    --delay: 0.45s;
+  }
+  .letter:nth-child(11) {
+    --delay: 0.5s;
+  }
 }
