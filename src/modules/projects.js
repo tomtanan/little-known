@@ -240,5 +240,5 @@ export default function projects(el) {
   }
 
   // Initialize text following the user mouse when hovering the Projects pane
-  initMouseHover(el, '.js-projects-hover-text', '.projects-tabs-content');
+  initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
 }
