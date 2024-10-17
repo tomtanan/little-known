@@ -44,6 +44,15 @@ export const wrapWords = (node) => {
   }
 };
 
+/**
+ * Checks if the device is a touch device.
+ *
+ * @returns {boolean} True if the device is a touch device, false otherwise.
+ */
+export function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
 // Toggles the specified class on an element
 export const toggleClass = (el, className) => el.classList.toggle(className);
 

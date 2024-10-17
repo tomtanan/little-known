@@ -1,5 +1,5 @@
 import { $, $$ } from 'select-dom';
-import { addClass, removeClass } from 'utils/helpers';
+import { isTouchDevice, addClass, removeClass } from 'utils/helpers';
 import { initMouseHover } from 'components/MouseHoverController.js';
 import { gsap } from 'gsap';
 
@@ -45,20 +45,25 @@ export default function projects(el) {
       if (video) {
         const playAndAnimate = () => {
           video.currentTime = 0;
-          video.play().then(() => {
-            // Play succeeded
-            animateProgressBar(video.duration || 8);
-          }).catch((error) => {
-            console.error('Error playing video:', error);
-            animateProgressBar(8); // Fallback duration
-          });
+          video
+            .play()
+            .then(() => {
+              // Play succeeded
+              animateProgressBar(video.duration || 8);
+            })
+            .catch((error) => {
+              console.error('Error playing video:', error);
+              animateProgressBar(8); // Fallback duration
+            });
         };
-  
+
         // If metadata is already loaded
         if (video.readyState >= 1) {
           playAndAnimate();
         } else {
-          video.addEventListener('loadedmetadata', playAndAnimate, { once: true });
+          video.addEventListener('loadedmetadata', playAndAnimate, {
+            once: true,
+          });
         }
       } else {
         // No video, fallback
@@ -239,6 +244,7 @@ export default function projects(el) {
     console.error('Error during initialization:', error);
   }
 
-  // Initialize text following the user mouse when hovering the Projects pane
-  initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
+  // Initialize text following the user mouse when hovering the Projects pane if it's not a touch device
+  if (!isTouchDevice())
+    initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
 }
