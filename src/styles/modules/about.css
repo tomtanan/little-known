@@ -1,5 +1,5 @@
 .about-text::selection,
 .about-text *::selection {
   background-color: #f7d6e0; /* Background color when text is highlighted */
-  color: #fe1a20; /* Text color when highlighted */
+  color: var(--red); /* Text color when highlighted */
 }
