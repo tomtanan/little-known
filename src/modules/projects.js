@@ -9,7 +9,7 @@ export default function projects(el) {
   const videos = $$('.js-project-video', el);
   const details = $$('.js-project-details', el);
   const modal = $('.js-projects-modal', el);
-  const closeBtn = $('.js-projects-details-close', el);
+  const closeBtn = $('.js-projects-modal-close', el);
   const progressBar = $('.js-progress-bar', el);
   let currentProject = 0;
   let interval;

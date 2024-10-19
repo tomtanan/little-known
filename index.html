@@ -15,7 +15,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
-      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.ef669d9a6.css"
+      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.32faf7a18.css"
       rel="stylesheet"
       type="text/css" />
     <script type="text/javascript">
@@ -98,7 +98,7 @@
               https://cdn.prod.website-files.com/670024af32eed493bbc57721/670784bc7e1bbf98b9320ba4_logo-p-1080.png 1080w,
               https://cdn.prod.website-files.com/670024af32eed493bbc57721/670784bc7e1bbf98b9320ba4_logo.png        1870w
             "
-            sizes="(max-width: 767px) 50px, 63px"
+            sizes="(max-width: 767px) 50px, 58px"
             class="logo-img"
         /></a>
         <nav role="navigation" class="nav-menu w-nav-menu">
@@ -149,21 +149,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/657455530?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/657455530?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -175,21 +244,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/989747735?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/989747735?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -201,21 +339,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/547724869?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/547724869?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -227,21 +434,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/367606395?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/367606395?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -253,21 +529,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/944774326?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/944774326?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -279,21 +624,90 @@
                 <div class="project-details-content">
                   <div class="project-details-video w-embed w-iframe">
                     <div class="video-player" data-module="video-player">
-                      <iframe
-                        class="video-iframe"
-                        src="https://player.vimeo.com/video/526003879?controls=0"
-                        width="100%"
-                        height="100%"
-                        frameborder="0"
-                        allow="autoplay; fullscreen"
-                        allowfullscreen=""></iframe>
+                      <div class="video-wrapper">
+                        <iframe
+                          class="video-iframe js-iframe"
+                          src="https://player.vimeo.com/video/526003879?controls=0&amp;dnt=1"
+                          width="100%"
+                          height="100%"
+                          frameborder="0"
+                          allow="autoplay; fullscreen"
+                          allowfullscreen=""></iframe>
+                        <div class="video-overlay js-overlay"></div>
+                      </div>
 
                       <div class="video-controls">
-                        <button class="play-pause">play</button>
-                        <div class="timeline">
-                          <div class="timeline-progress"></div>
+                        <!-- Play/Pause Button -->
+                        <button class="play-btn js-play">
+                          <!-- Play SVG -->
+                          <svg
+                            class="ico-play"
+                            width="16"
+                            height="20"
+                            viewBox="0 0 16 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M15 10 .5 19V1L15 10Z"
+                              stroke="#fff"></path>
+                          </svg>
+
+                          <!-- Pause SVG -->
+                          <svg
+                            class="ico-pause"
+                            width="10"
+                            height="15"
+                            viewBox="0 0 10 15"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Mute/Unmute Button -->
+                        <button class="sound-btn js-sound">
+                          <!-- Mute SVG -->
+                          <svg
+                            class="ico-sound ico-mute"
+                            width="23"
+                            height="19"
+                            viewBox="0 0 23 19"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="ico-sound-0"
+                              d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-50"
+                              d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
+                              stroke="#fff"></path>
+                            <path
+                              class="ico-sound-100"
+                              d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
+
+                        <!-- Timeline for progress -->
+                        <div class="timeline js-timeline">
+                          <div class="timeline-progress js-timeline-prog"></div>
                         </div>
-                        <button class="fullscreen">fullscreen</button>
+
+                        <!-- Fullscreen Button -->
+                        <button class="fullscreen-btn js-fullscreen">
+                          <svg
+                            class="ico-fullscreen"
+                            width="20"
+                            height="16"
+                            viewBox="0 0 20 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
+                              stroke="#fff"></path>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -303,8 +717,8 @@
           </div>
           <a
             href="#"
-            class="projects-details-close js-projects-details-close w-button"
-            >Close</a
+            class="projects-modal-close-button js-projects-modal-close w-button"
+            >close</a
           >
         </div>
         <div class="projects-tabs-menu w-dyn-list">
