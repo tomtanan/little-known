@@ -1,3 +1,9 @@
+.modal-content {
+  height: calc(100% - 70px);
+  inset: 70px 60px 0;
+  position: absolute;
+  width: 100%;
+}
 .modal-close-button {
   background: none;
   font-size: 14px;
