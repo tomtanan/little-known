@@ -1,7 +1,15 @@
-.project-tab {
+.project-details-item {
+  user-select: none;
+}
+.project-details-item.active {
+  opacity: 1;
+  user-select: auto;
+  z-index: 2;
+}
+.project-tab-link {
   opacity: 0;
 }
-.project-tab.active {
+.project-tab-link.active {
   opacity: 1 !important;
 }
 .project-pane.active {
@@ -17,17 +25,13 @@
   transition: opacity 0.2s ease;
   width: 100%;
 }
-.projects-details-item.active {
-  display: block;
-}
 .scroll-text {
   animation: float 1s ease-in-out infinite;
 }
 .scroll-button:hover .scroll-text {
   animation: none;
 }
-.scroll-button:hover .letter,
-.mouse-hover-text .letter {
+.scroll-button:hover .letter {
   background: linear-gradient(
     90deg,
     var(--red) 20%,
@@ -41,7 +45,6 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.scroll-button:hover .letter,
-.mouse-hover-text .letter {
+.scroll-button:hover .letter {
   animation-delay: var(--delay);
 }

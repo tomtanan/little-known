@@ -1,6 +1,7 @@
 @import 'variables/global';
 @import 'libs/animation';
 @import 'libs/global';
+@import 'modules/video-player';
 @import 'modules/nav';
 @import 'modules/projects';
 @import 'modules/about';

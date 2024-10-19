@@ -1,8 +1,9 @@
+.w-webflow-badge {
+  display: none !important;
+}
 body.no-scroll {
   overflow: hidden;
 }
-
-/* Basic styling for sections */
 .sections-wrapper {
   height: 100vh;
   overflow-y: scroll;
@@ -10,8 +11,6 @@ body.no-scroll {
 .section {
   position: relative;
 }
-
-/* Correct height issue on iOS for elements with 100vh */
 @supports (-webkit-touch-callout: none) {
   .sections-wrapper {
     height: 100dvh;
@@ -20,14 +19,33 @@ body.no-scroll {
     height: 100dvh;
   }
 }
-
-/* Basic styling for words animation with gsap */
+.mouse-hover-text {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  padding: 8px 15px;
+  position: relative;
+}
+.mouse-hover-text .letter {
+  background: linear-gradient(
+    90deg,
+    var(--red) 20%,
+    var(--orange) 40%,
+    var(--yellow) 60%,
+    var(--blue) 80%,
+    var(--green) 100%
+  );
+  background-size: 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave 1.5s ease infinite, gradient 1s ease infinite;
+}
+.mouse-hover-text .letter {
+  animation-delay: var(--delay);
+}
 .word {
   display: inline-block; /* This allows the y animation to apply */
   opacity: 0;
 }
-
-/* Basic styling for letters animation */
 .letter {
   display: inline-block;
 }

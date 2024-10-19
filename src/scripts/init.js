@@ -1,12 +1,14 @@
 import about from '../modules/about.js';
 import projects from '../modules/projects.js';
 import mosaic from '../modules/mosaic.js';
+import videoPlayer from '../modules/video-player.js';
 
 // Mapping of data-module values to imported modules
 const modulesMap = {
-  about: about,
-  projects: projects,
-  mosaic: mosaic,
+  'about': about,
+  'projects': projects,
+  'mosaic': mosaic,
+  'video-player': videoPlayer
 };
 
 // Automatically initialize sections based on the data-module attribute

@@ -20,6 +20,7 @@
     "vite": "^5.4.9"
   },
   "dependencies": {
+    "@vimeo/player": "^2.24.0",
     "intersection-observer": "^0.12.2",
     "select-dom": "^9.0.0"
   }
