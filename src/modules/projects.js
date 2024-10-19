@@ -7,9 +7,8 @@ export default function projects(el) {
   const tabs = $$('.js-project-tab', el);
   const panes = $$('.js-project-pane', el);
   const videos = $$('.js-project-video', el);
-  const details = $$('.js-project-details', el);
-  const modal = $('.js-projects-modal', el);
-  const closeBtn = $('.js-projects-modal-close', el);
+  const modals = $$('.js-modal', el);
+  const closeBtns = $$('.js-modal-close', el);
   const progressBar = $('.js-progress-bar', el);
   let currentProject = 0;
   let interval;
@@ -140,62 +139,44 @@ export default function projects(el) {
     });
   });
 
-  // Show projects modal
-  const showProjectsModal = (index) => {
-    // Pause auto rotation and video
-    clearInterval(interval);
-    pauseAllVideos();
-
-    // Set the project details content
-    details.forEach((item, idx) => {
-      if (index === idx) {
-        addClass(item, 'active'); // Show the corresponding project details
-      } else {
-        removeClass(item, 'active');
-      }
-    });
-
-    // Prevent body scroll
-    addClass(document.body, 'no-scroll');
-
-    // Open projects modal with animation
-    gsap.to(modal, {
-      top: 0,
-      duration: 0.4,
-      ease: 'power1.in',
-    });
+  // Show modal based on data-modal
+  const showModal = (modalName) => {
+    const modal = $(`[data-modal-target="${modalName}"]`);
+    if (modal) {
+      pauseAllVideos();
+      addClass(modal, 'active');
+      addClass(document.body, 'no-scroll');
+      gsap.to(modal, { top: 0, duration: 0.4, ease: 'power1.in' });
+    }
   };
 
-  // Close projects modal
-  const closeProjectsModal = () => {
-    // Resume auto rotation and video
-    const video = $('video', panes[currentProject]);
-    setAutoRotateInterval(video ? video.duration : 8);
-    playVideo(video);
-
-    // Allow body scroll again
+  // Close modal
+  const closeModal = (modal) => {
+    removeClass(modal, 'active');
     removeClass(document.body, 'no-scroll');
-
-    // Close projects modal with animation
-    gsap.to(modal, {
-      top: '100vh',
-      duration: 0.4,
-      ease: 'power1.in',
-    });
+    gsap.to(modal, { top: '100vh', duration: 0.4, ease: 'power1.in' });
   };
 
-  // Handle clicks on project panes
-  panes.forEach((pane, index) => {
+  // Handle modal trigger clicks
+  panes.forEach((pane) => {
     pane.addEventListener('click', (e) => {
       e.preventDefault();
-      showProjectsModal(index); // Open the projects modal
+      const modalName = pane.getAttribute('data-modal');
+      if (modalName) {
+        showModal(modalName); // Show modal based on its name
+      }
     });
   });
 
-  // Handle closing of the projects modal
-  closeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    closeProjectsModal();
+  // Handle closing modals
+  closeBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = btn.closest('.js-modal');
+      if (modal) {
+        closeModal(modal);
+      }
+    });
   });
 
   // IntersectionObserver to detect when the user lands on the Projects section

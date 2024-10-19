@@ -1,0 +1,14 @@
+.modal-close-button {
+  background: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  position: absolute;
+  right: 60px;
+  top: 70px;
+  transition: opacity 0.2s ease;
+  z-index: 3;
+}
+.modal-close-button:hover {
+  opacity: 0.5;
+}

@@ -1,6 +1,7 @@
 import about from '../modules/about.js';
 import projects from '../modules/projects.js';
 import mosaic from '../modules/mosaic.js';
+import modal from '../modules/modal.js';
 import videoPlayer from '../modules/video-player.js';
 
 // Mapping of data-module values to imported modules
@@ -8,6 +9,7 @@ const modulesMap = {
   'about': about,
   'projects': projects,
   'mosaic': mosaic,
+  'modal': modal,
   'video-player': videoPlayer
 };
 
