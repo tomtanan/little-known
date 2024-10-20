@@ -1,6 +1,9 @@
 import Player from '@vimeo/player';
 import { addClass, removeClass, on } from 'utils/helpers';
 import { $ } from 'select-dom';
+import emitter from 'utils/events';
+
+let initModalListener = false;
 
 export default function videoPlayer(el) {
   const iframe = $('.js-iframe', el); // Select the existing iframe
@@ -71,7 +74,21 @@ export default function videoPlayer(el) {
     removeClass(playBtn, 'active');
   });
 
-  // Initialize the player with 50% volume and add the relevant class
-  player.setVolume(0.5);
-  addClass(soundBtn, 'set-50');
+  emitter.on('openModal', ({ modalName }) => {
+    if (el.getAttribute('data-video-id') === modalName) {
+      player.setCurrentTime(0);
+      player.setVolume(0.5);
+      addClass(soundBtn, 'set-50');
+    }
+  });
+
+  emitter.on('closeModal', ({ modalName }) => {
+    if (el.getAttribute('data-video-id') === modalName) {
+      player.pause();
+      player.setVolume(0);
+      removeClass(playBtn, 'active');
+      removeClass(soundBtn, 'active set-50');
+      addClass(soundBtn, 'active set-0');
+    }
+  });
 }

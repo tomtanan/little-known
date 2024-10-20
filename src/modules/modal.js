@@ -15,7 +15,7 @@ export default function modal(el) {
 
   // Show the modal
   const showModal = () => {
-    emitter.emit('openModal');
+    emitter.emit('openModal', { modalName });
     addClass(modal, 'active');
     addClass(document.body, 'no-scroll');
     gsap.to(modal, { top: 0, duration: 0.4, ease: 'power1.in' });
@@ -23,7 +23,7 @@ export default function modal(el) {
 
   // Close the modal
   const closeModal = () => {
-    emitter.emit('closeModal');
+    emitter.emit('closeModal', { modalName });
     removeClass(modal, 'active');
     removeClass(document.body, 'no-scroll');
     gsap.to(modal, { top: '100vh', duration: 0.4, ease: 'power1.in' });
