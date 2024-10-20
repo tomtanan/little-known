@@ -1,7 +1,10 @@
 import { $, $$ } from 'select-dom';
-import { isTouchDevice, addClass, removeClass } from 'utils/helpers';
+import { isTouchDevice, addClass, removeClass, on, debounce } from 'utils/helpers';
 import { initMouseHover } from 'components/MouseHoverController.js';
 import { gsap } from 'gsap';
+import mitt from 'mitt';
+
+const emitter = mitt();
 
 export default function projects(el) {
   const tabs = $$('.js-project-tab', el);
@@ -11,179 +14,148 @@ export default function projects(el) {
   let currentProject = 0;
   let interval;
 
+  // Cache video elements by project index for better performance
+  const videoCache = panes.map(pane => $('video', pane));
+
   // GSAP timeline for progress bar animation
-  const animateProgressBar = (duration) => {
-    try {
-      gsap.killTweensOf(progressBar); // Kill any existing GSAP animation on the progress bar
-      gsap.fromTo(
-        progressBar,
-        { width: '0%' },
-        { width: '100%', duration, ease: 'linear' }
-      );
-    } catch (error) {
-      console.error('Error animating progress bar:', error);
-    }
+  const animateProgressBar = (duration = 8) => {
+    gsap.killTweensOf(progressBar);
+    gsap.fromTo(
+      progressBar,
+      { width: '0%' },
+      { width: '100%', duration, ease: 'linear' }
+    );
   };
 
   // Pause all videos
   const pauseAllVideos = () => {
-    try {
-      videos.forEach((video) => {
-        video.pause();
-      });
-    } catch (error) {
-      console.error('Error pausing videos:', error);
-    }
+    videos.forEach(video => video.pause());
   };
 
-  // Play video if available and animate progress bar based on its duration
+  // Play video and animate the progress bar
   const playVideo = (video) => {
-    try {
-      if (video) {
-        const playAndAnimate = () => {
-          video.currentTime = 0;
-          video
-            .play()
-            .then(() => {
-              // Play succeeded
-              animateProgressBar(video.duration || 8);
-            })
-            .catch((error) => {
-              console.error('Error playing video:', error);
-              animateProgressBar(8); // Fallback duration
-            });
-        };
-
-        // If metadata is already loaded
-        if (video.readyState >= 1) {
-          playAndAnimate();
-        } else {
-          video.addEventListener('loadedmetadata', playAndAnimate, {
-            once: true,
+    if (video) {
+      const playAndAnimate = () => {
+        video.currentTime = 0;
+        video.play()
+          .then(() => {
+            animateProgressBar(video.duration || 8);
+          })
+          .catch(() => {
+            animateProgressBar(8);
           });
-        }
+      };
+
+      if (video.readyState >= 1) {
+        playAndAnimate();
       } else {
-        // No video, fallback
-        animateProgressBar(8);
+        on(video, 'loadedmetadata', playAndAnimate, { once: true });
       }
-    } catch (error) {
-      console.error('Error in playVideo function:', error);
-      animateProgressBar(8); // Fallback if any error occurs
+    } else {
+      animateProgressBar(8);
     }
   };
 
-  // Show a specific project (immediate transition)
+  // Show a specific project
   const showProject = (index) => {
-    try {
-      if (!tabs[index] || !panes[index]) {
-        throw new Error(`Invalid project index: ${index}`);
-      }
+    if (!tabs[index] || !panes[index]) return;
 
-      const newPane = panes[index];
-      const newVideo = $('video', newPane);
+    const newPane = panes[index];
+    const newVideo = videoCache[index];
 
-      pauseAllVideos(); // Pause all videos before switching
+    pauseAllVideos();
 
-      // Remove active state from all tabs and panes
-      tabs.forEach((tab) => removeClass(tab, 'active'));
-      panes.forEach((pane) => removeClass(pane, 'active'));
+    tabs.forEach(tab => removeClass(tab, 'active'));
+    panes.forEach(pane => removeClass(pane, 'active'));
 
-      // Add active state to the selected tab and pane
-      addClass(tabs[index], 'active');
-      addClass(newPane, 'active');
+    addClass(tabs[index], 'active');
+    addClass(newPane, 'active');
 
-      playVideo(newVideo); // Play the video for the new pane
+    playVideo(newVideo);
 
-      currentProject = index; // Update the current project index
-    } catch (error) {
-      console.error('Error showing project:', error);
-    }
+    currentProject = index;
   };
 
-  // Set the auto-rotate interval based on the duration (video duration or fallback)
-  const setAutoRotateInterval = (duration) => {
-    try {
-      clearInterval(interval);
-      interval = setInterval(autoRotateProjects, (duration || 8) * 1000);
-    } catch (error) {
-      console.error('Error setting auto-rotate interval:', error);
-    }
-  };
+  // Throttle setting the auto-rotate interval to avoid frequent resets
+  const setAutoRotateInterval = debounce((duration = 8) => {
+    clearInterval(interval);
+    interval = setInterval(autoRotateProjects, duration * 1000);
+  }, 100);
 
   // Auto rotate to the next project
   const autoRotateProjects = () => {
-    try {
-      currentProject = (currentProject + 1) % tabs.length;
-      showProject(currentProject);
-      const video = $('video', panes[currentProject]);
-      setAutoRotateInterval(video ? video.duration : 8);
-    } catch (error) {
-      console.error('Error in auto-rotate:', error);
-    }
+    currentProject = (currentProject + 1) % tabs.length;
+    showProject(currentProject);
+
+    const video = videoCache[currentProject];
+    setAutoRotateInterval(video ? video.duration : 8);
   };
 
-  // Add event listeners to project tabs
+  // Add event listeners to project tabs with debounced handling
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', (e) => {
-      try {
-        e.preventDefault();
-        clearInterval(interval); // Stop auto rotation
-        showProject(index); // Show the clicked project
-        const video = $('video', panes[index]);
-        setAutoRotateInterval(video ? video.duration : 8); // Restart auto-rotation based on video duration
-      } catch (error) {
-        console.error('Error on tab click:', error);
-      }
+    on(tab, 'click', (e) => {
+      e.preventDefault();
+      clearInterval(interval);
+      showProject(index);
+      const video = videoCache[index];
+      setAutoRotateInterval(video ? video.duration : 8);
     });
   });
 
-  // IntersectionObserver to detect when the user lands on the Projects section
+  // Lazy load videos with IntersectionObserver
   const animateTabs = (entries, observer) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // GSAP animation for the project tabs
         gsap.fromTo(
           tabs,
-          { opacity: 0, y: 20 }, // Start state
-          { opacity: 0.5, y: 0, stagger: 0.2, duration: 1, ease: 'power3.out' } // End state with stagger
+          { opacity: 0, y: 20 },
+          { opacity: 0.5, y: 0, stagger: 0.2, duration: 1, ease: 'power3.out' }
         );
-        // Unobserve the section after the animation is triggered
         observer.unobserve(entry.target);
       }
     });
   };
 
-  const observer = new IntersectionObserver(animateTabs, {
-    root: null,
-    threshold: 0.3, // Trigger when 30% of the section is visible
-  });
-
-  // Observe the Projects section
+  const observer = new IntersectionObserver(animateTabs, { root: null, threshold: 0.3 });
   observer.observe(el);
 
-  // Initialize with the first project and auto-rotate
-  try {
-    const initialVideo = $('video', panes[0]);
+  // Handle modal events with efficient video pausing and resuming
+  emitter.on('openModal', () => {
+    pauseAllVideos();
+    clearInterval(interval);
+    gsap.killTweensOf(progressBar);
+  });
+
+  emitter.on('closeModal', () => {
+    playVideo(videoCache[currentProject]);
+    const currentVideo = videoCache[currentProject];
+    if (currentVideo.readyState >= 1) {
+      setAutoRotateInterval(currentVideo.duration || 8);
+    } else {
+      on(currentVideo, 'loadedmetadata', () => setAutoRotateInterval(currentVideo.duration || 8), { once: true });
+    }
+  });
+
+  // Initialize the first project and set up auto-rotation
+  const initialize = () => {
+    const initialVideo = videoCache[0];
 
     if (initialVideo) {
-      // Add the preload attribute to the first video
       initialVideo.setAttribute('preload', 'auto');
-
-      // Wait for the first video's metadata to load before showing the pane
-      initialVideo.addEventListener('loadedmetadata', () => {
-        showProject(0); // Show the first project once the video is ready
-        setAutoRotateInterval(initialVideo.duration || 8); // Set auto-rotate based on video duration
+      on(initialVideo, 'loadedmetadata', () => {
+        showProject(0);
+        setAutoRotateInterval(initialVideo.duration || 8);
       });
     } else {
-      // Fallback if no video is found
       showProject(0);
-      setAutoRotateInterval(8); // Set default auto-rotate duration
+      setAutoRotateInterval(8);
     }
-  } catch (error) {
-    console.error('Error during initialization:', error);
+  };
+
+  // Only initialize mouse hover effect if the device is not a touch device
+  if (!isTouchDevice()) {
+    initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
   }
 
-  // Initialize text following the user mouse when hovering the Projects pane if it's not a touch device
-  if (!isTouchDevice())
-    initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
+  initialize();
 }

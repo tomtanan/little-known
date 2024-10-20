@@ -11,6 +11,9 @@ export default function about(el) {
     Array.from(text.childNodes).forEach(wrapWords);
   });
 
+  // Cache words to avoid querying DOM repeatedly
+  const words = $$('.word', el);
+
   // IntersectionObserver for the about section
   const observer = new IntersectionObserver(
     (entries, observer) => {
@@ -18,7 +21,7 @@ export default function about(el) {
         if (entry.isIntersecting) {
           // Start text animation when the section is in view
           gsap.fromTo(
-            '.word',
+            words,
             { opacity: 0, y: 30 },
             {
               opacity: 1,
@@ -34,7 +37,7 @@ export default function about(el) {
         }
       });
     },
-    { threshold: 0.1 } // Trigger when 10% of the section is visible
+    { threshold: 0.1, rootMargin: '0px 0px -10% 0px' } // Delays animation slightly
   );
 
   // Start observing the about section

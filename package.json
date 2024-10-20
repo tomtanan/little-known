@@ -22,6 +22,7 @@
   "dependencies": {
     "@vimeo/player": "^2.24.0",
     "intersection-observer": "^0.12.2",
+    "mitt": "^3.0.1",
     "select-dom": "^9.0.0"
   }
 }
