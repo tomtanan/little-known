@@ -2,9 +2,7 @@ import { $, $$ } from 'select-dom';
 import { isTouchDevice, addClass, removeClass, on, debounce } from 'utils/helpers';
 import { initMouseHover } from 'components/MouseHoverController.js';
 import { gsap } from 'gsap';
-import mitt from 'mitt';
-
-const emitter = mitt();
+import emitter from 'utils/events';
 
 export default function projects(el) {
   const tabs = $$('.js-project-tab', el);
