@@ -1,8 +1,12 @@
 .modal-content {
   height: calc(100% - 70px);
-  inset: 70px 60px 0;
   position: absolute;
-  width: 100%;
+  top: 70px;
+  width: var(--modal-content-width); 
+}
+.modal-content::before, 
+.modal-content::after {
+  content: none;
 }
 .modal-close-button {
   background: none;

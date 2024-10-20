@@ -1,13 +1,5 @@
 /* variables.css */
 :root {
-  --breakpoint-xxs: 320px;
-  --breakpoint-xs: 568px;
-  --breakpoint-s: 768px;
-  --breakpoint-m: 992px;
-  --breakpoint-l: 1280px;
-  --breakpoint-xl: 1440px;
-  --breakpoint-xxl: 1920px;
-
   --black: #0c0c0c;
   --white: #fff;
   --red: rgba(229, 65, 36, 1);
@@ -48,5 +40,45 @@
   }
   .letter:nth-child(11) {
     --delay: 0.5s;
+  }
+}
+
+/* Media queries variables */
+:root {
+  --modal-content-width: 100%;
+}
+@media (min-width: 320px) {
+  :root {
+    --modal-content-width: calc(100% - 80px);
+  }
+}
+@media (min-width: 568px) {
+  :root {
+  
+  }
+}
+@media (min-width: 768px) {
+  :root {
+  
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    --modal-content-width: calc(100% - 120px);
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+  
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+  
+  }
+}
+@media (min-width: 1920px) {
+  :root {
+  
   }
 }

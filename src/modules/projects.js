@@ -7,8 +7,6 @@ export default function projects(el) {
   const tabs = $$('.js-project-tab', el);
   const panes = $$('.js-project-pane', el);
   const videos = $$('.js-project-video', el);
-  const modals = $$('.js-modal', el);
-  const closeBtns = $$('.js-modal-close', el);
   const progressBar = $('.js-progress-bar', el);
   let currentProject = 0;
   let interval;
@@ -135,46 +133,6 @@ export default function projects(el) {
         setAutoRotateInterval(video ? video.duration : 8); // Restart auto-rotation based on video duration
       } catch (error) {
         console.error('Error on tab click:', error);
-      }
-    });
-  });
-
-  // Show modal based on data-modal
-  const showModal = (modalName) => {
-    const modal = $(`[data-modal-target="${modalName}"]`);
-    if (modal) {
-      pauseAllVideos();
-      addClass(modal, 'active');
-      addClass(document.body, 'no-scroll');
-      gsap.to(modal, { top: 0, duration: 0.4, ease: 'power1.in' });
-    }
-  };
-
-  // Close modal
-  const closeModal = (modal) => {
-    removeClass(modal, 'active');
-    removeClass(document.body, 'no-scroll');
-    gsap.to(modal, { top: '100vh', duration: 0.4, ease: 'power1.in' });
-  };
-
-  // Handle modal trigger clicks
-  panes.forEach((pane) => {
-    pane.addEventListener('click', (e) => {
-      e.preventDefault();
-      const modalName = pane.getAttribute('data-modal');
-      if (modalName) {
-        showModal(modalName); // Show modal based on its name
-      }
-    });
-  });
-
-  // Handle closing modals
-  closeBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const modal = btn.closest('.js-modal');
-      if (modal) {
-        closeModal(modal);
       }
     });
   });
