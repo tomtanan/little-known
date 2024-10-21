@@ -25,8 +25,7 @@ export const wrapWords = (node) => {
         span.className = 'word';
         span.textContent = word;
         fragment.appendChild(span);
-        if (index < words.length - 1)
-          fragment.appendChild(document.createTextNode(' '));
+        fragment.appendChild(document.createTextNode(' '));
       });
     node.parentNode.replaceChild(fragment, node);
 
