@@ -42,6 +42,9 @@ body.no-scroll {
 .mouse-hover-text .letter {
   animation-delay: var(--delay);
 }
+.overlay {
+  opacity: 0;
+}
 .word {
   display: inline-block; /* This allows the y animation to apply */
   opacity: 0;

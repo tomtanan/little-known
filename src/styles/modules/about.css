@@ -1,3 +1,13 @@
+.about-content::before {
+  background-color: var(--white);
+  content: '';
+  filter: blur(50px);
+  height: calc(100% + 120px);
+  left: -60px;
+  position: absolute;
+  top: -60px;
+  width: calc(100% + 120px);
+}
 .about-text::selection,
 .about-text *::selection {
   background-color: #f7d6e0; /* Background color when text is highlighted */
