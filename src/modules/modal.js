@@ -23,7 +23,6 @@ export default function modal(el) {
 
   // Close the modal
   const closeModal = () => {
-    emitter.emit('closeModal', { modalName });
     removeClass(modal, 'active');
     removeClass(document.body, 'no-scroll');
     gsap.to(modal, {
@@ -32,6 +31,7 @@ export default function modal(el) {
       ease: 'power1.in',
       onComplete: () => {
         gsap.set(modal, { height: '100vh', top: '100vh' });
+        emitter.emit('closeModal', { modalName });
       },
     });
   };
