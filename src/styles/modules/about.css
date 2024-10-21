@@ -3,3 +3,17 @@
   background-color: #f7d6e0; /* Background color when text is highlighted */
   color: var(--red); /* Text color when highlighted */
 }
+.about-text .text-link:hover span {
+  background: linear-gradient(
+    90deg,
+    var(--red) 20%,
+    var(--orange) 40%,
+    var(--yellow) 60%,
+    var(--blue) 80%,
+    var(--green) 100%
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 1s ease infinite;
+}

@@ -6,40 +6,39 @@
  * @param {Node} node - The DOM node to process. This can be a text node or an element node.
  * @throws {Error} Throws an error if the provided node is not a valid DOM node.
  */
-export const wrapWords = (node) => {
-  if (!(node instanceof Node)) throw new Error('Expected a DOM Node.');
-  if (
-    !node ||
-    (node.nodeType !== Node.TEXT_NODE && node.nodeType !== Node.ELEMENT_NODE)
-  )
-    return;
+export const wordSplit = (node) => {
+  // Ensure node is valid and not already processed
+  if (!node || !(node instanceof Node)) throw new Error('Expected a DOM Node.');
 
-  // Handle text nodes by wrapping each word in a <span>
+  // If it's a text node, split the words and wrap them in spans
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
     const fragment = document.createDocumentFragment();
-    node.textContent
-      .trim()
-      .split(/\s+/)
-      .forEach((word, index, words) => {
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = word;
-        fragment.appendChild(span);
-        fragment.appendChild(document.createTextNode(' '));
-      });
-    node.parentNode.replaceChild(fragment, node);
+    const words = node.textContent.trim().split(/\s+/);
+    words.forEach((word) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      fragment.appendChild(span);
+      fragment.appendChild(document.createTextNode(' ')); // Add space after each word
+    });
+    node.replaceWith(fragment); // Replace the entire text node at once
+    return; // Early return as we don't need to process further
+  }
 
-    // Handle element nodes and process children recursively
-  } else if (node.nodeType === Node.ELEMENT_NODE) {
-    if (
-      getComputedStyle(node).display === 'inline' &&
-      node.tagName.toLowerCase() === 'span' &&
-      !node.classList.contains('word')
-    ) {
+  // If it's an element node, process its children
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    // If the node is an inline span but not already a 'word', apply the class and skip re-wrapping
+    if (node.tagName.toLowerCase() === 'span' && !node.classList.contains('word')) {
       node.classList.add('word');
-    } else {
-      Array.from(node.childNodes).forEach(wrapWords);
+      return; // Don't process its children further
     }
+
+    // Process only the text node children, leave already wrapped spans untouched
+    Array.from(node.childNodes).forEach((childNode) => {
+      if (childNode.nodeType === Node.TEXT_NODE || childNode.nodeType === Node.ELEMENT_NODE) {
+        wordSplit(childNode);
+      }
+    });
   }
 };
 

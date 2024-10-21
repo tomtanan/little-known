@@ -1,15 +1,15 @@
-import { addClass, removeClass, wrapWords } from 'utils/helpers';
+import { addClass, removeClass, wordSplit } from 'utils/helpers';
 import { gsap } from 'gsap';
 import { $, $$ } from 'select-dom';
 import 'intersection-observer';
 
 export default function about(el) {
   const nav = $('#nav');
-  const textElements = $$('.js-about-text');
+  const textElements = $$('.js-word-split');
 
-  // Wrap words in text elements for animation
+  // Word split in text elements for animation
   textElements.forEach((text) => {
-    Array.from(text.childNodes).forEach(wrapWords);
+    Array.from(text.childNodes).forEach(wordSplit);
   });
 
   // Cache words to avoid querying DOM repeatedly
