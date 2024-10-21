@@ -12,7 +12,7 @@
     var(--blue) 80%,
     var(--green) 100%
   );
-  background-size: 500%;
+  background-size: 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
