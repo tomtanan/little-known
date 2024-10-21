@@ -49,8 +49,10 @@ export default function videoPlayer(el) {
   on(fullscreenBtn, 'click', () => {
     if (!document.fullscreenElement) {
       el.requestFullscreen();
+      addClass(fullscreenBtn, 'active');
     } else {
       document.exitFullscreen();
+      removeClass(fullscreenBtn, 'active');
     }
   });
 
@@ -78,7 +80,7 @@ export default function videoPlayer(el) {
     if (el.getAttribute('data-video-id') === modalName) {
       player.setCurrentTime(0);
       player.setVolume(0.5);
-      addClass(soundBtn, 'set-50');
+      addClass(soundBtn, 'active set-50');
     }
   });
 
@@ -87,8 +89,7 @@ export default function videoPlayer(el) {
       player.pause();
       player.setVolume(0);
       removeClass(playBtn, 'active');
-      removeClass(soundBtn, 'active set-50');
-      addClass(soundBtn, 'active set-0');
+      removeClass(soundBtn, 'active set-50 set-0');
     }
   });
 }

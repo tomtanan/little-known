@@ -89,3 +89,12 @@
   transition: width 0.5s ease;
   width: 0;
 }
+.video-controls .fullscreen-btn .ico-resize {
+  display: none;
+}
+.video-controls .fullscreen-btn.active .ico-fullscreen {
+  display: none;
+}
+.video-controls .fullscreen-btn.active .ico-resize {
+  display: block;
+}
