@@ -18,7 +18,7 @@ export default function modal(el) {
     emitter.emit('openModal', { modalName });
     addClass(modal, 'active');
     addClass(document.body, 'no-scroll');
-    gsap.to(modal, { top: 0, duration: 0.4, ease: 'power1.in' });
+    gsap.to(modal, { top: 0, duration: 0.5, ease: 'power1.in' });
   };
 
   // Close the modal
@@ -26,7 +26,14 @@ export default function modal(el) {
     emitter.emit('closeModal', { modalName });
     removeClass(modal, 'active');
     removeClass(document.body, 'no-scroll');
-    gsap.to(modal, { top: '100vh', duration: 0.4, ease: 'power1.in' });
+    gsap.to(modal, {
+      height: '0px',
+      duration: 0.5,
+      ease: 'power1.in',
+      onComplete: () => {
+        gsap.set(modal, { height: '100vh', top: '100vh' });
+      },
+    });
   };
 
   // Attach the event to open the modal on the provided `el` element
