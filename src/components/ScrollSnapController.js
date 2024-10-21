@@ -1,4 +1,5 @@
 import { $, $$ } from 'select-dom';
+import { on, debounce } from 'utils/helpers'; // Import debounce from helpers
 
 /**
  * ScrollSnapController class enables smooth scrolling through different sections of a webpage.
@@ -20,8 +21,11 @@ export class ScrollSnapController {
       throw new Error('Scroll container element is not valid.');
     }
 
-    // Use $$ from select-dom to select all sections inside the container
+    // Select all sections inside the container
     this.sections = $$('.js-section', this.scrollContainer);
+
+    // Select all scroll buttons inside the container
+    this.scrollBtns = $$('[data-snap-scroll-to]', this.scrollContainer);
 
     // Error handling: if no sections found, throw an error
     if (!this.sections.length) {
@@ -61,36 +65,43 @@ export class ScrollSnapController {
    * Binds mouse wheel and touch events to the scroll container.
    */
   bindEvents() {
-    let isScrolling = false;
-
-    // Debounce function to limit how often scrolling occurs
-    const debounceScroll = (event) => {
-      if (!isScrolling) {
-        isScrolling = true;
-        setTimeout(() => {
-          this.handleScroll(event.deltaY);
-          isScrolling = false;
-        }, 150);
-      }
-    };
+    // Use the debounce helper function here
+    const debouncedHandleScroll = debounce((event) => {
+      this.handleScroll(event.deltaY);
+    }, 150);
 
     // Bind mouse wheel event
-    this.scrollContainer.addEventListener('wheel', (event) => {
+    on(this.scrollContainer, 'wheel', (event) => {
       event.preventDefault();
-      debounceScroll(event);
+      debouncedHandleScroll(event);
     });
 
     // Track the initial Y position for touch start
-    this.scrollContainer.addEventListener('touchstart', (event) => {
+    on(this.scrollContainer, 'touchstart', (event) => {
       this.startY = event.touches[0].clientY;
     });
 
     // Handle touch move events for swipe-based scrolling
-    this.scrollContainer.addEventListener('touchmove', (event) => {
+    (this.scrollContainer, 'touchmove', (event) => {
       const deltaY = this.startY - event.touches[0].clientY;
       if (Math.abs(deltaY) > 30) {
         event.preventDefault();
-        debounceScroll({ deltaY });
+        debouncedHandleScroll({ deltaY });
+      }
+    });
+
+    // Add event listeners to scroll buttons
+    this.scrollBtns.forEach((btn) => {
+      const targetId = btn.getAttribute('data-snap-scroll-to');
+      const targetSection = $(`#${targetId}`, this.scrollContainer); // Use # to target an ID
+
+      if (targetSection) {
+        on(btn, 'click', (e) => {
+          e.preventDefault();
+          this.easeInScroll(targetSection);
+        });
+      } else {
+        console.error(`No section found with ID: ${targetId}`);
       }
     });
   }
