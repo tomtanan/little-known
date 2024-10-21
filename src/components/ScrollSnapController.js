@@ -25,7 +25,7 @@ export class ScrollSnapController {
     this.sections = $$('.js-section', this.scrollContainer);
 
     // Select all scroll buttons inside the container
-    this.scrollBtns = $$('[data-snap-scroll-to]', this.scrollContainer);
+    this.scrollBtns = $$('[data-snap-scroll-to]', document.body);
 
     // Error handling: if no sections found, throw an error
     if (!this.sections.length) {

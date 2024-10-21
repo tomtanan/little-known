@@ -5,7 +5,7 @@ import 'intersection-observer';
 
 export default function about(el) {
   const nav = $('#nav');
-  const textElements = $$('.js-gsap-text');
+  const textElements = $$('.js-about-text');
 
   // Wrap words in text elements for animation
   textElements.forEach((text) => {
