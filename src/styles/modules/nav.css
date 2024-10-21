@@ -1,1 +1,6 @@
-.nav {}
+.navbar.black .nav-link {
+  color: var(--black);
+}
+.nav-link {
+  transition: color 0.3s ease, opacity 0.2s ease;
+}
