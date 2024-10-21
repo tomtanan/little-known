@@ -1,8 +1,8 @@
 .modal-title {
-  bottom: 60px;
   position: absolute;
   right: 60px;
   text-transform: lowercase;
+  top: calc(100vh - 120px);
   z-index: 3;
 }
 .modal-content {
