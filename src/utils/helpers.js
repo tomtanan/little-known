@@ -2,12 +2,23 @@
  * Wraps each word in a text node with a <span> element for animation purposes.
  * This function modifies the DOM by replacing the original text node with
  * individual <span> elements for each word and inserting spaces between them.
+ * 
+ * If a NodeList or array of nodes is passed, it will iterate over each element 
+ * and apply the word splitting logic to all of them.
  *
- * @param {Node} node - The DOM node to process. This can be a text node or an element node.
+ * @param {Node|NodeList|Array} elements - The DOM node(s) to process. This can be 
+ * a single text or element node, a NodeList, or an array of nodes.
  * @throws {Error} Throws an error if the provided node is not a valid DOM node.
  */
-export const wordSplit = (node) => {
+export const wordSplit = (elements) => {
+  // If 'elements' is a NodeList or an array, iterate through them
+  if (NodeList.prototype.isPrototypeOf(elements) || Array.isArray(elements)) {
+    elements.forEach((element) => wordSplit(element));
+    return;
+  }
+
   // Ensure node is valid and not already processed
+  const node = elements;
   if (!node || !(node instanceof Node)) throw new Error('Expected a DOM Node.');
 
   // If it's a text node, split the words and wrap them in spans
@@ -40,6 +51,32 @@ export const wordSplit = (node) => {
       }
     });
   }
+};
+
+/**
+ * Splits the text of a given DOM element, wrapping each letter
+ * in an <i> element with the class 'letter'.
+ *
+ * @param {Node|NodeList|Array} elements - The DOM node(s) to process. This can be 
+ * a single text or element node, a NodeList, or an array of nodes.
+ */
+export const letterSplit = (elements) => {
+  elements.forEach((element) => {
+    // Iterate over each element passed to the function
+    Array.from(element.childNodes).forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        const fragment = document.createDocumentFragment();
+        const letters = Array.from(node.textContent); // Split text into individual letters
+        letters.forEach((letter) => {
+          const i = document.createElement('i');
+          i.className = 'letter';
+          i.textContent = letter;
+          fragment.appendChild(i);
+        });
+        node.replaceWith(fragment); // Replace the original text node with the fragment
+      }
+    });
+  });
 };
 
 /**

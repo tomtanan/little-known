@@ -48,4 +48,5 @@ body.no-scroll {
 }
 .letter {
   display: inline-block;
+  font-style: normal;
 }

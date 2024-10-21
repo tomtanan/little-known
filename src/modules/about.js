@@ -1,16 +1,13 @@
-import { addClass, removeClass, wordSplit } from 'utils/helpers';
+import { addClass, removeClass, wordSplit, letterSplit } from 'utils/helpers';
 import { gsap } from 'gsap';
 import { $, $$ } from 'select-dom';
 import 'intersection-observer';
 
 export default function about(el) {
   const nav = $('#nav');
-  const textElements = $$('.js-word-split');
 
-  // Word split in text elements for animation
-  textElements.forEach((text) => {
-    Array.from(text.childNodes).forEach(wordSplit);
-  });
+  wordSplit($$('.js-word-split'));
+  letterSplit($$('.js-letter-split'));
 
   // Cache words to avoid querying DOM repeatedly
   const words = $$('.word', el);
