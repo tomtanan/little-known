@@ -9,32 +9,29 @@ export const handleMediaItems = (items) => {
   const fragment = document.createDocumentFragment(); // Batch DOM updates for performance
 
   items.forEach(item => {
-    const videoIds = item.getAttribute('data-video-ids');
+    const videoId = item.getAttribute('data-video-id');
     const imageSrc = item.getAttribute('data-image-src');
 
     // Remove the original item from the DOM
     item.remove();
 
     // Handle video items
-    if (videoIds && videoIds.trim() !== '') {
-      const videoIdArray = videoIds.split(',').map(id => id.trim());
-      videoIdArray.forEach(id => {
-        const container = createGalleryItem();
-        const player = document.createElement('div');
-        player.className = 'video-player js-video-player';
-        player.setAttribute('data-video-id', id); // Set the video ID as a data attribute
-        container.appendChild(player);
-        fragment.appendChild(container);
-      });
+    if (videoId && videoId.trim() !== '') {
+      const container = createGalleryItem();
+      const player = document.createElement('div');
+      player.className = 'gallery-video video-player js-video-player';
+      player.setAttribute('data-video-id', videoId); // Set the video ID as a data attribute
+      container.appendChild(player);
+      fragment.appendChild(container);
     }
 
     // Handle image items
     if (imageSrc && imageSrc.trim() !== '') {
       const container = createGalleryItem();
-      const newImg = document.createElement('img');
-      newImg.className = 'gallery-image';
-      newImg.src = imageSrc; // Set the image source
-      container.appendChild(newImg);
+      const img = document.createElement('img');
+      img.className = 'gallery-image';
+      img.src = imageSrc; // Set the image source
+      container.appendChild(img);
       fragment.appendChild(container);
     }
   });
