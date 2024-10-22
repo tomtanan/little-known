@@ -1,7 +1,9 @@
 .gallery-item {
   height: 100%;
   margin: 0 auto;
-  width: calc(100% - 100px);
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 .gallery-image {
   height: 100%;
@@ -18,7 +20,7 @@
   position: absolute;
   top: calc(50% - 25px);
   transition: opacity 0.2s ease;
-  width: 50px;
+  width: 40px;
   z-index: 3;
 }
 .gallery-nav.active {
@@ -28,8 +30,8 @@
   opacity: 0.5;
 }
 .gallery-nav.prev {
-  left: 0;
+  left: -40px;
 }
 .gallery-nav.next {
-  right: 0;
+  right: -40px;
 }

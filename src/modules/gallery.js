@@ -2,9 +2,9 @@ import { addClass, on } from 'utils/helpers';
 import { handleMediaItems } from 'utils/galleryHelpers';
 import { $, $$ } from 'select-dom';
 import videoPlayer from 'modules/video-player';
+import gsap from 'gsap';
 
 export default function gallery(el) {
-  const container = $('.js-gallery-container', el);
   const prevBtn = $('.js-gallery-prev', el);
   const nextBtn = $('.js-gallery-next', el);
 
@@ -13,43 +13,70 @@ export default function gallery(el) {
   handleMediaItems(items);
   items = $$('.js-gallery-item', el);
 
-  if (items.length > 1) {
-    let curr = 0;
+  const totalItems = items.length;
+  let curr = 0;
 
+  if (totalItems > 1) {
     addClass(prevBtn, 'active');
     addClass(nextBtn, 'active');
-  
-    // Function to show the current slide
-    const showSlide = (index) =>  {
-      items.forEach((item, i) => {
-        item.style.display = i === index ? 'block' : 'none';
+
+    // Initialize all slides to be off-screen except the first one
+    const initSlides = () => {
+      items.forEach((item, index) => {
+        gsap.set(item, { x: index === curr ? '0vw' : '100vw', scale: 1 });
       });
-    }
-  
-    // Event listener for previous button
-    if (prevBtn) {
-      on(prevBtn, 'click', () => {
-        curr = (curr === 0) ? items.length - 1 : curr - 1;
-        showSlide(curr);
+    };
+
+    // Reusable function to animate slide transitions
+    const animateSlide = (current, next, direction) => {
+      const slideDirection = direction === 'next' ? '100vw' : '-100vw';
+
+      // Set the position of the next slide immediately off-screen
+      gsap.set(next, {
+        x: direction === 'next' ? '-100vw' : '100vw',
+        scale: 0.8,
       });
-    }
-  
-    // Event listener for next button
-    if (nextBtn) {
-      on(nextBtn, 'click', () => {
-        curr = (curr === items.length - 1) ? 0 : curr + 1;
-        showSlide(curr);
-      });
-    }
-  
-    // Initialize slideshow with first slide
-    showSlide(curr);
+
+      // Create a single GSAP timeline for exit and entry animations
+      const tl = gsap.timeline();
+
+      // Zoom out and slide out the current slide
+      tl.to(current, { scale: 0.8, duration: 0.5 })
+        .to(current, { x: slideDirection, duration: 0.5 })
+        .to(next, { x: '0vw', duration: 0.5 }, '-=0.5')
+        .to(next, { scale: 1, duration: 0.5 });
+    };
+
+    // Event listener function
+    const handleNavigation = (direction) => {
+      const newIndex =
+        direction === 'next'
+          ? curr === totalItems - 1
+            ? 0
+            : curr + 1
+          : curr === 0
+          ? totalItems - 1
+          : curr - 1;
+
+      const currentSlide = items[curr];
+      const nextSlide = items[newIndex];
+
+      animateSlide(currentSlide, nextSlide, direction);
+      curr = newIndex;
+    };
+
+    // Initialize event listeners
+    on(prevBtn, 'click', () => handleNavigation('prev'));
+    on(nextBtn, 'click', () => handleNavigation('next'));
+
+    // Initialize with the first slide
+    initSlides();
+    handleNavigation('next'); // Show first slide
   }
 
   // Initialize the video players
   const players = $$('.js-video-player', el);
-
   if (players.length > 0) {
-    players.forEach(player => videoPlayer(player));
+    players.forEach(videoPlayer);
   }
 }
