@@ -93,7 +93,7 @@ export class MouseHoverController {
     gsap.to(this.hoverElement, {
       x: this.mouseX + this.offsetX,
       y: this.mouseY + this.offsetY,
-      duration: 0.2,
+      duration: 0.1,
       ease: 'power1.inOut',
     });
 
