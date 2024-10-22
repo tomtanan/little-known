@@ -1,19 +1,25 @@
-import { $ } from 'select-dom';
+import { $, $$ } from 'select-dom';
 import { addClass, removeClass, on } from 'utils/helpers';
 import { gsap } from 'gsap';
 import emitter from 'utils/events';
+import gallery from 'modules/gallery';
 
 export default function modal(el) {
   const modalName = el.getAttribute('data-modal');
   const modal = $(`[data-modal-target="${modalName}"]`);
-  const closeBtn = $('.js-modal-close', modal);
+  const galleryElement = $('.js-gallery', modal);
 
   if (!modal) {
     console.error(`No modal found with data-modal-target="${modalName}"`);
     return;
   }
 
-  // Show the modal
+  const closeBtn = $('.js-modal-close', modal);
+
+  // Initialize gallery
+  gallery(galleryElement);
+
+  // Show the modal with animation
   const showModal = () => {
     emitter.emit('openModal', { modalName });
     addClass(modal, 'active');
@@ -21,7 +27,7 @@ export default function modal(el) {
     gsap.to(modal, { top: 0, duration: 0.5, ease: 'power1.in' });
   };
 
-  // Close the modal
+  // Close the modal with animation
   const closeModal = () => {
     removeClass(modal, 'active');
     removeClass(document.body, 'no-scroll');
@@ -36,13 +42,12 @@ export default function modal(el) {
     });
   };
 
-  // Attach the event to open the modal on the provided `el` element
+  // Event listeners
   on(el, 'click', (e) => {
     e.preventDefault();
     showModal();
   });
 
-  // Attach the event to close the modal
   on(closeBtn, 'click', (e) => {
     e.preventDefault();
     closeModal();

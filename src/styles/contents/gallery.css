@@ -1,0 +1,35 @@
+.gallery-item {
+  height: 100%;
+  margin: 0 auto;
+  width: calc(100% - 100px);
+}
+.gallery-image {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.gallery-nav {
+  align-items: center;
+  background: none;
+  display: none;
+  height: 50px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  top: calc(50% - 25px);
+  transition: opacity 0.2s ease;
+  width: 50px;
+  z-index: 3;
+}
+.gallery-nav.active {
+  display: flex;
+}
+.gallery-nav:hover {
+  opacity: 0.5;
+}
+.gallery-nav.prev {
+  left: 0;
+}
+.gallery-nav.next {
+  right: 0;
+}

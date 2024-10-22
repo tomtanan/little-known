@@ -3,6 +3,7 @@ import projects from '../modules/projects.js';
 import mosaic from '../modules/mosaic.js';
 import modal from '../modules/modal.js';
 import videoPlayer from '../modules/video-player.js';
+import gallery from '../modules/gallery.js';
 
 // Mapping of data-module values to imported modules
 const modulesMap = {
@@ -10,7 +11,8 @@ const modulesMap = {
   'projects': projects,
   'mosaic': mosaic,
   'modal': modal,
-  'video-player': videoPlayer
+  'video-player': videoPlayer,
+  'gallery': gallery
 };
 
 // Automatically initialize sections based on the data-module attribute

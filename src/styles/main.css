@@ -2,9 +2,10 @@
 @import 'libs/animation';
 @import 'libs/global';
 @import 'libs/icons';
-@import 'modules/nav';
-@import 'modules/projects';
-@import 'modules/about';
-@import 'modules/mosaic';
-@import 'modules/modal';
-@import 'modules/video-player';
+@import 'contents/nav';
+@import 'contents/projects';
+@import 'contents/about';
+@import 'contents/mosaic';
+@import 'contents/modal';
+@import 'contents/video-player';
+@import 'contents/gallery';

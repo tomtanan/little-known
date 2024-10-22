@@ -3,34 +3,72 @@ import { addClass, removeClass, on } from 'utils/helpers';
 import { $ } from 'select-dom';
 import emitter from 'utils/events';
 
-let initModalListener = false;
-
 export default function videoPlayer(el) {
-  const iframe = $('.js-iframe', el); // Select the existing iframe
-  const player = new Player(iframe); // Initialize the Vimeo player API
+  const vimeoId = el.getAttribute('data-video-id');
 
-  // Select controls
-  const overlay = $('.js-overlay', el);
+  el.innerHTML = `
+    <div class="video-wrapper">
+      <iframe class="video-iframe js-iframe" src="https://player.vimeo.com/video/${vimeoId}?controls=0&amp;dnt=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" data-ready="true"></iframe>
+      <div class="video-overlay js-overlay"></div>
+    </div>
+    <div class="video-controls">
+      <button class="play-btn js-play">
+        <svg class="ico-play" width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
+        </svg>
+        <svg class="ico-pause" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
+        </svg>
+      </button>
+      <button class="sound-btn js-sound">
+        <svg class="ico-sound ico-mute" width="23" height="19" viewBox="0 0 23 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="ico-sound-0" d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z" stroke="#fff"></path>
+          <path class="ico-sound-50" d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739" stroke="#fff"></path>
+          <path class="ico-sound-100" d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341" stroke="#fff"></path>
+        </svg>
+      </button>
+      <div class="timeline js-timeline">
+        <div class="timeline-progress js-timeline-prog"></div>
+      </div>
+      <button class="fullscreen-btn js-fullscreen">
+        <svg class="ico-fullscreen" width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5" stroke="#fff"></path>
+        </svg>
+        <svg class="ico-resize" width="18" height="19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.5 18.5V12H0" stroke="#fff"></path>
+          <path d="M11.5 18.5V12H18" stroke="#fff"></path>
+          <path d="M6.5 0v6.5H0" stroke="#fff"></path>
+          <path d="M11.5 0v6.5H18" stroke="#fff"></path>
+        </svg>
+      </button>
+    </div>
+  `;
+
+  // Step 5: Initialize the Vimeo Player API and event listeners for each player
+  const iframe = $('.js-iframe', el);
+  const player = new Player(iframe);
+
   const playBtn = $('.js-play', el);
   const soundBtn = $('.js-sound', el);
   const fullscreenBtn = $('.js-fullscreen', el);
+  const overlay = $('.js-overlay', el);
   const timeline = $('.js-timeline', el);
   const timelineProgress = $('.js-timeline-prog', el);
 
-  // Helper function to toggle play/pause
+  // Play/Pause functionality
   const togglePlay = () => {
-    player.getPaused().then((paused) => {
-      paused ? player.play() : player.pause(); // Ternary for play/pause logic
-      paused ? addClass(playBtn, 'active') : removeClass(playBtn, 'active'); // Update class accordingly
+    player.getPaused().then(paused => {
+      paused ? player.play() : player.pause();
+      paused ? addClass(playBtn, 'active') : removeClass(playBtn, 'active');
     });
-  }
+  };
 
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
 
-  // Volume switch functionality
+  // Volume functionality
   on(soundBtn, 'click', () => {
-    player.getVolume().then((volume) => {
+    player.getVolume().then(volume => {
       if (volume === 1) {
         player.setVolume(0);
         addClass(soundBtn, 'active set-0');
@@ -56,26 +94,27 @@ export default function videoPlayer(el) {
     }
   });
 
-  // Update the timeline based on video's current time
+  // Timeline progress
   player.on('timeupdate', (data) => {
     const progressPercent = (data.seconds / data.duration) * 100;
     timelineProgress.style.width = `${progressPercent}%`;
   });
 
-  // Seek video when the timeline is clicked
+  // Seeking functionality
   on(timeline, 'click', (e) => {
     const rect = timeline.getBoundingClientRect();
     const percent = (e.pageX - rect.left) / rect.width;
     player.getDuration().then((duration) => {
-      player.setCurrentTime(duration * percent); // Seek to the clicked time
+      player.setCurrentTime(duration * percent);
     });
   });
 
-  // Handle video end: remove 'active' class from play button
+  // Video end handling
   player.on('ended', () => {
     removeClass(playBtn, 'active');
   });
 
+  // Handle modal open/close
   emitter.on('openModal', ({ modalName }) => {
     if (el.getAttribute('data-video-id') === modalName) {
       player.setCurrentTime(0);
