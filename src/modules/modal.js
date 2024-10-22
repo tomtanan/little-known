@@ -21,7 +21,7 @@ export default function modal(el) {
 
   // Show the modal with animation
   const showModal = () => {
-    emitter.emit('openModal', { modalName });
+    emitter.emit('resetPlayer');
     addClass(modal, 'active');
     addClass(document.body, 'no-scroll');
     gsap.to(modal, { top: 0, duration: 0.5, ease: 'power1.in' });
@@ -37,7 +37,7 @@ export default function modal(el) {
       ease: 'power1.in',
       onComplete: () => {
         gsap.set(modal, { height: '100vh', top: '100vh' });
-        emitter.emit('closeModal', { modalName });
+        emitter.emit('resetPlayer');
       },
     });
   };

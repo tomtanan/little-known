@@ -63,6 +63,14 @@ export default function videoPlayer(el) {
     });
   };
 
+  const resetPlayer = () => {
+    player.pause();
+    player.setCurrentTime(0);
+    player.setVolume(0.5);
+    removeClass(playBtn, 'active');
+    addClass(soundBtn, 'active set-50');
+  }
+
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
 
@@ -115,20 +123,5 @@ export default function videoPlayer(el) {
   });
 
   // Handle modal open/close
-  emitter.on('openModal', ({ modalName }) => {
-    if (el.getAttribute('data-video-id') === modalName) {
-      player.setCurrentTime(0);
-      player.setVolume(0.5);
-      addClass(soundBtn, 'active set-50');
-    }
-  });
-
-  emitter.on('closeModal', ({ modalName }) => {
-    if (el.getAttribute('data-video-id') === modalName) {
-      player.pause();
-      player.setVolume(0);
-      removeClass(playBtn, 'active');
-      removeClass(soundBtn, 'active set-50 set-0');
-    }
-  });
+  emitter.on('resetPlayer', resetPlayer);
 }
