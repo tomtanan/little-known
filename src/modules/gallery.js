@@ -34,6 +34,8 @@ export default function gallery(el) {
     // Reusable function to animate slide transitions
     const animateSlide = (current, next, direction) => {
       const slideDirection = direction === 'next' ? '-100vw' : '100vw';
+      const currentPlayer = $('.js-video-player', current);
+      const nextPlayer = $('.js-video-player', next);
 
       // Set the position of the next slide immediately off-screen
       gsap.set(next, {
@@ -52,7 +54,8 @@ export default function gallery(el) {
           scale: 1,
           duration: 0.5,
           onComplete: () => {
-            emitter.emit('resetPlayer');
+            if (currentPlayer) emitter.emit('resetPlayers');
+            if (nextPlayer) emitter.emit('playNext', nextPlayer);
           },
         });
 

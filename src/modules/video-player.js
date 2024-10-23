@@ -1,6 +1,6 @@
 import Player from '@vimeo/player';
 import { addClass, removeClass, on } from 'utils/helpers';
-import { $ } from 'select-dom';
+import { $, $$ } from 'select-dom';
 import emitter from 'utils/events';
 
 export default function videoPlayer(el) {
@@ -57,7 +57,7 @@ export default function videoPlayer(el) {
 
   // Play/Pause functionality
   const togglePlay = () => {
-    player.getPaused().then(paused => {
+    player.getPaused().then((paused) => {
       paused ? player.play() : player.pause();
       paused ? addClass(playBtn, 'active') : removeClass(playBtn, 'active');
     });
@@ -69,14 +69,14 @@ export default function videoPlayer(el) {
     player.setVolume(0.5);
     removeClass(playBtn, 'active');
     addClass(soundBtn, 'active set-50');
-  }
+  };
 
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
 
   // Volume functionality
   on(soundBtn, 'click', () => {
-    player.getVolume().then(volume => {
+    player.getVolume().then((volume) => {
       if (volume === 1) {
         player.setVolume(0);
         addClass(soundBtn, 'active set-0');
@@ -122,6 +122,13 @@ export default function videoPlayer(el) {
     removeClass(playBtn, 'active');
   });
 
-  // Handle modal open/close
-  emitter.on('resetPlayer', resetPlayer);
+  emitter.on('resetPlayers', resetPlayer);
+  emitter.on('autoPlay', (modal) => {
+    const firstPlayer = $$('.js-video-player', modal)[0];
+    if (firstPlayer === el) togglePlay();
+  });
+  emitter.on('playNext', (nextPlayer) => {
+    const nextPlayerId = nextPlayer.getAttribute('data-video-id');
+    if (nextPlayerId === vimeoId) togglePlay();
+  });
 }
