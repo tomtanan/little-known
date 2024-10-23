@@ -28,10 +28,13 @@ export const handleMediaItems = (items) => {
     // Handle image items
     if (imageSrc && imageSrc.trim() !== '') {
       const container = createGalleryItem();
+      const wrapper = document.createElement('div');
+      wrapper.className = 'gallery-image-wrapper';
       const img = document.createElement('img');
       img.className = 'gallery-image';
       img.src = imageSrc; // Set the image source
-      container.appendChild(img);
+      wrapper.appendChild(img);
+      container.appendChild(wrapper);
       fragment.appendChild(container);
     }
   });

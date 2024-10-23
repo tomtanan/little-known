@@ -1,14 +1,16 @@
 .video-player {
-  height: 100%;
-  position: relative;
-  width: 100%;
+  width: auto;
 }
 .video-wrapper {
-  height: calc(100% - 60px);
+  aspect-ratio: 16 / 9;
+  max-height: calc(100vh - 130px); /* Viewport height minus nav and video controls */
   position: relative;
   width: 100%;
 }
 .video-iframe {
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: 100%;
   z-index: 1;
 }
 .video-overlay {
@@ -21,13 +23,9 @@
 }
 .video-controls {
   align-items: center;
-  bottom: 0;
   display: flex;
   height: 60px;
   justify-content: space-between;
-  left: 0;
-  position: absolute;
-  right: 0;
   width: 100%;
 }
 .video-controls .play-btn,
