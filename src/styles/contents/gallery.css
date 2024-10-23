@@ -8,15 +8,23 @@
   top: 0;
   width: 100%;
 }
+.gallery-video-wrapper .video-screen {
+  max-height: calc(100vh - 130px); /* Viewport height minus nav and video controls */
+  width: 100%;
+}
 .gallery-image-wrapper {
-  aspect-ratio: 16/9;
   height: calc(100vh - 130px);
-  width: auto;
+  width: 100%;
 }
 .gallery-image {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
+}
+.gallery-video-wrapper, 
+.gallery-image-wrapper {
+  aspect-ratio: 16/9;
+  max-width: calc(100% - 120px);
 }
 .gallery-nav {
   align-items: center;

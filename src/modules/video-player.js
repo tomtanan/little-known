@@ -7,7 +7,7 @@ export default function videoPlayer(el) {
   const vimeoId = el.getAttribute('data-video-id');
 
   el.innerHTML = `
-    <div class="video-wrapper">
+    <div class="video-screen">
       <iframe class="video-iframe js-iframe" src="https://player.vimeo.com/video/${vimeoId}?controls=0&amp;dnt=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="" data-ready="true"></iframe>
       <div class="video-overlay js-overlay"></div>
     </div>

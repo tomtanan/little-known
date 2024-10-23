@@ -19,7 +19,7 @@ export const handleMediaItems = (items) => {
     if (videoId && videoId.trim() !== '') {
       const container = createGalleryItem();
       const player = document.createElement('div');
-      player.className = 'gallery-video video-player js-video-player';
+      player.className = 'gallery-video-wrapper video-player js-video-player';
       player.setAttribute('data-video-id', videoId); // Set the video ID as a data attribute
       container.appendChild(player);
       fragment.appendChild(container);

@@ -1,9 +1,5 @@
-.video-player {
-  width: auto;
-}
-.video-wrapper {
+.video-screen {
   aspect-ratio: 16 / 9;
-  max-height: calc(100vh - 130px); /* Viewport height minus nav and video controls */
   position: relative;
   width: 100%;
 }
