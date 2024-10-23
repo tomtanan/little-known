@@ -1,12 +1,12 @@
 .about-content::before {
   background-color: var(--white);
   content: '';
-  filter: blur(50px);
-  height: calc(100% + 120px);
-  left: -60px;
+  filter: blur(60px);
+  height: calc(100% + 20px);
+  left: -10px;
   position: absolute;
-  top: -60px;
-  width: calc(100% + 120px);
+  top: -10px;
+  width: calc(100% + 20px);
 }
 .about-text::selection,
 .about-text *::selection {
