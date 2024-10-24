@@ -17,7 +17,7 @@ export const handleMediaItems = (items) => {
 
     // Handle video items
     if (videoId && videoId.trim() !== '') {
-      const container = createGalleryItem();
+      const container = createGalleryItem('is-video');
       const player = document.createElement('div');
       player.className = 'gallery-video-wrapper video-player js-video-player';
       player.setAttribute('data-video-id', videoId); // Set the video ID as a data attribute
@@ -27,7 +27,7 @@ export const handleMediaItems = (items) => {
 
     // Handle image items
     if (imageSrc && imageSrc.trim() !== '') {
-      const container = createGalleryItem();
+      const container = createGalleryItem('is-image');
       const wrapper = document.createElement('div');
       wrapper.className = 'gallery-image-wrapper';
       const img = document.createElement('img');
@@ -46,8 +46,8 @@ export const handleMediaItems = (items) => {
  * Helper function to create a gallery item container
  * @returns {HTMLElement} - A newly created div element with the appropriate classes
  */
-export const createGalleryItem = () => {
+export const createGalleryItem = (cssClass) => {
   const container = document.createElement('div');
-  container.className = 'gallery-item js-gallery-item'; // Standard class for gallery items
+  container.className = `gallery-item js-gallery-item ${cssClass}`; // Standard class for gallery items
   return container;
 };

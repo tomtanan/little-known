@@ -1,6 +1,6 @@
 import Player from '@vimeo/player';
-import { addClass, removeClass, on } from 'utils/helpers';
-import { $, $$ } from 'select-dom';
+import { addClass, removeClass, on, getActivePlayer } from 'utils/helpers';
+import { $ } from 'select-dom';
 import emitter from 'utils/events';
 
 export default function videoPlayer(el) {
@@ -44,7 +44,6 @@ export default function videoPlayer(el) {
     </div>
   `;
 
-  // Step 5: Initialize the Vimeo Player API and event listeners for each player
   const iframe = $('.js-iframe', el);
   const player = new Player(iframe);
 
@@ -55,11 +54,13 @@ export default function videoPlayer(el) {
   const timeline = $('.js-timeline', el);
   const timelineProgress = $('.js-timeline-prog', el);
 
-  // Play/Pause functionality
+  player.setVolume(0.5);
+  addClass(soundBtn, 'active set-50');
+
   const togglePlay = () => {
     player.getPaused().then((paused) => {
       paused ? player.play() : player.pause();
-      paused ? addClass(playBtn, 'active') : removeClass(playBtn, 'active');
+      toggleButtonClass(playBtn, paused);
     });
   };
 
@@ -73,25 +74,22 @@ export default function videoPlayer(el) {
 
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
+  on(document, 'keydown', (e) => {
+    if (e.code === 'Space' && getActivePlayer() === el) {
+      e.preventDefault();
+      playBtn.focus();
+      togglePlay();
+    }
+  });
 
-  // Volume functionality
   on(soundBtn, 'click', () => {
     player.getVolume().then((volume) => {
-      if (volume === 1) {
-        player.setVolume(0);
-        addClass(soundBtn, 'active set-0');
-      } else if (volume === 0.5) {
-        player.setVolume(1);
-        removeClass(soundBtn, 'active set-50');
-      } else {
-        player.setVolume(0.5);
-        removeClass(soundBtn, 'set-0');
-        addClass(soundBtn, 'set-50');
-      }
+      const newVolume = volume === 1 ? 0 : volume === 0.5 ? 1 : 0.5;
+      player.setVolume(newVolume);
+      updateSoundButtonClass(soundBtn, newVolume);
     });
   });
 
-  // Fullscreen functionality
   on(fullscreenBtn, 'click', () => {
     if (!document.fullscreenElement) {
       el.requestFullscreen();
@@ -102,33 +100,39 @@ export default function videoPlayer(el) {
     }
   });
 
-  // Timeline progress
   player.on('timeupdate', (data) => {
     const progressPercent = (data.seconds / data.duration) * 100;
     timelineProgress.style.width = `${progressPercent}%`;
   });
 
-  // Seeking functionality
   on(timeline, 'click', (e) => {
     const rect = timeline.getBoundingClientRect();
     const percent = (e.pageX - rect.left) / rect.width;
-    player.getDuration().then((duration) => {
-      player.setCurrentTime(duration * percent);
-    });
+    player
+      .getDuration()
+      .then((duration) => player.setCurrentTime(duration * percent));
   });
 
-  // Video end handling
   player.on('ended', () => {
     removeClass(playBtn, 'active');
   });
 
   emitter.on('resetPlayers', resetPlayer);
-  emitter.on('autoPlay', (modal) => {
-    const firstPlayer = $$('.js-video-player', modal)[0];
-    if (firstPlayer === el) togglePlay();
-  });
-  emitter.on('playNext', (nextPlayer) => {
-    const nextPlayerId = nextPlayer.getAttribute('data-video-id');
-    if (nextPlayerId === vimeoId) togglePlay();
-  });
+
+  function toggleButtonClass(button, paused) {
+    if (paused) {
+      addClass(button, 'active');
+    } else {
+      removeClass(button, 'active');
+    }
+  }
+
+  function updateSoundButtonClass(button, volume) {
+    removeClass(button, 'set-0 set-50');
+    if (volume === 0) {
+      addClass(button, 'active set-0');
+    } else if (volume === 0.5) {
+      addClass(button, 'set-50');
+    }
+  }
 }

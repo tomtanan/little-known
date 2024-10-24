@@ -1,9 +1,6 @@
 .w-webflow-badge {
   display: none !important;
 }
-body.no-scroll {
-  overflow: hidden;
-}
 .sections-wrapper {
   height: 100vh;
   overflow-y: scroll;

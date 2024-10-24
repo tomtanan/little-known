@@ -84,7 +84,7 @@ export const letterSplit = (elements) => {
  *
  * @returns {boolean} True if the device is a touch device, false otherwise.
  */
-export function isTouchDevice() {
+export const isTouchDevice = () => {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
@@ -135,3 +135,18 @@ export const debounce = (handler, wait) => {
     timeout = setTimeout(later, wait);
   };
 }
+
+// Return active modal
+export const getActiveModal = () => $('.js-modal.active', document)[0];
+
+// Return active gallery item within a modal
+export const getActiveGalleryItem = (modal, type) => modal && $(`.js-gallery-item.is-${type}.active`, modal)[0];
+
+// Return active video player
+export const getActivePlayer = () => {
+  const modal = getActiveModal();
+  if (!modal) return null;
+
+  const item = getActiveGalleryItem(modal, 'video');
+  return item && $('.js-video-player', item)[0];
+};

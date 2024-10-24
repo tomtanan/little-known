@@ -1,4 +1,4 @@
-import { $, $$ } from 'select-dom';
+import { $ } from 'select-dom';
 import { addClass, removeClass, on } from 'utils/helpers';
 import { gsap } from 'gsap';
 import emitter from 'utils/events';
@@ -21,16 +21,19 @@ export default function modal(el) {
 
   // Show the modal with animation
   const showModal = () => {
-    emitter.emit('autoPlay', modal);
+    emitter.emit('openModal');
     addClass(modal, 'active');
-    addClass(document.body, 'no-scroll');
-    gsap.to(modal, { top: 0, duration: 0.5, ease: 'power1.in' });
+    gsap.to(modal, {
+      top: 0,
+      duration: 0.5,
+      ease: 'power1.in',
+    });
   };
 
   // Close the modal with animation
   const closeModal = () => {
+    emitter.emit('closeModal');
     removeClass(modal, 'active');
-    removeClass(document.body, 'no-scroll');
     gsap.to(modal, {
       height: '0px',
       duration: 0.5,
@@ -38,6 +41,7 @@ export default function modal(el) {
       onComplete: () => {
         gsap.set(modal, { height: '100vh', top: '100vh' });
         emitter.emit('resetPlayers');
+        emitter.emit('resetGallery');
       },
     });
   };
