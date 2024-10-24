@@ -93,10 +93,18 @@ export default function videoPlayer(el) {
   on(fullscreenBtn, 'click', () => {
     if (!document.fullscreenElement) {
       el.requestFullscreen();
-      addClass(fullscreenBtn, 'active');
     } else {
       document.exitFullscreen();
-      removeClass(fullscreenBtn, 'active');
+    }
+  });
+
+  on(document, 'fullscreenchange', () => {
+    if (getActivePlayer() === el) {
+      const isFullscreen = !!document.fullscreenElement;
+      const action = isFullscreen ? addClass : removeClass;
+  
+      action(fullscreenBtn, 'active');
+      action(el, 'is-fullscreen');
     }
   });
 

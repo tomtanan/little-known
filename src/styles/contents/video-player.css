@@ -92,3 +92,16 @@
 .video-controls .fullscreen-btn.active .ico-resize {
   display: block;
 }
+.video-player.is-fullscreen .video-screen {
+  max-height: none;
+  height: 100vh;
+  position: relative;
+  width: 100vw;
+  z-index: 1;
+}
+.video-player.is-fullscreen .video-controls {
+  bottom: 0;
+  padding: 0 10px;
+  position: absolute;
+  z-index: 9;
+}
