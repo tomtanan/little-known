@@ -24,7 +24,7 @@ export default function mosaic(el) {
       const width = Math.random() * 150 + 150;
 
       // Apply initial and animated properties
-      gsap.set(img, { width: `${width}px`, x, y: windowHeight });
+      gsap.set(img, { opacity: 1, width: `${width}px`, x, y: windowHeight });
 
       // Create the animation (regular pace)
       const animation = gsap.to(img, {
