@@ -14,10 +14,10 @@ export default function mosaic(el) {
 
   // Breakpoint configurations for responsive widths and dynamic targetY
   const breakpoints = [
-    { minWidth: 1600, widths: [200, 250, 300], targetXOffset: 400 },
-    { minWidth: 1440, widths: [150, 200, 250], targetXOffset: 400 },
-    { minWidth: 1024, widths: [100, 150, 200], targetXOffset: 400 },
-    { minWidth: 0, widths: [100, 150, 200], targetXOffset: 0 }
+    { minWidth: 1600, widths: [200, 250, 300], targetXOffset: 400, timeScale: 15 },
+    { minWidth: 1440, widths: [150, 200, 250], targetXOffset: 400, timeScale: 15 },
+    { minWidth: 1024, widths: [100, 150, 200], targetXOffset: 400, timeScale: 10 },
+    { minWidth: 0, widths: [100, 150, 200], targetXOffset: 200, timeScale: 5 }
   ];
 
   // Select configuration based on current window width or default to smallest
@@ -52,7 +52,7 @@ export default function mosaic(el) {
       });
 
       // Initial fast-forward effect with smooth slowdown to normal speed
-      animation.timeScale(15); // Fast-forward initial animation
+      animation.timeScale(config.timeScale); // Fast-forward initial animation
       setTimeout(() => gsap.to(animation, { timeScale: 1, duration: 2 }), 1500); // Smoothly slow down over 2 seconds
     });
   };
