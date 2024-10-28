@@ -25,23 +25,24 @@ export default function modal(el) {
     addClass(modal, 'active');
     gsap.to(modal, {
       top: 0,
-      duration: 0.5,
-      ease: 'power1.in',
+      duration: 0.7,
+      ease: 'power1.inOut',
     });
   };
 
   // Close the modal with animation
   const closeModal = () => {
     emitter.emit('closeModal');
-    removeClass(modal, 'active');
+
     gsap.to(modal, {
       height: '0px',
-      duration: 0.5,
-      ease: 'power1.in',
+      duration: 0.7,
+      ease: 'power1.inOut',
       onComplete: () => {
         gsap.set(modal, { height: '100vh', top: '100vh' });
         emitter.emit('resetPlayers');
         emitter.emit('resetGallery');
+        removeClass(modal, 'active');
       },
     });
   };
