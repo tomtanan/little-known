@@ -51,3 +51,8 @@
     right: 60px;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .modal-content {
+    height: calc(100dvh - 70px);
+  }
+}
