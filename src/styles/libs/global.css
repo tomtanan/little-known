@@ -17,9 +17,6 @@
   }
 }
 .mouse-hover-text {
-  /* border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 30px;
-  padding: 8px 12px; */
   position: relative;
   font-weight: 500;
 }
