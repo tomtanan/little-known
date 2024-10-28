@@ -1,18 +1,20 @@
 import about from '../modules/about.js';
-import projects from '../modules/projects.js';
+import contact from '../modules/contact.js';
+import gallery from '../modules/gallery.js';
 import mosaic from '../modules/mosaic.js';
 import modal from '../modules/modal.js';
+import projects from '../modules/projects.js';
 import videoPlayer from '../modules/video-player.js';
-import gallery from '../modules/gallery.js';
 
 // Mapping of data-module values to imported modules
 const modulesMap = {
   'about': about,
-  'projects': projects,
+  'contact': contact,
+  'gallery': gallery,
   'mosaic': mosaic,
   'modal': modal,
-  'video-player': videoPlayer,
-  'gallery': gallery
+  'projects': projects,
+  'video-player': videoPlayer
 };
 
 // Automatically initialize sections based on the data-module attribute

@@ -1,0 +1,7 @@
+.contact {
+  transition: opacity 0.3s ease-in;
+}
+.contact.active {
+  opacity: 1;
+  pointer-events: auto;
+}
