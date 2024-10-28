@@ -1,6 +1,6 @@
 .modal-title {
   position: absolute;
-  left: 60px;
+  left: 20px;
   text-transform: lowercase;
   top: 55px;
   z-index: 3;
@@ -16,17 +16,35 @@
 .modal-content::after {
   content: none;
 }
+.modal-close {
+  position: absolute;
+  right: 20px;
+  top: 70px;
+}
 .modal-close-button {
   background: none;
   font-size: 14px;
   letter-spacing: 1px;
   padding: 0;
-  position: absolute;
-  right: 60px;
-  top: 70px;
   transition: opacity 0.2s ease;
   z-index: 3;
 }
 .modal-close-button:hover {
   opacity: 0.5;
+}
+@media (min-width: 480px) {
+  .modal-title {
+    left: 40px;
+  }
+  .modal-close {
+    right: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-title {
+    left: 60px;
+  }
+  .modal-close {
+    right: 60px;
+  }
 }

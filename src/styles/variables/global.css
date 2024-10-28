@@ -45,36 +45,46 @@
 
 /* Media queries variables */
 :root {
-  --modal-content-width: 100%;
+  --modal-content-width: calc(100% - 40px);
 }
 @media (min-width: 320px) {
+  :root {
+    --gallery-media-width: 100%;
+  }
+}
+@media (min-width: 480px) {
   :root {
     --modal-content-width: calc(100% - 80px);
   }
 }
 @media (min-width: 568px) {
   :root {
-  
+    --gallery-media-width: 420px;
   }
 }
 @media (min-width: 768px) {
   :root {
-  
+    --gallery-media-width: 600px;
   }
 }
 @media (min-width: 992px) {
   :root {
     --modal-content-width: calc(100% - 120px);
+    --gallery-media-width: 768px;
   }
 }
 @media (min-width: 1280px) {
   :root {
-  
+    --gallery-media-width: 1024px;
   }
 }
 @media (min-width: 1440px) {
   :root {
-  
+  }
+}
+@media (min-width: 1600px) {
+  :root {
+    --gallery-media-width: 1280px;
   }
 }
 @media (min-width: 1920px) {
