@@ -17,7 +17,7 @@ export default function mosaic(el) {
     { minWidth: 1600, widths: [200, 250, 300], targetXOffset: 400, timeScale: 15 },
     { minWidth: 1440, widths: [150, 200, 250], targetXOffset: 400, timeScale: 15 },
     { minWidth: 1024, widths: [100, 150, 200], targetXOffset: 400, timeScale: 10 },
-    { minWidth: 0, widths: [100, 150, 200], targetXOffset: 200, timeScale: 5 }
+    { minWidth: 0, widths: [100, 150, 200], targetXOffset: 0, timeScale: 5 }
   ];
 
   // Select configuration based on current window width or default to smallest
