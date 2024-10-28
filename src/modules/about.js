@@ -1,13 +1,13 @@
 import { addClass, removeClass, wordSplit, letterSplit } from 'utils/helpers';
-import { gsap } from 'gsap';
 import { $, $$ } from 'select-dom';
+import { gsap } from 'gsap';
 import 'intersection-observer';
 
 export default function about(el) {
   const nav = $('#nav');
 
-  wordSplit($$('.js-word-split'));
-  letterSplit($$('.js-letter-split'));
+  wordSplit($$('.js-word-split', el));
+  letterSplit($$('.js-letter-split', el));
 
   // Cache words to avoid querying DOM repeatedly
   const words = $$('.word', el);
