@@ -87,6 +87,7 @@ export default function gallery(el) {
         gsap.set(item, { x: index === 0 ? '0vw' : '100vw', scale: 1 });
         index === 0 ? addClass(item, 'active') : removeClass(item, 'active');
       });
+      curr = 0;
     };
 
     // Initialize event listeners for buttons
