@@ -3,7 +3,13 @@
   data-wf-page="670024af32eed493bbc57742"
   data-wf-site="670024af32eed493bbc57721"
   class="w-mod-js"
-  data-lt-installed="true">
+  data-lt-installed="true"
+  style="
+    transition-property: margin-right;
+    transition-duration: 450ms;
+    transition-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+    margin-right: 0px;
+  ">
   <head>
     <style>
       .wf-force-outline-none[tabindex='-1']:focus {
@@ -15,7 +21,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
-      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.5b880007e.css"
+      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.1606daecf.css"
       rel="stylesheet"
       type="text/css" />
     <script type="text/javascript">
@@ -78,9 +84,12 @@
         color: #fe1a20;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-jHGXqUqZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-17jz-pRH.css">
+    <style id="ReanimatedPredefinedWebAnimationsStyle"></style>
+    <style id="ReanimatedCustomWebAnimationsStyle"></style>
+    <script type="module" crossorigin src="/assets/index-a0QI6wH_.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CSmR43O-.css">
   </head>
+  <div data-klarna-plugin-views-container=""></div>
   <body class="body" cz-shortcut-listen="true">
     <div
       data-animation="over-right"
@@ -89,10 +98,11 @@
       data-easing="ease"
       data-collapse="medium"
       role="banner"
+      data-no-scroll="1"
       data-duration="400"
       id="nav"
       data-doc-height="1">
-      <div class="container container-header w-container">
+      <div class="container container-nav w-container">
         <a href="#" class="logo w-nav-brand"
           ><div class="logo-svg w-embed">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 379.99 250.33">
@@ -146,6 +156,7 @@
           ><a href="#" class="nav-link js-nav-link w-inline-block"
             ><div class="nav-text">photography</div></a
           ><a
+            data-contact-trigger=""
             href="#"
             class="nav-link nav-link-contact js-nav-link w-inline-block"
             ><div class="nav-text">contact</div></a
@@ -177,114 +188,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">Adidas</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="adidas">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/657455530?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="657455530"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="944774326"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="526003879"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src="https://cdn.prod.website-files.com/67065e2cd6e317cc8ea921fc/671755a9405ada01bdf0b294_image%201.jpeg"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src="https://cdn.prod.website-files.com/67065e2cd6e317cc8ea921fc/671755a99aef0ee7e2ed44ee_image%202.webp"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src="https://cdn.prod.website-files.com/67065e2cd6e317cc8ea921fc/671755a9006c7486d31ef566_image%203.webp"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -293,114 +264,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">McDonald's</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="mcdonalds">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/989747735?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="989747735"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -409,114 +340,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">Powerade</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="powerade">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/547724869?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="547724869"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -525,114 +416,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">U by Kotex</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="u-by-kotex">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/367606395?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="367606395"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -641,114 +492,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">UGG</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="ugg">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/944774326?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="944774326"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -757,114 +568,74 @@
               role="listitem"
               class="modal js-modal w-dyn-item">
               <h2 class="modal-title">White Claw</h2>
-              <div class="modal-content w-embed w-iframe">
-                <div
-                  class="video-player"
-                  data-module="video-player"
-                  data-video-id="white-claw">
-                  <div class="video-wrapper">
-                    <iframe
-                      class="video-iframe js-iframe"
-                      src="https://player.vimeo.com/video/526003879?controls=0&amp;dnt=1"
-                      width="100%"
-                      height="100%"
-                      frameborder="0"
-                      allow="autoplay; fullscreen"
-                      allowfullscreen=""></iframe>
-                    <div class="video-overlay js-overlay"></div>
-                  </div>
-
-                  <div class="video-controls">
-                    <!-- Play/Pause Button -->
-                    <button class="play-btn js-play">
-                      <!-- Play SVG -->
-                      <svg
-                        class="ico-play"
-                        width="16"
-                        height="20"
-                        viewBox="0 0 16 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 10 .5 19V1L15 10Z" stroke="#fff"></path>
-                      </svg>
-
-                      <!-- Pause SVG -->
-                      <svg
-                        class="ico-pause"
-                        width="10"
-                        height="15"
-                        viewBox="0 0 10 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 14.5V0m8 14.5V0" stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Mute/Unmute Button -->
-                    <button class="sound-btn js-sound">
-                      <!-- Mute SVG -->
-                      <svg
-                        class="ico-sound ico-mute"
-                        width="23"
-                        height="19"
-                        viewBox="0 0 23 19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="ico-sound-0"
-                          d="M14 18L7.25926 13.2353H1V9V5.23529H7.25926L14 1V9V18Z"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-50"
-                          d="M17 5C18.203 6.17009 18.9647 7.90305 18.9647 9.83696C18.9647 11.7709 18.203 13.5038 17 14.6739"
-                          stroke="#fff"></path>
-                        <path
-                          class="ico-sound-100"
-                          d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341"
-                          stroke="#fff"></path>
-                      </svg>
-                    </button>
-
-                    <!-- Timeline for progress -->
-                    <div class="timeline js-timeline">
-                      <div class="timeline-progress js-timeline-prog"></div>
-                    </div>
-
-                    <!-- Fullscreen Button -->
-                    <button class="fullscreen-btn js-fullscreen">
-                      <svg
-                        class="ico-fullscreen"
-                        width="20"
-                        height="16"
-                        viewBox="0 0 20 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1 10v5.5h6.5M19 10v5.5h-6.5M1 6.5V1h6.5M19 6.5V1h-6.5"
-                          stroke="#fff"></path>
-                      </svg>
-
-                      <svg
-                        class="ico-resize"
-                        width="18"
-                        height="19"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 18.5V12H0" stroke="#fff"></path>
-                        <path d="M11.5 18.5V12H18" stroke="#fff"></path>
-                        <path d="M6.5 0v6.5H0" stroke="#fff"></path>
-                        <path d="M11.5 0v6.5H18" stroke="#fff"></path>
-                      </svg>
-                    </button>
-                  </div>
+              <div class="modal-content js-gallery w-embed">
+                <div class="modal-content-wrapper gallery js-gallery-container">
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id="526003879"></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-video-id=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
+                  <div
+                    class="gallery-item js-gallery-item"
+                    data-image-src=""></div>
                 </div>
+                <button
+                  class="gallery-nav prev js-gallery-prev"
+                  aria-label="Previous Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1 1 15.872 13 31" stroke="#fff"></path>
+                  </svg>
+                </button>
+                <button
+                  class="gallery-nav next js-gallery-next"
+                  aria-label="Next Slide">
+                  <svg
+                    class="ico-arrow"
+                    width="14"
+                    height="32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 1 12 14.872L1 31" stroke="#fff"></path>
+                  </svg>
+                </button>
               </div>
               <div class="modal-close w-embed">
                 <a href="#" class="modal-close-button js-modal-close w-button">
-                  close
-                  <!-- <svg class="ico-close" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"/>
-    </svg> -->
+                  <svg
+                    class="ico-close"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+                  </svg>
                 </a>
               </div>
             </div>
@@ -918,7 +689,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1004461400/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=f3cbcb1ad6eddf6981911bd8f34e9dfd25981794daa9a546adf3dca458f86aa4"
+                    src="https://player.vimeo.com/progressive_redirect/playback/1018144189/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=dc9b476605ea8f0a28951f9d2ae84f53a5fe98cce369f437b0105f7674b38909"
                     type="video/mp4" />
                 </video>
               </div>
@@ -935,7 +706,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1005885252/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=a6f2cca60736957f73bacddb003a42d5ecb99c828606d6d2ad269139efc10e1b"
+                    src="https://player.vimeo.com/progressive_redirect/playback/1018144636/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=5ff7aa42fb52219a39f0b5423f6b85edb761610a9c7f5bbe06752bdf10c84a22"
                     type="video/mp4" />
                 </video>
               </div>
@@ -969,7 +740,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1007988669/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=e0fd52fd228d54cca7c3e4f9cf81c2860af6456d4c807317acd3c44aa3d3b640"
+                    src="https://player.vimeo.com/progressive_redirect/playback/981988553/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=e2e71afa805a7ee17ae6dca9873be88a2166e097319c9dcaa0c5e8a9e55d578a"
                     type="video/mp4" />
                 </video>
               </div>
@@ -986,7 +757,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1008883180/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=824961a233dc48a1d4763fb89c5e3dc703ebcb3d7ff86607ac06e6935465dc5b"
+                    src="https://player.vimeo.com/progressive_redirect/playback/1018144244/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=cf9682cbe5e056eae93af2a35d36a449f4d04e1b6c39004b38a5f7327247d4bb"
                     type="video/mp4" />
                 </video>
               </div>
@@ -1003,7 +774,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/985591157/rendition/720p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=0ff32819d07754a693c362138ecba143b56d8a6019bf81940e8a8c15df5933e1"
+                    src="https://player.vimeo.com/progressive_redirect/playback/1018146127/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=bd44867d3a54c50c4bc40fdb6a88ac32f973ac0da2d3ccb6ed4fd1cdcbc3be46"
                     type="video/mp4" />
                 </video>
               </div>
@@ -1039,11 +810,11 @@
         <div class="w-layout-blockcontainer container w-container">
           <div class="about-content">
             <p class="about-text js-word-split">
-              Little Known offers editing, VFX, color grading, sound design, and
+              little known offers editing, vfx, color grading, sound design, and
               retouching, among other finishing services.
             </p>
             <p class="about-text js-word-split">
-              Brit is represented by
+              brit is represented by
               <a href="#" class="text-link"
                 ><span class="js-letter-split">FANCY</span></a
               >, providing a creative partnership that can guide your project to
@@ -1140,6 +911,58 @@
         </div>
         <div class="overlay"></div>
       </section>
+    </div>
+    <div data-module="contact" class="contact">
+      <div class="w-layout-blockcontainer container w-container">
+        <div class="contact-close w-embed">
+          <a
+            href="#"
+            class="contact-close-button w-button"
+            data-contact-close="">
+            <svg
+              class="ico-close"
+              width="16"
+              height="16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="m1 .5 14.5 15M1 15.5 15.5.5" stroke="#fff"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="contact-content js-word-split">
+          <p class="contact-text">
+            little known is a full-service creative studio from commercial
+            photographer and director brit phelan.
+          </p>
+        </div>
+        <div class="contact-footer js-word-split">
+          <div class="column">
+            <a href="#" class="email-text">brit@britphelan.com</a>
+            <div class="locations">
+              <div class="location">
+                <div class="city">New York</div>
+                <div class="address">1000 Dean St<br />11238 Brooklyn, NY</div>
+              </div>
+              <div class="location">
+                <div class="city">Paris</div>
+                <div class="address">25 Rue Caulaincourt<br />75018 Paris</div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="socials">
+              <a href="#" class="social-link">vimeo</a
+              ><a href="#" class="social-link">imdb</a
+              ><a href="#" class="social-link">youtube</a
+              ><a href="#" class="social-link">instagram</a
+              ><a href="#" class="social-link">tiktok</a
+              ><a href="#" class="social-link">linkedin</a
+              ><a href="#" class="social-link">x</a
+              ><a href="#" class="social-link">patreon</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script
       src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=670024af32eed493bbc57721"
