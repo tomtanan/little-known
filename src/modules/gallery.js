@@ -35,7 +35,6 @@ export default function gallery(el) {
     const animateSlide = (current, next, direction) => {
       const slideDirection = direction === 'next' ? '-100vw' : '100vw';
       const currentPlayer = $('.js-video-player', current);
-      const nextPlayer = $('.js-video-player', next);
 
       // Set the position of the next slide immediately off-screen
       gsap.set(next, {
