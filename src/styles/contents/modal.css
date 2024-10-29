@@ -21,6 +21,7 @@
   position: absolute;
   right: 20px;
   top: 70px;
+  z-index: 9;
 }
 .modal-close-button {
   background: none;
