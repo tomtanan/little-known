@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
-      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.4486c3c29.css"
+      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.6673b87c5.css"
       rel="stylesheet"
       type="text/css" />
     <script type="text/javascript">
@@ -168,6 +168,23 @@
         display: inline-block;
         font-style: normal;
       }
+      .text-wysiwyg a:hover .letter {
+        background: linear-gradient(
+          90deg,
+          var(--red) 20%,
+          var(--orange) 40%,
+          var(--yellow) 60%,
+          var(--blue) 80%,
+          var(--green) 100%
+        );
+        background-size: 800%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: wave 1.5s ease infinite, gradient 1s ease infinite;
+      }
+      .text-wysiwyg .letter {
+        animation-delay: var(--delay) !important;
+      }
       .ico-sound {
         display: block;
         height: 19px;
@@ -228,23 +245,6 @@
         background-color: var(--red);
         color: var(--white);
       }
-      .about-text .text-link:hover .letter {
-        background: linear-gradient(
-          90deg,
-          var(--red) 20%,
-          var(--orange) 40%,
-          var(--yellow) 60%,
-          var(--blue) 80%,
-          var(--green) 100%
-        );
-        background-size: 800%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: wave 1.5s ease infinite, gradient 1s ease infinite;
-      }
-      .about-text .text-link .letter {
-        animation-delay: var(--delay) !important;
-      }
       .contact {
         transition: opacity 0.3s ease-in;
       }
@@ -266,7 +266,7 @@
         opacity: 0.5;
       }
       .gallery {
-        height: calc(100vh - 140px);
+        height: calc(100vh - 200px);
         margin: 0 auto;
         width: 100%;
         position: relative;
@@ -303,13 +303,13 @@
         display: flex;
         justify-content: center;
         gap: 10px;
-        margin: 0 auto;
+        margin: 20px auto 0;
       }
       .gallery-dot {
         background-color: var(--white);
         border-radius: 50%;
         height: 8px;
-        margin-top: 20px;
+        margin-top: 0;
         opacity: 0.5;
         padding: 0;
         transition: opacity 0.2s ease;
@@ -352,7 +352,7 @@
       }
       @supports (-webkit-touch-callout: none) {
         .gallery {
-          height: calc(100dvh - 150px);
+          height: calc(100dvh - 200px);
         }
       }
       .mosaic-image {
@@ -1411,6 +1411,15 @@
             "
             alt=""
             class="mosaic-image js-mosaic-image" /><img
+            src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7.webp"
+            loading="lazy"
+            sizes="(max-width: 750px) 100vw, 750px"
+            srcset="
+              https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7-p-500.webp 500w,
+              https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258ba3097cd60467b0d6_BTS-7.webp       750w
+            "
+            alt=""
+            class="mosaic-image js-mosaic-image" /><img
             src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp"
             loading="lazy"
             sizes="(max-width: 750px) 100vw, 750px"
@@ -1446,15 +1455,6 @@
               https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258c49c746036e81e050_BTS-3.webp       750w
             "
             alt=""
-            class="mosaic-image js-mosaic-image" /><img
-            src="https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1.webp"
-            loading="lazy"
-            sizes="(max-width: 750px) 100vw, 750px"
-            srcset="
-              https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1-p-500.webp 500w,
-              https://cdn.prod.website-files.com/670024af32eed493bbc57721/670c258b40a46c01f3813979_BTS-1.webp       750w
-            "
-            alt=""
             class="mosaic-image js-mosaic-image" />
         </div>
         <div class="overlay"></div>
@@ -1485,7 +1485,7 @@
             <a href="https://fancycontent.com/" class="link">fancy</a>.
           </p>
         </div>
-        <div class="contact-footer js-word-split">
+        <div class="contact-footer js-text-beautifier">
           <div class="column">
             <a href="#" class="email-text"
               >info@littleknowncreativestudio.com</a

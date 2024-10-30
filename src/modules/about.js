@@ -24,8 +24,12 @@ export default function about(el) {
                 opacity: 1,
                 y: 0,
                 duration: 1,
+                delay: 1.5,
                 ease: 'power3.out',
-                stagger: { amount: 1, from: 'start', overlap: 0.5 },
+                stagger: { amount: 1.5, from: 'start', each: 0.5 },
+                onStart: () => {
+                  addClass(el, 'loaded');
+                }
               }
             );
             addClass(nav, 'black');

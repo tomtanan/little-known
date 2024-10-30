@@ -6,8 +6,8 @@ import 'intersection-observer';
 export default function mosaic(el) {
   const images = $$('.js-mosaic-image', el);
   const options = {
-    speed: 15,
-    delay: 4,
+    speed: 20,
+    delay: 5,
     startOffsetY: 100,
     breakpoints: [
       { minWidth: 1920, widths: [200, 250, 300], targetOffsetX: 800 },
@@ -52,23 +52,20 @@ export default function mosaic(el) {
 
       // Set initial properties and kill previous animations
       gsap.killTweensOf(img); // Stop any previous animations on this image
-      gsap.set(img, { opacity: 0, width: `${width}px`, x: startX, y: startY });
+      gsap.set(img, { opacity: 0, width: `${width}px`, x: startX, y: startY, scale: 1 });
 
-      // Animate opacity to 1 over 3 seconds
-      gsap.to(img, { opacity: 1, duration: 3, ease: 'power1.out' });
+      // Create a timeline for both movement and scaling
+      const timeline = gsap.timeline({ repeat: -1, delay });
 
-      // Create the main animation
-      const animation = gsap.to(img, {
-        x: targetX,
-        y: targetY,
-        duration: options.speed,
-        ease: 'none',
-        repeat: -1,
-        delay,
-      });
+      // Fade in the image and start moving
+      timeline.to(img, { opacity: 1, duration: 3, ease: 'power1.out' }, 0);
 
-      animation.timeScale(10);
-      setTimeout(() => gsap.to(animation, { timeScale: 1, duration: 2 }), 1500);
+      // Scale up to 1.1 during the first half, then scale back to 1 in the second half
+      timeline.to(img, { x: targetX, y: targetY, duration: options.speed, ease: 'none' }, 0);
+
+      // Fast-forward initial animation for a dynamic start
+      timeline.timeScale(15);
+      setTimeout(() => gsap.to(timeline, { timeScale: 1, duration: 2 }), 1000);
     });
   };
 
