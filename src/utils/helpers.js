@@ -10,10 +10,10 @@
  * a single text or element node, a NodeList, or an array of nodes.
  * @throws {Error} Throws an error if the provided node is not a valid DOM node.
  */
-export const wordSplit = (elements) => {
+export const splitIntoWords = (elements) => {
   // If 'elements' is a NodeList or an array, iterate through them
   if (NodeList.prototype.isPrototypeOf(elements) || Array.isArray(elements)) {
-    elements.forEach((element) => wordSplit(element));
+    elements.forEach((element) => splitIntoWords(element));
     return;
   }
 
@@ -47,7 +47,7 @@ export const wordSplit = (elements) => {
     // Process only the text node children, leave already wrapped spans untouched
     Array.from(node.childNodes).forEach((childNode) => {
       if (childNode.nodeType === Node.TEXT_NODE || childNode.nodeType === Node.ELEMENT_NODE) {
-        wordSplit(childNode);
+        splitIntoWords(childNode);
       }
     });
   }
@@ -60,10 +60,10 @@ export const wordSplit = (elements) => {
  * @param {Node|NodeList|Array} elements - The DOM node(s) to process. This can be 
  * a single text or element node, a NodeList, or an array of nodes.
  */
-export const letterSplit = (elements) => {
+export const splitIntoLetters = (elements) => {
   elements.forEach((element) => {
-    // Iterate over each element passed to the function
-    Array.from(element.childNodes).forEach((node) => {
+    // Recursive function to handle nested elements
+    const processNode = (node) => {
       if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
         const fragment = document.createDocumentFragment();
         const letters = Array.from(node.textContent); // Split text into individual letters
@@ -74,8 +74,13 @@ export const letterSplit = (elements) => {
           fragment.appendChild(i);
         });
         node.replaceWith(fragment); // Replace the original text node with the fragment
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        Array.from(node.childNodes).forEach(processNode); // Recurse through child nodes
       }
-    });
+    };
+
+    // Start processing each top-level node
+    Array.from(element.childNodes).forEach(processNode);
   });
 };
 
