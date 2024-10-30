@@ -10,7 +10,6 @@ export default function gallery(el) {
   const totalItems = items.length;
   const prevBtn = $('.js-gallery-prev', el);
   const nextBtn = $('.js-gallery-next', el);
-  const dots = createDottedNav(el, items);
   const players = $$('.js-video-player', el);
   let curr = 0;
   let startX;
@@ -24,6 +23,8 @@ export default function gallery(el) {
   };
 
   if (totalItems > 1) {
+    const dots = createDottedNav(el, items);
+    
     const initSlides = (curr) => {
       items.forEach((item, index) => {
         gsap.set(item, { x: index === curr ? '0vw' : '100vw', scale: 1 });
@@ -33,7 +34,6 @@ export default function gallery(el) {
       addClass(prevBtn, 'active');
       addClass(nextBtn, 'active');
       emitter.on('resetGallery', resetGallery);
-      if (players.length > 0) players.forEach(videoPlayer);
     };
 
     const updateDots = () => {
@@ -120,4 +120,6 @@ export default function gallery(el) {
 
     initSlides(curr);
   }
+
+  if (players.length > 0) players.forEach(videoPlayer);
 }
