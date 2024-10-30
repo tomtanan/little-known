@@ -1,5 +1,6 @@
-import { gsap } from 'gsap';
+import { isTouchDevice } from 'utils/helpers';
 import { $$ } from 'select-dom';
+import { gsap } from 'gsap';
 import 'intersection-observer';
 
 export default function mosaic(el) {
@@ -11,26 +12,38 @@ export default function mosaic(el) {
     startOffsetY: 100,
     breakpoints: [
       { minWidth: 1920, widths: [200, 250, 300], targetOffsetX: 800 },
-      { minWidth: 1440, widths: [150, 200, 250], targetOffsetX: 600 },
-      { minWidth: 1024, widths: [150, 175, 200], targetOffsetX: 400 },
+      { minWidth: 1440, widths: [150, 180, 220], targetOffsetX: 600 },
+      { minWidth: 1024, widths: [140, 170, 200], targetOffsetX: 400 },
       { minWidth: 0, widths: [100, 150, 200], targetOffsetX: 200 },
     ],
   };
 
-  const runAnimation = (images, options) => {
-    // Remove all images but the first 8.
-    if (isMobile && images.length > 8) {
-      images = images.slice(0, 8);
+  // Function to determine which images to use based on conditions
+  const filterImages = () => {
+    if (isTouchDevice() && images.length > 8) {
+      images.slice(8).forEach(img => img.remove());
+      return images.slice(0, 8);
+    } else if (!isTouchDevice() && window.innerWidth < 1024 && images.length > 8) {
+      images.forEach((img, index) => img.style.display = index < 8 ? 'block' : 'none');
+      return images.slice(0, 8);
+    } else {
+      images.forEach(img => img.style.display = 'block');
+      return images;
     }
+  };
 
+  const runAnimation = (images, options) => {
+    const filteredImages = filterImages(images);
     const windowWidth = window.innerWidth * 1.15;
     const windowHeight = window.innerHeight;
-    const startOffsetX = windowWidth / images.length;
+    const startOffsetX = windowWidth / filteredImages.length;
 
     // Select configuration based on current window width
     const config = options.breakpoints.find((bp) => window.innerWidth >= bp.minWidth) || options.breakpoints[3];
+    
+    console.log(filteredImages);
 
-    images.forEach((img, index) => {
+    filteredImages.forEach((img, index) => {
       const delay = (index % 4) * options.delay;
       const width = config.widths[index % 3];
       const startX = index * startOffsetX;
