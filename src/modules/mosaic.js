@@ -5,7 +5,6 @@ import 'intersection-observer';
 
 export default function mosaic(el) {
   const images = $$('.js-mosaic-image', el);
-  const isMobile = 'ontouchstart' in window && window.innerWidth <= 768;
   const options = {
     speed: 15,
     delay: 4,
