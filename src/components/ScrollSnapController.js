@@ -1,99 +1,76 @@
 import { $, $$ } from 'select-dom';
-import { on, debounce } from 'utils/helpers'; // Import debounce from helpers
+import { on, debounce } from 'utils/helpers';
 
 /**
- * ScrollSnapController class enables smooth scrolling through different sections of a webpage.
+ * Enables smooth, section-by-section scrolling within a container.
  */
 export class ScrollSnapController {
   /**
-   * Creates an instance of ScrollSnapController.
-   *
-   * @param {HTMLElement} container - A DOM element that represents the scrollable container.
-   *
-   * @throws {Error} Throws an error if the scroll container or the sections inside it are not found.
+   * @param {HTMLElement} container - The scrollable container.
+   * @throws {Error} If no valid container or sections are found.
    */
   constructor(container) {
-    // Directly assign the container element passed to the constructor
     this.scrollContainer = container;
 
-    // Error handling: if the container element is not valid, throw an error
-    if (!this.scrollContainer) {
-      throw new Error('Scroll container element is not valid.');
-    }
+    if (!this.scrollContainer) throw new Error('Scroll container is not valid.');
 
-    // Select all sections inside the container
     this.sections = $$('.js-section', this.scrollContainer);
-
-    // Select all scroll buttons inside the container
     this.scrollBtns = $$('[data-snap-scroll-to]', document.body);
 
-    // Error handling: if no sections found, throw an error
-    if (!this.sections.length) {
-      throw new Error('No sections found to scroll through.');
-    }
+    if (!this.sections.length) throw new Error('No sections to scroll through.');
 
-    // Set the initial section index
     this.currentSectionIndex = 0;
-
-    // Initialize the scroll events
+    this.isScrolling = false; // Prevents rapid scrolls on touch devices
     this.init();
   }
 
-  /**
-   * Initializes the controller by binding event listeners for scrolling.
-   */
+  /** Sets up event listeners for scrolling. */
   init() {
     this.bindEvents();
   }
 
   /**
-   * Smoothly scrolls to the specified target section.
-   *
-   * @param {HTMLElement} target - The target section to scroll to.
+   * Smoothly scrolls to a target section.
+   * @param {HTMLElement} target - The target section.
    */
   easeInScroll(target) {
-    // Get the top position of the target section and scroll to it
     const targetPosition = target.offsetTop;
-
     this.scrollContainer.scrollTo({
       top: targetPosition,
       behavior: 'smooth',
     });
   }
 
-  /**
-   * Binds mouse wheel and touch events to the scroll container.
-   */
+  /** Binds wheel and touch events to enable scrolling. */
   bindEvents() {
-    // Use the debounce helper function here
-    const debouncedHandleScroll = debounce((event) => {
-      this.handleScroll(event.deltaY);
-    }, 150);
-
-    // Bind mouse wheel event
+    // Trackpad: direct response with no debounce
     on(this.scrollContainer, 'wheel', (event) => {
       event.preventDefault();
-      debouncedHandleScroll(event);
+      this.handleScroll(event.deltaY, true);
     });
 
-    // Track the initial Y position for touch start
+    // Touch devices: start tracking touch position
     on(this.scrollContainer, 'touchstart', (event) => {
       this.startY = event.touches[0].clientY;
     });
 
-    // Handle touch move events for swipe-based scrolling
-    (this.scrollContainer, 'touchmove', (event) => {
+    // Touch devices: use debounce for swipe scrolling
+    const debouncedHandleScroll = debounce((deltaY) => {
+      this.handleScroll(deltaY, false);
+    }, 150);
+
+    on(this.scrollContainer, 'touchmove', (event) => {
       const deltaY = this.startY - event.touches[0].clientY;
-      if (Math.abs(deltaY) > 30) {
+      if (Math.abs(deltaY) > 30) { // Swipe threshold for touch devices
         event.preventDefault();
-        debouncedHandleScroll({ deltaY });
+        debouncedHandleScroll(deltaY);
       }
     });
 
-    // Add event listeners to scroll buttons
+    // Scroll buttons for direct section navigation
     this.scrollBtns.forEach((btn) => {
       const targetId = btn.getAttribute('data-snap-scroll-to');
-      const targetSection = $(`#${targetId}`, this.scrollContainer); // Use # to target an ID
+      const targetSection = $(`#${targetId}`, this.scrollContainer);
 
       if (targetSection) {
         on(btn, 'click', (e) => {
@@ -107,29 +84,39 @@ export class ScrollSnapController {
   }
 
   /**
-   * Handles scrolling to the next or previous section based on the scroll direction.
-   *
-   * @param {number} deltaY - The amount of scroll in the Y direction (positive or negative).
+   * Scrolls to the next or previous section based on scroll direction.
+   * @param {number} deltaY - Scroll amount in the Y direction.
+   * @param {boolean} isTrackpad - True for trackpad, false for touch.
    */
-  handleScroll(deltaY) {
-    // Determine direction (1 for down, -1 for up)
-    const direction = deltaY > 0 ? 1 : -1;
+  handleScroll(deltaY, isTrackpad) {
+    const threshold = isTrackpad ? 3 : 15; // Lower threshold for trackpad
 
-    // Update the current section index, keeping it within bounds
+    if (Math.abs(deltaY) < threshold) return;
+
+    // Prevent multiple rapid scrolls for touch devices
+    if (!isTrackpad && this.isScrolling) return;
+    this.isScrolling = !isTrackpad;
+
+    const direction = deltaY > 0 ? 1 : -1;
     this.currentSectionIndex = Math.min(
       Math.max(this.currentSectionIndex + direction, 0),
       this.sections.length - 1
     );
 
-    // Smoothly scroll to the updated section
     this.easeInScroll(this.sections[this.currentSectionIndex]);
+
+    // Reset scrolling flag after scroll completes (only for touch)
+    if (!isTrackpad) {
+      setTimeout(() => {
+        this.isScrolling = false;
+      }, 500);
+    }
   }
 }
 
 /**
- * Initializes ScrollSnapController for the given container element.
- *
- * @param {HTMLElement} container - The DOM element of the scrollable container.
+ * Initializes ScrollSnapController for the specified container.
+ * @param {HTMLElement} container - The scrollable container.
  */
 export function initScrollSnap(container) {
   new ScrollSnapController(container);
