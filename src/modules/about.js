@@ -5,8 +5,6 @@ import 'intersection-observer';
 
 export default function about(el) {
   const nav = $('#nav');
-
-  // Cache words to avoid querying DOM repeatedly
   const words = $$('.word', el);
 
   // Store the animation instance to control it later

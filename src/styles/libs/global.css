@@ -48,7 +48,7 @@
   display: inline-block;
   font-style: normal;
 }
-.text-link:hover .letter {
+a:hover .letter {
   background: linear-gradient(
     90deg,
     var(--red) 20%,
@@ -62,6 +62,6 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.text-link .letter {
+.letter {
   animation-delay: var(--delay) !important;
 }
