@@ -13,7 +13,7 @@ export default function mosaic(el) {
       { minWidth: 1920, widths: [200, 250, 300], targetOffsetX: 800 },
       { minWidth: 1440, widths: [150, 180, 220], targetOffsetX: 600 },
       { minWidth: 1024, widths: [140, 170, 200], targetOffsetX: 400 },
-      { minWidth: 0, widths: [100, 150, 200], targetOffsetX: 200 },
+      { minWidth: 0, widths: [100, 140, 180], targetOffsetX: 200 },
     ],
   };
 
