@@ -1,4 +1,4 @@
-import { addClass, removeClass, on, wordSplit } from 'utils/helpers';
+import { addClass, removeClass, on } from 'utils/helpers';
 import { $, $$ } from 'select-dom';
 import { gsap } from 'gsap';
 import 'intersection-observer';
@@ -6,8 +6,6 @@ import 'intersection-observer';
 export default function contact(el) {
   const triggerBtn = $('[data-contact-trigger');
   const closeBtn = $('[data-contact-close');
-
-  wordSplit($$('.js-word-split', el));
 
   // Cache words to avoid querying DOM repeatedly
   const words = $$('.word', el);

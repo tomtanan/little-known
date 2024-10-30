@@ -1,5 +1,5 @@
 .gallery {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 200px);
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -35,13 +35,12 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 .gallery-dot {
   background-color: var(--white);
   border-radius: 50%;
   height: 8px;
-  margin-top: 20px;
   opacity: 0.5;
   padding: 0;
   transition: opacity 0.2s ease;
@@ -84,6 +83,6 @@
 }
 @supports (-webkit-touch-callout: none) {
   .gallery {
-    height: calc(100dvh - 150px);
+    height: calc(100dvh - 200px);
   }
 }
