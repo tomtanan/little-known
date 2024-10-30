@@ -1,6 +1,9 @@
 .contact {
   transition: opacity 0.3s ease-in;
 }
+.contact .container {
+
+}
 .contact.active {
   opacity: 1;
   pointer-events: auto;
@@ -8,13 +11,20 @@
 .contact-close {
   position: absolute;
   right: 60px;
-  top: 40px;
-}
-.contact-close-button {
-  background: none;
-  padding: 0;
+  top: 20px;
   transition: opacity 0.2s ease;
 }
-.contact-close-button:hover {
+.contact-close:hover {
   opacity: 0.5;
+}
+@media (min-width: 480px) {
+  .contact-close {
+    right: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .contact-close {
+    right: 60px;
+    top: 40px;
+  }
 }
