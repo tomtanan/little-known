@@ -10,7 +10,7 @@
 }
 .contact-close {
   position: absolute;
-  right: 60px;
+  right: 20px;
   top: 20px;
   transition: opacity 0.2s ease;
 }

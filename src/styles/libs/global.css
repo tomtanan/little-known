@@ -43,6 +43,7 @@
 .word {
   display: inline-block; /* This allows the y animation to apply */
   opacity: 0;
+  white-space: nowrap;
 }
 .letter {
   display: inline-block;
