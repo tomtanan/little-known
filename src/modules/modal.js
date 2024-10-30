@@ -22,6 +22,7 @@ export default function modal(el) {
   // Show the modal with animation
   const showModal = () => {
     emitter.emit('openModal');
+    addClass(document.body, 'scroll-lock');
     addClass(modal, 'active');
     gsap.to(modal, {
       top: 0,
@@ -33,6 +34,7 @@ export default function modal(el) {
   // Close the modal with animation
   const closeModal = () => {
     emitter.emit('closeModal');
+    removeClass(document.body, 'scroll-lock');
 
     gsap.to(modal, {
       height: '0px',

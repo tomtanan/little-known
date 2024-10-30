@@ -14,6 +14,7 @@ export default function contact(el) {
   let animation;
 
   on(triggerBtn, 'click', () => {
+    addClass(document.body, 'scroll-lock');
     addClass(el, 'active');
     // If animation hasn't started yet, create it and play
     if (!animation) {
@@ -32,6 +33,7 @@ export default function contact(el) {
   });
 
   on(closeBtn, 'click', () => {
+    removeClass(document.body, 'scroll-lock');
     removeClass(el, 'active');
   });
 }

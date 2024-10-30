@@ -89,6 +89,9 @@ export class ScrollSnapController {
    * @param {boolean} isTrackpad - True for trackpad, false for touch.
    */
   handleScroll(deltaY, isTrackpad) {
+    // Check if the body has scroll-lock; if yes, exit the function
+    if (document.body.classList.contains('scroll-lock')) return;
+
     const threshold = isTrackpad ? 3 : 15; // Lower threshold for trackpad
 
     if (Math.abs(deltaY) < threshold) return;
