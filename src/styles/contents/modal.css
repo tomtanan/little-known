@@ -7,7 +7,11 @@
   z-index: 3;
 }
 .modal-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 70px);
+  justify-content: center;
   position: absolute;
   top: 70px;
   width: var(--modal-content-width);
