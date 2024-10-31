@@ -28,3 +28,8 @@
     top: 40px;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  .contact {
+    height: 100dvh;
+  }
+}
