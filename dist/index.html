@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
-      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.cb379b773.css"
+      href="https://cdn.prod.website-files.com/670024af32eed493bbc57721/css/brits-dynamite-site.webflow.da73b35f5.css"
       rel="stylesheet"
       type="text/css" />
     <script type="text/javascript">
@@ -28,585 +28,23 @@
     <link
       href="https://cdn.prod.website-files.com/img/webclip.png"
       rel="apple-touch-icon" />
-    <style>
-      :root {
-        --black: #0c0c0c;
-        --white: #fff;
-        --red: rgba(229, 65, 36, 1);
-        --orange: rgba(219, 134, 39, 1);
-        --yellow: rgba(248, 238, 98, 1);
-        --blue: rgba(0, 170, 194, 1);
-        --green: rgba(1, 174, 77, 1);
-      }
-      :root .letter:nth-child(1) {
-        --delay: 0s;
-      }
-      :root .letter:nth-child(2) {
-        --delay: 0.05s;
-      }
-      :root .letter:nth-child(3) {
-        --delay: 0.1s;
-      }
-      :root .letter:nth-child(4) {
-        --delay: 0.15s;
-      }
-      :root .letter:nth-child(5) {
-        --delay: 0.2s;
-      }
-      :root .letter:nth-child(6) {
-        --delay: 0.25s;
-      }
-      :root .letter:nth-child(7) {
-        --delay: 0.3s;
-      }
-      :root .letter:nth-child(8) {
-        --delay: 0.35s;
-      }
-      :root .letter:nth-child(9) {
-        --delay: 0.4s;
-      }
-      :root .letter:nth-child(10) {
-        --delay: 0.45s;
-      }
-      :root .letter:nth-child(11) {
-        --delay: 0.5s;
-      }
-      :root {
-        --modal-content-width: calc(100% - 40px);
-      }
-      @media (min-width: 480px) {
-        :root {
-          --modal-content-width: calc(100% - 80px);
-        }
-      }
-      @media (min-width: 992px) {
-        :root {
-          --modal-content-width: calc(100% - 120px);
-        }
-      }
-      @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
-        to {
-          transform: translateY(0);
-        }
-      }
-      @keyframes wave {
-        0% {
-          transform: translateY(0);
-        }
-        20% {
-          transform: translateY(-3px);
-        }
-        40% {
-          transform: translateY(0);
-        }
-        to {
-          transform: translateY(0);
-        }
-      }
-      @keyframes gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        to {
-          background-position: 0% 50%;
-        }
-      }
-      .w-webflow-badge {
-        display: none !important;
-      }
-      .sections-wrapper {
-        height: 100vh;
-        overflow-y: scroll;
-      }
-      .section {
-        position: relative;
-      }
-      @supports (-webkit-touch-callout: none) {
-        .sections-wrapper,
-        .section {
-          height: 100dvh;
-        }
-      }
-      .mouse-hover-text {
-        position: relative;
-        font-weight: 500;
-      }
-      .mouse-hover-text .letter {
-        background: linear-gradient(
-          90deg,
-          var(--red) 20%,
-          var(--orange) 40%,
-          var(--yellow) 60%,
-          var(--blue) 80%,
-          var(--green) 100%
-        );
-        background-size: 500%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: wave 1.5s ease infinite, gradient 1s ease infinite;
-      }
-      .mouse-hover-text .letter {
-        animation-delay: var(--delay);
-      }
-      .overlay {
-        opacity: 0;
-      }
-      .word {
-        display: inline-block;
-        opacity: 0;
-      }
-      .letter {
-        display: inline-block;
-        font-style: normal;
-      }
-      .text-wysiwyg a:hover .letter {
-        background: linear-gradient(
-          90deg,
-          var(--red) 20%,
-          var(--orange) 40%,
-          var(--yellow) 60%,
-          var(--blue) 80%,
-          var(--green) 100%
-        );
-        background-size: 800%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: wave 1.5s ease infinite, gradient 1s ease infinite;
-      }
-      .text-wysiwyg .letter {
-        animation-delay: var(--delay) !important;
-      }
-      .ico-sound {
-        display: block;
-        height: 19px;
-        width: 23px;
-      }
-      .ico-play {
-        display: block;
-        height: 20px;
-        width: 16px;
-      }
-      .ico-pause {
-        display: block;
-        height: 15px;
-        width: 10px;
-      }
-      .ico-fullscreen {
-        display: block;
-        height: 16px;
-        width: 20px;
-      }
-      .ico-resize {
-        display: block;
-        height: 19px;
-        width: 18px;
-      }
-      .ico-close {
-        display: block;
-        height: 16px;
-        width: 16px;
-      }
-      .ico-arrow {
-        display: block;
-        height: 32px;
-        width: 14px;
-      }
-      .about-content:before {
-        background-color: var(--white);
-        content: '';
-        filter: blur(60px);
-        height: calc(100% + 20px);
-        left: -10px;
-        position: absolute;
-        top: -10px;
-        width: calc(100% + 20px);
-        z-index: 2;
-      }
-      .about-text {
-        position: relative;
-        z-index: 3;
-      }
-      .about-text::-moz-selection,
-      .about-text *::-moz-selection {
-        background-color: var(--red);
-        color: var(--white);
-      }
-      .about-text::-moz-selection, .about-text *::-moz-selection {
-        background-color: var(--red);
-        color: var(--white);
-      }
-      .about-text::selection,
-      .about-text *::selection {
-        background-color: var(--red);
-        color: var(--white);
-      }
-      .contact {
-        transition: opacity 0.3s ease-in;
-      }
-      .contact.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .contact-close {
-        position: absolute;
-        right: 60px;
-        top: 40px;
-      }
-      .contact-close-button {
-        background: none;
-        padding: 0;
-        transition: opacity 0.2s ease;
-      }
-      .contact-close-button:hover {
-        opacity: 0.5;
-      }
-      .gallery {
-        height: calc(100vh - 200px);
-        margin: 0 auto;
-        width: 100%;
-        position: relative;
-      }
-      .gallery-item {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        margin: 0 auto;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-      .gallery-image {
-        height: 100%;
-        -o-object-fit: contain;
-        object-fit: contain;
-        width: 100%;
-      }
-      .gallery-video-wrapper,
-      .gallery-image-wrapper {
-        height: 100%;
-        max-width: 100%;
-      }
-      .gallery-video-wrapper .video-screen {
-        height: calc(100% - 60px);
-      }
-      .gallery-nav {
-        display: none;
-      }
-      .gallery-dots {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 20px auto 0;
-      }
-      .gallery-dot {
-        background-color: var(--white);
-        border-radius: 50%;
-        height: 8px;
-        margin-top: 0;
-        opacity: 0.5;
-        padding: 0;
-        transition: opacity 0.2s ease;
-        width: 8px;
-      }
-      .gallery-dot.active {
-        opacity: 1;
-      }
-      @media (min-width: 768px) {
-        .gallery {
-          height: calc(100vh - 150px);
-          margin: 0 auto;
-          max-width: calc(100% - 120px);
-          position: relative;
-        }
-        .gallery-nav {
-          align-items: center;
-          background: none;
-          height: 50px;
-          justify-content: center;
-          padding: 0;
-          position: absolute;
-          top: calc(50% - 50px);
-          transition: opacity 0.2s ease;
-          width: 40px;
-          z-index: 3;
-        }
-        .gallery-nav.active {
-          display: flex;
-        }
-        .gallery-nav:hover {
-          opacity: 0.5;
-        }
-        .gallery-nav.prev {
-          left: 0;
-        }
-        .gallery-nav.next {
-          right: 0;
-        }
-      }
-      @supports (-webkit-touch-callout: none) {
-        .gallery {
-          height: calc(100dvh - 200px);
-        }
-      }
-      .mosaic-image {
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      .modal-title {
-        font-size: 25px;
-        position: absolute;
-        left: 20px;
-        text-transform: lowercase;
-        top: 40px;
-        z-index: 3;
-      }
-      .modal-content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        height: calc(100vh - 70px);
-        justify-content: center;
-        position: absolute;
-        top: 70px;
-        width: var(--modal-content-width);
-        z-index: 2;
-      }
-      .modal-content:before,
-      .modal-content:after {
-        content: none;
-      }
-      .modal-close {
-        position: absolute;
-        right: 20px;
-        top: 70px;
-        z-index: 9;
-      }
-      .modal-close-button {
-        background: none;
-        font-size: 14px;
-        letter-spacing: 1px;
-        padding: 0;
-        transition: opacity 0.2s ease;
-        z-index: 3;
-      }
-      .modal-close-button:hover {
-        opacity: 0.5;
-      }
-      @media (min-width: 480px) {
-        .modal-title {
-          left: 40px;
-        }
-        .modal-close {
-          right: 40px;
-        }
-      }
-      @media (min-width: 992px) {
-        .modal-title {
-          font-size: 32px;
-          left: 60px;
-          top: 45px;
-        }
-        .modal-close {
-          right: 60px;
-        }
-      }
-      @supports (-webkit-touch-callout: none) {
-        .modal-content {
-          height: calc(100dvh - 70px);
-        }
-      }
-      .navbar.black .nav-link {
-        color: var(--black);
-      }
-      .navbar.black .logo-text {
-        fill: var(--black);
-      }
-      .nav-link {
-        transition: color 0.3s ease, opacity 0.2s ease;
-      }
-      .logo-svg svg {
-        display: block;
-        height: 100%;
-        -o-object-fit: contain;
-        object-fit: contain;
-        width: 100%;
-      }
-      .logo-text {
-        transition: fill 0.3s ease;
-      }
-      .project-tab-link {
-        opacity: 0;
-      }
-      .project-tab-link.active {
-        opacity: 1 !important;
-      }
-      .project-pane.active {
-        opacity: 1;
-        z-index: 2;
-      }
-      .project-video {
-        height: 100%;
-        left: 0;
-        -o-object-fit: cover;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        transition: opacity 0.2s ease;
-        width: 100%;
-      }
-      .scroll-text {
-        animation: float 1s ease-in-out infinite;
-      }
-      .scroll-button:hover .scroll-text {
-        animation: none;
-      }
-      .scroll-button:hover .letter {
-        background: linear-gradient(
-          90deg,
-          var(--red) 20%,
-          var(--orange) 40%,
-          var(--yellow) 60%,
-          var(--blue) 80%,
-          var(--green) 100%
-        );
-        background-size: 500%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: wave 1.5s ease infinite, gradient 1s ease infinite;
-      }
-      .scroll-button:hover .letter {
-        animation-delay: var(--delay);
-      }
-      .video-screen {
-        aspect-ratio: 16 / 9;
-        position: relative;
-        width: 100%;
-      }
-      .video-iframe {
-        aspect-ratio: 16 / 9;
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-      }
-      .video-overlay {
-        cursor: pointer;
-        height: 100%;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        width: 100%;
-        z-index: 2;
-      }
-      .video-controls {
-        align-items: center;
-        display: flex;
-        height: 60px;
-        justify-content: space-between;
-        width: 100%;
-      }
-      .video-controls .play-btn,
-      .video-controls .sound-btn,
-      .video-controls .fullscreen-btn {
-        height: 60px;
-        width: 50px;
-      }
-      .video-controls .play-btn,
-      .video-controls .sound-btn,
-      .video-controls .fullscreen-btn {
-        align-items: center;
-        background: none;
-        display: flex;
-        justify-content: center;
-        padding: 0;
-        text-align: left;
-        transition: opacity 0.2s ease;
-      }
-      .video-controls .play-btn:hover,
-      .video-controls .sound-btn:hover,
-      .video-controls .fullscreen-btn:hover {
-        opacity: 0.5;
-      }
-      .video-controls .play-btn .ico-play {
-        display: block;
-      }
-      .video-controls .play-btn .ico-pause,
-      .video-controls .play-btn.active .ico-play {
-        display: none;
-      }
-      .video-controls .play-btn.active .ico-pause {
-        display: block;
-      }
-      .sound-btn.set-0 .ico-sound-50,
-      .sound-btn.set-0 .ico-sound-100,
-      .sound-btn.set-50 .ico-sound-100 {
-        display: none;
-      }
-      .video-controls .timeline {
-        background: #ffffff4d;
-        cursor: pointer;
-        flex-grow: 1;
-        height: 1px;
-        margin: 0 10px;
-        padding: 0;
-        position: relative;
-      }
-      .video-controls .timeline-progress {
-        background: var(--white);
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        transition: width 0.5s ease;
-        width: 0;
-      }
-      .video-controls .fullscreen-btn .ico-resize,
-      .video-controls .fullscreen-btn.active .ico-fullscreen {
-        display: none;
-      }
-      .video-controls .fullscreen-btn.active .ico-resize {
-        display: block;
-      }
-      .video-player.is-fullscreen .video-screen {
-        max-height: none;
-        height: 100vh;
-        position: relative;
-        width: 100vw;
-        z-index: 1;
-      }
-      .video-player.is-fullscreen .video-controls {
-        bottom: 0;
-        padding: 0 10px;
-        position: absolute;
-        z-index: 9;
-      }
-    </style>
-    <script type="module" crossorigin src="/assets/index-Dn_w4907.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-SXAH2iFo.css">
+    <link
+      href="https://cdn.jsdelivr.net/gh/tomtanan/little-known@refs/heads/develop/dist/assets/index-SXAH2iFo.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script type="module" crossorigin src="/assets/index-DO9Iq0Wf.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dj40BLt4.css">
   </head>
   <body class="body" cz-shortcut-listen="true">
     <div
       data-animation="over-right"
       class="navbar w-nav"
-      data-easing2="ease"
-      data-easing="ease"
+      data-easing2="ease-in-out"
+      data-easing="ease-in-out"
       data-collapse="medium"
       role="banner"
       data-no-scroll="1"
-      data-duration="400"
+      data-duration="500"
       id="nav"
       data-doc-height="1">
       <div class="container container-nav w-container">
@@ -614,40 +52,104 @@
           ><div class="logo-svg w-embed">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 379.99 250.33">
               <path
+                class="logo-bar-1"
                 fill="#e54126"
-                d="M87.98 93.03H69.87V76.32h18.11v16.71Z"></path>
+                d="M87.98 68.92H69.87V0h18.11v68.92Z"></path>
               <path
-                fill="#00aac2"
-                d="M239.83 93.03h-18.11V76.32h18.11v16.71Z"></path>
-              <path fill="#f7ee63" d="M137.01 76.32h17.92v16.71h-17.92z"></path>
-              <path fill="#02ae4d" d="M183.29 76.32h17.92v16.71h-17.92z"></path>
-              <path fill="#db8627" d="M100.45 76.32h18.37v16.71h-18.37z"></path>
-              <path fill="#e54126" d="M87.98 68.92H69.87V0h18.11v68.92Z"></path>
-              <path
+                class="logo-bar-2"
                 fill="#00aac2"
                 d="M239.83 68.92h-18.11V0h18.11v68.92Z"></path>
-              <path fill="#f7ee63" d="M137.01 0h17.92v68.92h-17.92z"></path>
-              <path fill="#02ae4d" d="M183.29 0h17.92v68.92h-17.92z"></path>
-              <path fill="#db8627" d="M100.45 0h18.37v68.92h-18.37z"></path>
-              <g class="logo-text" fill="#fff">
+              <path
+                class="logo-bar-3"
+                fill="#f7ee63"
+                d="M137.01 0h17.92v68.92h-17.92z"></path>
+              <path
+                class="logo-bar-4"
+                fill="#02ae4d"
+                d="M183.29 0h17.92v68.92h-17.92z"></path>
+              <path
+                class="logo-bar-5"
+                fill="#db8627"
+                d="M100.45 0h18.37v68.92h-18.37z"></path>
+              <g class="logo-letter-1">
                 <path
-                  d="M298.66 102.12c4.83 2.17 8.82 5.58 11.97 10.25 2.84 4.11 4.67 8.89 5.52 14.32.49 3.18.69 7.76.59 13.75h-50.45c.29 6.95 2.7 11.82 7.24 14.62 2.76 1.74 6.09 2.61 9.99 2.61 4.12 0 7.48-1.06 10.05-3.18 1.41-1.14 2.65-2.73 3.73-4.77h18.49c-.49 4.11-2.72 8.28-6.71 12.52-6.21 6.74-14.89 10.1-26.05 10.1-9.22 0-17.36-2.84-24.4-8.52-7.04-5.68-10.57-14.93-10.57-27.73 0-12 3.18-21.2 9.54-27.6 6.37-6.4 14.62-9.61 24.77-9.61 6.03 0 11.46 1.08 16.29 3.25Zm-27.1 15.64c-2.56 2.64-4.17 6.21-4.83 10.72h31.2c-.33-4.81-1.94-8.46-4.83-10.95-2.88-2.49-6.46-3.73-10.74-3.73-4.65 0-8.25 1.32-10.8 3.96Z"></path>
+                  fill="#e54126"
+                  d="M87.98 93.03H69.87V76.32h18.11v16.71Z"></path>
                 <path
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M87.98 169.98H69.87V93.02h18.11v76.96Z"></path>
+              </g>
+              <g class="logo-letter-2">
+                <path
+                  fill="#db8627"
+                  d="M100.45 76.32h18.37v16.71h-18.37z"></path>
+                <path
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M100.45 100.62h18.37v69.27h-18.37v-69.27Z"></path>
+              </g>
+              <g class="logo-letter-3">
+                <path
+                  fill="#f7ee63"
+                  d="M137.01 76.32h17.92v16.71h-17.92z"></path>
+                <path
+                  class="logo-letter"
+                  fill="#fff"
                   d="M127.35 114.25v-12.9h9.66v-8.47h17.92v8.47h11.25v12.9h-11.25v36.6c0 2.84.36 4.61 1.08 5.31s2.92 1.05 6.61 1.05c.55 0 1.13-.01 1.75-.03s1.22-.05 1.81-.1v13.54l-8.58.32c-8.56.3-14.4-1.19-17.54-4.45-2.03-2.08-3.05-5.27-3.05-9.6v-42.64h-9.66Z"></path>
+              </g>
+              <g class="logo-letter-4">
                 <path
+                  fill="#02ae4d"
+                  d="M183.29 76.32h17.92v16.71h-17.92z"></path>
+                <path
+                  class="logo-letter"
+                  fill="#fff"
                   d="M173.66 114.25v-12.9h9.66v-8.47h17.92v8.47h11.25v12.9h-11.25v36.6c0 2.84.36 4.61 1.08 5.31s2.92 1.05 6.61 1.05c.55 0 1.13-.01 1.75-.03s1.22-.05 1.81-.1v13.54l-8.58.32c-8.56.3-14.4-1.19-17.54-4.45-2.03-2.08-3.05-5.27-3.05-9.6v-42.64h-9.66Z"></path>
-                <path d="M100.45 100.62h18.37v69.27h-18.37v-69.27Z"></path>
-                <path d="M87.98 169.98H69.87V93.02h18.11v76.96Z"></path>
-                <path d="M239.83 169.98h-18.11V93.02h18.11v76.96Z"></path>
+              </g>
+              <g class="logo-letter-5">
                 <path
-                  d="M252.04 178.71h18.37l10.55 49.88 10.8-49.88h18.87l-20.08 69.27h-18.62l-10.87-50.46-10.99 50.46h-18.81l-19.45-69.27h19.45l10.8 49.69 9.98-49.69Z"></path>
+                  fill="#00aac2"
+                  d="M239.83 93.03h-18.11V76.32h18.11v16.71Z"></path>
                 <path
-                  d="M125.85 182.49c4.53 3.75 6.8 9.97 6.8 18.65v46.64h-18.56v-42.13c0-3.64-.49-6.44-1.45-8.39-1.77-3.56-5.13-5.34-10.09-5.34-6.1 0-10.28 2.61-12.55 7.82-1.18 2.75-1.77 6.27-1.77 10.55v37.49H70.12v-69.14h17.54v10.1c2.32-3.56 4.51-6.12 6.58-7.69 3.72-2.8 8.42-4.19 14.12-4.19 7.13 0 12.95 1.87 17.5 5.62Z"></path>
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M239.83 169.98h-18.11V93.02h18.11v76.96Z"></path>
+              </g>
+              <g class="logo-letter-6">
                 <path
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M298.66 102.12c4.83 2.17 8.82 5.58 11.97 10.25 2.84 4.11 4.67 8.89 5.52 14.32.49 3.18.69 7.76.59 13.75h-50.45c.29 6.95 2.7 11.82 7.24 14.62 2.76 1.74 6.09 2.61 9.99 2.61 4.12 0 7.48-1.06 10.05-3.18 1.41-1.14 2.65-2.73 3.73-4.77h18.49c-.49 4.11-2.72 8.28-6.71 12.52-6.21 6.74-14.89 10.1-26.05 10.1-9.22 0-17.36-2.84-24.4-8.52-7.04-5.68-10.57-14.93-10.57-27.73 0-12 3.18-21.2 9.54-27.6 6.37-6.4 14.62-9.61 24.77-9.61 6.03 0 11.46 1.08 16.29 3.25Zm-27.1 15.64c-2.56 2.64-4.17 6.21-4.83 10.72h31.2c-.33-4.81-1.94-8.46-4.83-10.95-2.88-2.49-6.46-3.73-10.74-3.73-4.65 0-8.25 1.32-10.8 3.96Z"></path>
+              </g>
+              <g class="logo-letter-7">
+                <path
+                  class="logo-letter"
+                  fill="#fff"
                   d="M0 154.43h17.79v50.53l22.85-26.13h22.52l-24.83 25.81 25.79 43.14H42.08l-16.79-29.59-7.5 7.8v21.8H0v-93.35Z"></path>
+              </g>
+              <g class="logo-letter-8">
                 <path
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M125.85 182.49c4.53 3.75 6.8 9.97 6.8 18.65v46.64h-18.56v-42.13c0-3.64-.49-6.44-1.45-8.39-1.77-3.56-5.13-5.34-10.09-5.34-6.1 0-10.28 2.61-12.55 7.82-1.18 2.75-1.77 6.27-1.77 10.55v37.49H70.12v-69.14h17.54v10.1c2.32-3.56 4.51-6.12 6.58-7.69 3.72-2.8 8.42-4.19 14.12-4.19 7.13 0 12.95 1.87 17.5 5.62Z"></path>
+              </g>
+              <g class="logo-letter-9">
+                <path
+                  class="logo-letter"
+                  fill="#fff"
                   d="M202.34 239.5c-5.85 7.22-14.72 10.82-26.63 10.82s-20.78-3.61-26.63-10.82c-5.85-7.22-8.77-15.91-8.77-26.06s2.92-18.65 8.77-25.97 14.72-10.98 26.63-10.98 20.78 3.66 26.63 10.98c5.85 7.32 8.77 15.98 8.77 25.97s-2.92 18.85-8.77 26.06Zm-14.49-10.01c2.84-3.77 4.26-9.12 4.26-16.06s-1.42-12.28-4.26-16.02-6.91-5.61-12.2-5.61-9.37 1.87-12.23 5.61c-2.86 3.74-4.29 9.09-4.29 16.02s1.43 12.29 4.29 16.06c2.86 3.77 6.94 5.65 12.23 5.65s9.36-1.88 12.2-5.65Z"></path>
+              </g>
+              <g class="logo-letter-10">
                 <path
+                  class="logo-letter"
+                  fill="#fff"
+                  d="M252.04 178.71h18.37l10.55 49.88 10.8-49.88h18.87l-20.08 69.27h-18.62l-10.87-50.46-10.99 50.46h-18.81l-19.45-69.27h19.45l10.8 49.69 9.98-49.69Z"></path>
+              </g>
+              <g class="logo-letter-11">
+                <path
+                  class="logo-letter"
+                  fill="#fff"
                   d="M373.19 182.68c4.53 3.75 6.8 9.97 6.8 18.65v46.64h-18.56v-42.13c0-3.64-.49-6.44-1.45-8.39-1.77-3.56-5.13-5.34-10.09-5.34-6.1 0-10.28 2.61-12.55 7.82-1.18 2.75-1.77 6.27-1.77 10.55v37.49h-18.11v-69.14H335v10.1c2.32-3.56 4.51-6.12 6.58-7.69 3.72-2.8 8.42-4.19 14.12-4.19 7.13 0 12.95 1.87 17.5 5.62Z"></path>
               </g>
             </svg></div
@@ -1215,7 +717,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/1008004427/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=28e2928e913cc8564fef11efe7426f04cae5104186dece77177999d4f88e2aea"
+                    src="https://player.vimeo.com/progressive_redirect/playback/598534259/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=b647025b760d2df6cd995cc5c7f861e7bfc65ee6176b0374f75b1489e1723b41"
                     type="video/mp4" />
                 </video>
               </div>
@@ -1232,7 +734,7 @@
                   loop=""
                   muted="">
                   <source
-                    src="https://player.vimeo.com/progressive_redirect/playback/981988553/rendition/1080p/file.mp4?loc=external&amp;oauth2_token_id=1105776076&amp;signature=e2e71afa805a7ee17ae6dca9873be88a2166e097319c9dcaa0c5e8a9e55d578a"
+                    src="https://player.vimeo.com/progressive_redirect/playback/598534286/rendition/1080p/file.mp4?loc=external&amp;log_user=0&amp;signature=a5c22adfc21a9d302d48a06a37e6560eae08dcfe1567cac058dce32aa59f13a1"
                     type="video/mp4" />
                 </video>
               </div>
