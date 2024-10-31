@@ -61,12 +61,12 @@ export class ScrollSnapController {
 
     on(this.scrollContainer, 'touchmove', (event) => {
       const deltaY = this.startY - event.touches[0].clientY;
-      if (Math.abs(deltaY) > 30) { // Swipe threshold for touch devices
+      if (Math.abs(deltaY) > 30 && event.cancelable) { // Check if event is cancelable
         event.preventDefault();
         debouncedHandleScroll(deltaY);
       }
     });
-
+    
     // Scroll buttons for direct section navigation
     this.scrollBtns.forEach((btn) => {
       const targetId = btn.getAttribute('data-snap-scroll-to');
