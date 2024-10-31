@@ -1,17 +1,20 @@
 .navbar.black .nav-link {
   color: var(--black);
 }
-.navbar.black .logo-text {
+.navbar.black .logo-letter {
   fill: var(--black);
 }
 .nav-link {
   transition: color 0.3s ease, opacity 0.2s ease;
 }
-.logo-svg svg {
+.logo svg {
   display: block;
   height: 100%;
   object-fit: contain;
   width: 100%;
+}
+.logo-letter {
+  transition: fill 0.3s ease;
 }
 .logo:hover g {
   animation: logo 2s ease infinite;
