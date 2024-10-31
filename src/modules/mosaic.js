@@ -39,8 +39,6 @@ export default function mosaic(el) {
 
     // Select configuration based on current window width
     const config = options.breakpoints.find((bp) => window.innerWidth >= bp.minWidth) || options.breakpoints[3];
-    
-    console.log(filteredImages);
 
     filteredImages.forEach((img, index) => {
       const delay = (index % 4) * options.delay;
