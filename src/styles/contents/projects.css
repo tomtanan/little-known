@@ -4,7 +4,7 @@
 .project-tab-link.active {
   opacity: 1 !important;
 }
-.project-tab-link:hover {
+.no-touch .project-tab-link:hover {
   opacity: 1 !important;
 }
 .project-pane.active {
@@ -23,10 +23,10 @@
 .scroll-text {
   animation: float 1s ease-in-out infinite;
 }
-.scroll-button:hover .scroll-text {
+.no-touch .scroll-button:hover .scroll-text {
   animation: none;
 }
-.scroll-button:hover .letter {
+.no-touch .scroll-button:hover .letter {
   background: linear-gradient(
     90deg,
     var(--red) 20%,
@@ -40,6 +40,6 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.scroll-button:hover .letter {
+.no-touch .scroll-button:hover .letter {
   animation-delay: var(--delay);
 }

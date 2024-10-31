@@ -8,19 +8,11 @@
 .section {
   position: relative;
 }
-@supports (-webkit-touch-callout: none) {
-  .sections-wrapper {
-    height: 100dvh;
-  }
-  .section {
-    height: 100dvh;
-  }
-}
 .mouse-hover-text {
   position: relative;
   font-weight: 500;
 }
-.mouse-hover-text .letter {
+.no-touch .mouse-hover-text .letter {
   background: linear-gradient(
     90deg,
     var(--red) 20%,
@@ -34,7 +26,7 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.mouse-hover-text .letter {
+.no-touch .mouse-hover-text .letter {
   animation-delay: var(--delay);
 }
 .overlay {
@@ -49,7 +41,7 @@
   display: inline-block;
   font-style: normal;
 }
-.text-wysiwyg a:hover .letter {
+.no-touch .text-wysiwyg a:hover .letter {
   background: linear-gradient(
     90deg,
     var(--red) 20%,
@@ -63,6 +55,14 @@
   -webkit-text-fill-color: transparent;
   animation: wave 1.5s ease infinite, gradient 1s ease infinite;
 }
-.text-wysiwyg .letter {
+.no-touch .text-wysiwyg .letter {
   animation-delay: var(--delay) !important;
+}
+@supports (-webkit-touch-callout: none) {
+  .sections-wrapper {
+    height: 100dvh;
+  }
+  .section {
+    height: 100dvh;
+  }
 }

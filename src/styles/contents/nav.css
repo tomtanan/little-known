@@ -7,6 +7,9 @@
 .nav-link {
   transition: color 0.3s ease, opacity 0.2s ease;
 }
+.no-touch .nav-link:hover {
+  opacity: 1;
+}
 .w-nav-overlay {
   width: 100vw !important;
 }
@@ -37,39 +40,39 @@
 .logo-letter {
   transition: fill 0.3s ease;
 }
-.logo:hover g {
+.no-touch .logo:hover g {
   animation: logo 2s ease infinite;
 }
-.logo:hover .logo-letter-1 {
+.no-touch .logo:hover .logo-letter-1 {
   animation-delay: 0s;
 }
-.logo:hover .logo-letter-2 {
+.no-touch .logo:hover .logo-letter-2 {
   animation-delay: 0.05s;
 }
-.logo:hover .logo-letter-3 {
+.no-touch .logo:hover .logo-letter-3 {
   animation-delay: 0.1s;
 }
-.logo:hover .logo-letter-4 {
+.no-touch .logo:hover .logo-letter-4 {
   animation-delay: 0.15s;
 }
-.logo:hover .logo-letter-5 {
+.no-touch .logo:hover .logo-letter-5 {
   animation-delay: 0.2s;
 }
-.logo:hover .logo-letter-6 {
+.no-touch .logo:hover .logo-letter-6 {
   animation-delay: 0.25s;
 }
-.logo:hover .logo-letter-7 {
+.no-touch .logo:hover .logo-letter-7 {
   animation-delay: 0.25s;
 }
-.logo:hover .logo-letter-8 {
+.no-touch .logo:hover .logo-letter-8 {
   animation-delay: 0.3s;
 }
-.logo:hover .logo-letter-9 {
+.no-touch .logo:hover .logo-letter-9 {
   animation-delay: 0.35s;
 }
-.logo:hover .logo-letter-10 {
+.no-touch .logo:hover .logo-letter-10 {
   animation-delay: 0.4s;
 }
-.logo:hover .logo-letter-11 {
+.no-touch .logo:hover .logo-letter-11 {
   animation-delay: 0.45s;
 }

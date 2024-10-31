@@ -28,7 +28,7 @@
   transition: opacity 0.2s ease;
   z-index: 9;
 }
-.modal-close:hover {
+.no-touch .modal-close:hover {
   opacity: 0.5;
 }
 @media (min-width: 480px) {

@@ -14,7 +14,13 @@
   top: 20px;
   transition: opacity 0.2s ease;
 }
-.contact-close:hover {
+.no-touch .contact-close:hover {
+  opacity: 0.5;
+}
+.no-touch .email-text:hover {
+  opacity: 0.5;
+}
+.no-touch .social-link:hover {
   opacity: 0.5;
 }
 @media (min-width: 480px) {
