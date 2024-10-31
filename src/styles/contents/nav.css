@@ -7,6 +7,27 @@
 .nav-link {
   transition: color 0.3s ease, opacity 0.2s ease;
 }
+.w-nav-overlay {
+  width: 100vw !important;
+}
+.w-nav-overlay .w-nav-menu {
+  align-content: center;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.w-nav-overlay .nav-link {
+  flex: 0 0 auto;
+  height: auto;
+  padding: 10px 20px;
+}
+.w-nav-overlay .nav-link-contact {
+  bottom: 20px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0 !important;
+}
 .logo svg {
   display: block;
   height: 100%;
