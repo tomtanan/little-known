@@ -29,7 +29,7 @@ export default function mosaic(el) {
       images.forEach(img => img.style.display = 'block');
       return images;
     }
-  };
+  }; 
 
   const runAnimation = (images, options) => {
     const filteredImages = filterImages(images);
@@ -46,7 +46,7 @@ export default function mosaic(el) {
       const startX = index * startOffsetX;
       const startY = windowHeight + options.startOffsetY;
       const targetX = startX - config.targetOffsetX;
-      const targetY = -width;
+      const targetY = -(width * 2);
 
       // Set initial properties and kill previous animations
       gsap.killTweensOf(img); // Stop any previous animations on this image
