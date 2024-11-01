@@ -28,7 +28,7 @@ export default function videoPlayer(el) {
         </svg>
       </button>
       <div class="sound-settings js-sound-settings">
-        <input type="range" class="volume-slider js-volume-slider" min="0" max="1" step="0.01" value="0.5">
+        ${!isTouchDevice() ? '<input type="range" class="volume-slider js-volume-slider" min="0" max="1" step="0.01" value="0.5">' : ''}
       </div>
       <div class="timeline js-timeline">
         <div class="timeline-progress js-timeline-prog"></div>
@@ -75,6 +75,15 @@ export default function videoPlayer(el) {
     removeClass(playBtn, 'active');
   };
 
+  const updateSoundButtonClass = (button, volume) => {
+    removeClass(button, 'set-0 set-50');
+    if (volume === 0) {
+      addClass(button, 'set-0');
+    } else if (volume === 0.5) {
+      addClass(button, 'set-50');
+    }
+  }
+
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
   on(document, 'keydown', (e) => {
@@ -85,28 +94,44 @@ export default function videoPlayer(el) {
     }
   });
 
-  // Toggle volume slider visibility on sound button click
-  on(soundBtn, 'click', () => {
-    toggleClass(soundSettings, 'active');
-  });
+  // Volume control: slider for desktop, toggle for mobile
+  if (isTouchDevice()) {
+    let volumeState = 0.5;
+    updateSoundButtonClass(soundBtn, volumeState);
 
-  // Update volume in real-time as the slider is adjusted
-  on(volumeSlider, 'input', () => {
-    player.setVolume(volumeSlider.value);
-    const value = volumeSlider.value * 100;
-    console.log(value);
-    if (value === 0) {
-      removeClass(soundBtn, 'set-50');
-      addClass(soundBtn, 'set-0');
-    } else if (value > 0 && value < 50) {
-      removeClass(soundBtn, 'set-0');
-      addClass(soundBtn, 'set-50');
-    } else {
-      removeClass(soundBtn, 'set-0 set-50');
-    }
-  });
+    on(soundBtn, 'click', () => {
+      volumeState = volumeState === 1 ? 0 : volumeState === 0.5 ? 1 : 0.5;
+      player.setVolume(volumeState);
+      updateSoundButtonClass(soundBtn, volumeState);
+    });
+  } else {
+    // Show slider and adjust volume in real-time for desktop
+    on(soundBtn, 'click', () => {
+      toggleClass(soundSettings, 'active');
+    });
+    
+    on(volumeSlider, 'input', () => {
+      player.setVolume(volumeSlider.value);
+    });
 
-  // Hide volume slider when clicking outside
+    // Update volume in real-time as the slider is adjusted
+    on(volumeSlider, 'input', () => {
+      player.setVolume(volumeSlider.value);
+      const value = volumeSlider.value * 100;
+      console.log(value);
+      if (value === 0) {
+        removeClass(soundBtn, 'set-50');
+        addClass(soundBtn, 'set-0');
+      } else if (value > 0 && value < 50) {
+        removeClass(soundBtn, 'set-0');
+        addClass(soundBtn, 'set-50');
+      } else {
+        removeClass(soundBtn, 'set-0 set-50');
+      }
+    });
+  }
+
+  // Hide volume slider when clicking outside (for desktop)
   document.addEventListener('click', (e) => {
     if (!soundBtn.contains(e.target) && !soundSettings.contains(e.target)) {
       removeClass(soundSettings, 'active');
@@ -121,11 +146,7 @@ export default function videoPlayer(el) {
         el.requestFullscreen();
       }
     } else {
-      if (isTouchDevice()) {
-        player.exitFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
+      document.exitFullscreen();
     }
   });
 
@@ -158,7 +179,7 @@ export default function videoPlayer(el) {
 
   emitter.on('resetPlayers', resetPlayer);
 
-  function toggleButtonClass(button, paused) {
+  const toggleButtonClass = (button, paused) => {
     if (paused) {
       addClass(button, 'active');
     } else {
