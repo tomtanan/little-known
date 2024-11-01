@@ -73,6 +73,7 @@ export default function videoPlayer(el) {
     player.setCurrentTime(0);
     player.setVolume(0.5);
     removeClass(playBtn, 'active');
+    updateSoundButtonClass(soundBtn, 0.5);
   };
 
   const updateSoundButtonClass = (button, volume) => {
@@ -122,7 +123,7 @@ export default function videoPlayer(el) {
       if (value === 0) {
         removeClass(soundBtn, 'set-50');
         addClass(soundBtn, 'set-0');
-      } else if (value > 0 && value < 50) {
+      } else if (value > 0 && value < 60) {
         removeClass(soundBtn, 'set-0');
         addClass(soundBtn, 'set-50');
       } else {
