@@ -1,5 +1,5 @@
 import Player from '@vimeo/player';
-import { addClass, removeClass, on, getActivePlayer, isTouchDevice } from 'utils/helpers';
+import { addClass, removeClass, toggleClass, on, getActivePlayer, isTouchDevice } from 'utils/helpers';
 import { $ } from 'select-dom';
 import emitter from 'utils/events';
 
@@ -27,6 +27,9 @@ export default function videoPlayer(el) {
           <path class="ico-sound-100" d="M18 2C20.406 3.85471 21.9294 6.60162 21.9294 9.66707C21.9294 12.7325 20.406 15.4794 18 17.3341" stroke="#fff"></path>
         </svg>
       </button>
+      <div class="sound-settings js-sound-settings">
+        <input type="range" class="volume-slider js-volume-slider" min="0" max="1" step="0.01" value="0.5">
+      </div>
       <div class="timeline js-timeline">
         <div class="timeline-progress js-timeline-prog"></div>
       </div>
@@ -48,14 +51,15 @@ export default function videoPlayer(el) {
   const player = new Player(iframe);
 
   const playBtn = $('.js-play', el);
-  const soundBtn = $('.js-sound', el);
   const fullscreenBtn = $('.js-fullscreen', el);
   const overlay = $('.js-overlay', el);
   const timeline = $('.js-timeline', el);
   const timelineProgress = $('.js-timeline-prog', el);
+  const soundBtn = $('.js-sound', el);
+  const soundSettings = $('.js-sound-settings', el);
+  const volumeSlider = $('.js-volume-slider', el);
 
   player.setVolume(0.5);
-  addClass(soundBtn, 'active set-50');
 
   const togglePlay = () => {
     player.getPaused().then((paused) => {
@@ -69,7 +73,6 @@ export default function videoPlayer(el) {
     player.setCurrentTime(0);
     player.setVolume(0.5);
     removeClass(playBtn, 'active');
-    addClass(soundBtn, 'active set-50');
   };
 
   on(playBtn, 'click', togglePlay);
@@ -82,12 +85,32 @@ export default function videoPlayer(el) {
     }
   });
 
+  // Toggle volume slider visibility on sound button click
   on(soundBtn, 'click', () => {
-    player.getVolume().then((volume) => {
-      const newVolume = volume === 1 ? 0 : volume === 0.5 ? 1 : 0.5;
-      player.setVolume(newVolume);
-      updateSoundButtonClass(soundBtn, newVolume);
-    });
+    toggleClass(soundSettings, 'active');
+  });
+
+  // Update volume in real-time as the slider is adjusted
+  on(volumeSlider, 'input', () => {
+    player.setVolume(volumeSlider.value);
+    const value = volumeSlider.value * 100;
+    console.log(value);
+    if (value === 0) {
+      removeClass(soundBtn, 'set-50');
+      addClass(soundBtn, 'set-0');
+    } else if (value > 0 && value < 50) {
+      removeClass(soundBtn, 'set-0');
+      addClass(soundBtn, 'set-50');
+    } else {
+      removeClass(soundBtn, 'set-0 set-50');
+    }
+  });
+
+  // Hide volume slider when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!soundBtn.contains(e.target) && !soundSettings.contains(e.target)) {
+      removeClass(soundSettings, 'active');
+    }
   });
 
   on(fullscreenBtn, 'click', () => {
@@ -107,11 +130,10 @@ export default function videoPlayer(el) {
   });
 
   on(document, 'fullscreenchange', () => {
-    console.log(getActivePlayer() === el);
     if (getActivePlayer() === el) {
       const isFullscreen = !!document.fullscreenElement;
       const action = isFullscreen ? addClass : removeClass;
-  
+
       action(fullscreenBtn, 'active');
       action(el, 'is-fullscreen');
     }
@@ -141,15 +163,6 @@ export default function videoPlayer(el) {
       addClass(button, 'active');
     } else {
       removeClass(button, 'active');
-    }
-  }
-
-  function updateSoundButtonClass(button, volume) {
-    removeClass(button, 'set-0 set-50');
-    if (volume === 0) {
-      addClass(button, 'active set-0');
-    } else if (volume === 0.5) {
-      addClass(button, 'set-50');
     }
   }
 }
