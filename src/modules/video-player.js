@@ -99,9 +99,9 @@ export default function videoPlayer(el) {
       }
     } else {
       if (isTouchDevice()) {
-        player.exitFullscreen();z
+        player.exitFullscreen();
       } else {
-        el.exitFullscreen();
+        document.exitFullscreen();
       }
     }
   });
