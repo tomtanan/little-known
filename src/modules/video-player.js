@@ -1,5 +1,5 @@
 import Player from '@vimeo/player';
-import { addClass, removeClass, on, getActivePlayer } from 'utils/helpers';
+import { addClass, removeClass, on, getActivePlayer, isTouchDevice } from 'utils/helpers';
 import { $ } from 'select-dom';
 import emitter from 'utils/events';
 
@@ -92,13 +92,22 @@ export default function videoPlayer(el) {
 
   on(fullscreenBtn, 'click', () => {
     if (!document.fullscreenElement) {
-      el.requestFullscreen();
+      if (isTouchDevice()) {
+        player.requestFullscreen();
+      } else {
+        el.requestFullscreen();
+      }
     } else {
-      document.exitFullscreen();
+      if (isTouchDevice()) {
+        player.exitFullscreen();z
+      } else {
+        el.exitFullscreen();
+      }
     }
   });
 
   on(document, 'fullscreenchange', () => {
+    console.log(getActivePlayer() === el);
     if (getActivePlayer() === el) {
       const isFullscreen = !!document.fullscreenElement;
       const action = isFullscreen ? addClass : removeClass;
