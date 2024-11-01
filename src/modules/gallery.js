@@ -119,6 +119,8 @@ export default function gallery(el) {
     });
 
     initSlides(curr);
+  } else {
+    addClass(items[0], 'active');
   }
 
   if (players.length > 0) players.forEach(videoPlayer);
