@@ -29,8 +29,10 @@ export const splitIntoWords = (elements) => {
       const span = document.createElement('span');
       span.className = 'word';
       span.textContent = word;
+      if (word !== '.' && word !== '!') {
+        fragment.appendChild(document.createTextNode(' ')); // Add space before each word
+      }
       fragment.appendChild(span);
-      fragment.appendChild(document.createTextNode(' ')); // Add space after each word
     });
     node.replaceWith(fragment); // Replace the entire text node at once
     return; // Early return as we don't need to process further
