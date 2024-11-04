@@ -71,11 +71,6 @@
 .no-touch .scroll-button:hover .letter {
   animation-delay: var(--delay);
 }
-@media (min-width: 480px) {
-  .project-button {
-    right: 40px;
-  }
-}
 @media (min-width: 992px) {
   .project-button {
     display: none;
