@@ -1,6 +1,63 @@
 /* variables.css */
 :root {
-  --primary-color: #000;
-  --secondary-color: #fff;
-  --font-family: Arial, sans-serif;
+  --black: #0c0c0c;
+  --white: #fff;
+  --red: rgba(229, 65, 36, 1);
+  --orange: rgba(219, 134, 39, 1);
+  --yellow: rgba(248, 238, 98, 1);
+  --blue: rgba(0, 170, 194, 1);
+  --green: rgba(1, 174, 77, 1);
+
+  .letter:nth-child(1) {
+    --delay: 0s;
+  }
+  .letter:nth-child(2) {
+    --delay: 0.05s;
+  }
+  .letter:nth-child(3) {
+    --delay: 0.1s;
+  }
+  .letter:nth-child(4) {
+    --delay: 0.15s;
+  }
+  .letter:nth-child(5) {
+    --delay: 0.2s;
+  }
+  .letter:nth-child(6) {
+    --delay: 0.25s;
+  }
+  .letter:nth-child(7) {
+    --delay: 0.3s;
+  }
+  .letter:nth-child(8) {
+    --delay: 0.35s;
+  }
+  .letter:nth-child(9) {
+    --delay: 0.4s;
+  }
+  .letter:nth-child(10) {
+    --delay: 0.45s;
+  }
+  .letter:nth-child(11) {
+    --delay: 0.5s;
+  }
+}
+
+/* Media queries variables */
+:root {
+  --modal-content-width: calc(100% - 40px);
+}
+@media (min-width: 480px) {
+  :root {
+    --modal-content-width: calc(100% - 80px);
+  }
+}
+@media (min-width: 768px) {
+  :root {
+  }
+}
+@media (min-width: 992px) {
+  :root {
+    --modal-content-width: calc(100% - 120px);
+  }
 }

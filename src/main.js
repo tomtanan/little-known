@@ -1,13 +1,10 @@
-import { ScrollSnapController } from 'components/ScrollSnapController';
-// import { VideoTabController } from 'components/VideoTabController.js';
-import 'scripts/init'; 
+import { splitIntoWords, splitIntoLetters, isTouchDevice, removeClass } from 'utils/helpers';
+import { initScrollSnap } from 'components/ScrollSnapController.js';
+import { $, $$ } from 'select-dom';
+import 'scripts/init';
 import 'styles/main.css';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Scroll snapping
-  new ScrollSnapController('.js-section-wrapper');
-});
-
-// window.addEventListener('load', () => {
-//   new VideoTabController('.js-tab', '.js-pane', '.js-progress-bar');
-// });
+if (isTouchDevice()) removeClass($('body'), 'no-touch');
+splitIntoWords($$('.js-text-beautifier'));
+splitIntoLetters($$('.js-text-beautifier a'));
+initScrollSnap($('#sections-wrapper'));

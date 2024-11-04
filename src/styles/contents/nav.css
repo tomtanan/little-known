@@ -1,0 +1,78 @@
+.navbar.black .nav-link {
+  color: var(--black);
+}
+.navbar.black .logo-letter {
+  fill: var(--black);
+}
+.nav-link {
+  transition: color 0.3s ease, opacity 0.2s ease;
+}
+.no-touch .nav-link:hover {
+  opacity: 1;
+}
+.w-nav-overlay {
+  width: 100vw !important;
+}
+.w-nav-overlay .w-nav-menu {
+  align-content: center;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.w-nav-overlay .nav-link {
+  flex: 0 0 auto;
+  height: auto;
+  padding: 10px 20px;
+}
+.w-nav-overlay .nav-link-contact {
+  bottom: 20px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0 !important;
+}
+.logo svg {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.logo-letter {
+  transition: fill 0.3s ease;
+}
+.no-touch .logo:hover g {
+  animation: logo 2s ease infinite;
+}
+.no-touch .logo:hover .logo-letter-1 {
+  animation-delay: 0s;
+}
+.no-touch .logo:hover .logo-letter-2 {
+  animation-delay: 0.05s;
+}
+.no-touch .logo:hover .logo-letter-3 {
+  animation-delay: 0.1s;
+}
+.no-touch .logo:hover .logo-letter-4 {
+  animation-delay: 0.15s;
+}
+.no-touch .logo:hover .logo-letter-5 {
+  animation-delay: 0.2s;
+}
+.no-touch .logo:hover .logo-letter-6 {
+  animation-delay: 0.25s;
+}
+.no-touch .logo:hover .logo-letter-7 {
+  animation-delay: 0.25s;
+}
+.no-touch .logo:hover .logo-letter-8 {
+  animation-delay: 0.3s;
+}
+.no-touch .logo:hover .logo-letter-9 {
+  animation-delay: 0.35s;
+}
+.no-touch .logo:hover .logo-letter-10 {
+  animation-delay: 0.4s;
+}
+.no-touch .logo:hover .logo-letter-11 {
+  animation-delay: 0.45s;
+}

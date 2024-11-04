@@ -1,2 +1,12 @@
+@import 'variables/global';
+@import 'libs/animation';
 @import 'libs/global';
-@import 'modules/projects';
+@import 'libs/icons';
+@import 'contents/about';
+@import 'contents/contact';
+@import 'contents/gallery';
+@import 'contents/mosaic';
+@import 'contents/modal';
+@import 'contents/nav';
+@import 'contents/projects';
+@import 'contents/video-player';

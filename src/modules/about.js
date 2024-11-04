@@ -1,62 +1,55 @@
-import { wrapWords } from 'utils/helpers';
-import { gsap } from 'gsap';
+import { addClass, removeClass } from 'utils/helpers';
 import { $, $$ } from 'select-dom';
+import { gsap } from 'gsap';
 import 'intersection-observer';
 
-export default function about() {
-  const images = $$('.slideshow-image');
-  const textElements = $$('.js-gsap-text');
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
+export default function about(el) {
+  const nav = $('#nav');
+  const words = $$('.word', el);
 
-  // Wrap words in text elements for animation
-  textElements.forEach((text) => {
-    Array.from(text.childNodes).forEach(wrapWords);
-  });
+  // Store the animation instance to control it later
+  let animation;
 
-  // Animate slideshow images
-  images.forEach((img, index) => {
-    const x = (index > 3 ? 0.3 : 0.2) * (index + 1) * windowWidth;
-    const targetX = x - 400;
-    const targetY = -300;
-    const speed = 20 * (Math.random() * 0.3 + 0.7);
-    const delay = index * (Math.random() * 2 + 1);
+  // IntersectionObserver for the about section
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // If animation hasn't started yet, create it and play
+          if (!animation) {
+            animation = gsap.fromTo(
+              words,
+              { opacity: 0, y: 30 },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: 'power3.out',
+                stagger: { amount: 1.5, from: 'start', each: 0.5 },
+                onStart: () => {
+                  addClass(el, 'loaded');
+                }
+              }
+            );
+            addClass(nav, 'black');
+          } else {
+            // Resume the animation if it exists and was paused
+            animation.resume();
+            addClass(nav, 'black');
+          }
+        } else {
+          // Pause the animation when the section goes out of view
+          if (animation) {
+            animation.pause();
+            removeClass(nav, 'black');
+          }
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -10% 0px' } // Delays animation slightly
+  );
 
-    gsap.set(img, { x, y: windowHeight });
-    gsap.to(img, {
-      x: targetX,
-      y: targetY,
-      duration: speed,
-      ease: 'none',
-      repeat: -1,
-      delay,
-    });
-  });
-
-	// IntersectionObserver for the about section
-	const observer = new IntersectionObserver(
-		(entries, observer) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					gsap.fromTo(
-						'.word',
-						{ opacity: 0, y: 30 },
-						{
-							opacity: 1,
-							y: 0,
-							duration: 1,
-							ease: 'power3.out',
-							stagger: { amount: 1, from: 'start', overlap: 0.5 },
-						}
-					);
-					// Stop observing once the animation is triggered
-					observer.unobserve(entry.target);
-				}
-			});
-		},
-		{ threshold: 0.1 }
-	);
-
-	// Start observing the about section
-	observer.observe($('.js-about'));
+  // Start observing the about section
+  observer.observe(el);
 }

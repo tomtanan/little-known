@@ -4,23 +4,32 @@ import { resolve } from 'path';
 export default defineConfig({
   resolve: {
     alias: {
-      // Define path aliases for cleaner imports
       '@': resolve(__dirname, 'src'),
       styles: resolve(__dirname, 'src/styles'),
       components: resolve(__dirname, 'src/components'),
+      modules: resolve(__dirname, 'src/modules'),
       scripts: resolve(__dirname, 'src/scripts'),
       utils: resolve(__dirname, 'src/utils'),
     },
   },
   server: {
-    open: true, // Automatically opens the default browser when the server starts
-    port: 3000, // Specify the port number for the development server (default is 3000)
+    open: true,
+    port: 3000,
   },
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined, // Disable code splitting, everything will be bundled together
+        manualChunks: undefined,
       },
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [
+        require('autoprefixer')({
+          overrideBrowserslist: ['> 1%', 'last 2 versions', 'not dead'],
+        }),
+      ],
     },
   },
 });

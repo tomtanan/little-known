@@ -1,0 +1,78 @@
+.project-tab-link {
+  opacity: 0;
+}
+.project-tab-link.active {
+  opacity: 1 !important;
+}
+.no-touch .project-tab-link:hover {
+  opacity: 1 !important;
+}
+.project-pane.active {
+  opacity: 1;
+  z-index: 2;
+}
+.project-button {
+  align-items: center;
+  background: none;
+  bottom: 80px;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  left: 0;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  text-transform: lowercase;
+  width: 60px;
+  z-index: 9;
+}
+.project-button::before {
+  animation: zoom 2s ease infinite;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.project-video {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+.scroll-text {
+  animation: float 1s ease-in-out infinite;
+}
+.no-touch .scroll-button:hover .scroll-text {
+  animation: none;
+}
+.no-touch .scroll-button:hover .letter {
+  background: linear-gradient(
+    90deg,
+    var(--red) 20%,
+    var(--orange) 40%,
+    var(--yellow) 60%,
+    var(--blue) 80%,
+    var(--green) 100%
+  );
+  background-size: 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wave 1.5s ease infinite, gradient 1s ease infinite;
+}
+.no-touch .scroll-button:hover .letter {
+  animation-delay: var(--delay);
+}
+@media (min-width: 992px) {
+  .project-button {
+    display: none;
+  }
+}

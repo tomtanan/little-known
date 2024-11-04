@@ -1,0 +1,41 @@
+.contact {
+  transition: opacity 0.3s ease-in;
+}
+.contact .container {
+
+}
+.contact.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.contact-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  transition: opacity 0.2s ease;
+}
+.no-touch .contact-close:hover {
+  opacity: 0.5;
+}
+.no-touch .email-text:hover {
+  opacity: 0.5;
+}
+.no-touch .social-link:hover {
+  opacity: 0.5;
+}
+@media (min-width: 480px) {
+  .contact-close {
+    right: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .contact-close {
+    right: 60px;
+    top: 40px;
+  }
+}
+@supports (-webkit-touch-callout: none) {
+  .contact {
+    height: 100dvh;
+  }
+}
