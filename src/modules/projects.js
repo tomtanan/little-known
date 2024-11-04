@@ -37,10 +37,13 @@ export default function projects(el) {
         video.currentTime = 0;
         video.play()
           .then(() => {
+            const adjustedDuration = (video.duration || 8) - 0.5;
             animateProgressBar(video.duration || 8);
+            setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
           })
           .catch(() => {
             animateProgressBar(8);
+            setAutoRotateInterval(8);
           });
       };
 
@@ -51,6 +54,7 @@ export default function projects(el) {
       }
     } else {
       animateProgressBar(8);
+      setAutoRotateInterval(8);
     }
   };
 
@@ -86,7 +90,8 @@ export default function projects(el) {
     showProject(currentProject);
 
     const video = videoCache[currentProject];
-    setAutoRotateInterval(video ? video.duration : 8);
+    const adjustedDuration = video ? video.duration - 0.5 : 8;
+    setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
   };
 
   // Add event listeners to project tabs with debounced handling
@@ -96,7 +101,8 @@ export default function projects(el) {
       clearInterval(interval);
       showProject(index);
       const video = videoCache[index];
-      setAutoRotateInterval(video ? video.duration : 8);
+      const adjustedDuration = video ? video.duration - 0.5 : 8;
+      setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
     });
   });
 
@@ -128,9 +134,13 @@ export default function projects(el) {
     playVideo(videoCache[currentProject]);
     const currentVideo = videoCache[currentProject];
     if (currentVideo.readyState >= 1) {
-      setAutoRotateInterval(currentVideo.duration || 8);
+      const adjustedDuration = currentVideo.duration - 0.5;
+      setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
     } else {
-      on(currentVideo, 'loadedmetadata', () => setAutoRotateInterval(currentVideo.duration || 8), { once: true });
+      on(currentVideo, 'loadedmetadata', () => {
+        const adjustedDuration = currentVideo.duration - 0.5;
+        setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
+      }, { once: true });
     }
   });
 
@@ -142,7 +152,8 @@ export default function projects(el) {
       initialVideo.setAttribute('preload', 'auto');
       on(initialVideo, 'loadedmetadata', () => {
         showProject(0);
-        setAutoRotateInterval(initialVideo.duration || 8);
+        const adjustedDuration = initialVideo.duration - 0.5;
+        setAutoRotateInterval(adjustedDuration > 0 ? adjustedDuration : 8);
       });
     } else {
       showProject(0);
