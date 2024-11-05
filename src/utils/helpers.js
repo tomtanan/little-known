@@ -157,3 +157,10 @@ export const getActivePlayer = () => {
   const item = getActiveGalleryItem(modal, 'video');
   return item && $('.js-video-player', item)[0];
 };
+
+export const capitalize = (string) => {
+  return string
+    .split('-') // Split the string by hyphens
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize each word
+    .join(''); // Join the words back without hyphens
+}

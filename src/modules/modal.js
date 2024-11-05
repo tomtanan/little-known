@@ -7,7 +7,7 @@ import gallery from 'modules/gallery';
 export default function modal(el) {
   const modalName = el.getAttribute('data-modal');
   const modal = $(`[data-modal-target="${modalName}"]`);
-  const galleryElement = $('.js-gallery', modal);
+  let firstTime = true;
 
   if (!modal) {
     console.error(`No modal found with data-modal-target="${modalName}"`);
@@ -16,11 +16,14 @@ export default function modal(el) {
 
   const closeBtn = $('.js-modal-close', modal);
 
-  // Initialize gallery
-  gallery(galleryElement);
-
   // Show the modal with animation
   const showModal = () => {
+    if (firstTime) {
+      // Initialize gallery on first modal opening.
+      const galleryElement = $('.js-gallery', modal);
+      gallery(galleryElement);
+      firstTime = false;
+    }
     emitter.emit('openModal');
     addClass(document.body, 'scroll-lock');
     addClass(modal, 'active');

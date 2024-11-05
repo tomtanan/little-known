@@ -85,6 +85,14 @@ export default function videoPlayer(el) {
     }
   }
 
+  const toggleButtonClass = (button, paused) => {
+    if (paused) {
+      addClass(button, 'active');
+    } else {
+      removeClass(button, 'active');
+    }
+  }
+
   on(playBtn, 'click', togglePlay);
   on(overlay, 'click', togglePlay);
   on(document, 'keydown', (e) => {
@@ -179,12 +187,4 @@ export default function videoPlayer(el) {
   });
 
   emitter.on('resetPlayers', resetPlayer);
-
-  const toggleButtonClass = (button, paused) => {
-    if (paused) {
-      addClass(button, 'active');
-    } else {
-      removeClass(button, 'active');
-    }
-  }
 }
