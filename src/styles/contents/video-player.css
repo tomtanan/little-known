@@ -66,18 +66,30 @@
   display: none;
 }
 .video-controls .timeline {
-  background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   flex-grow: 1;
-  height: 1px;
-  margin: 0 10px; 
+  height: 15px;
+  margin: 0 10px;
   padding: 0;
   position: relative;
 }
+.video-controls .timeline::before {
+  background: rgba(255, 255, 255, 0.3);
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 .video-controls .timeline-progress {
   background: var(--white);
-  height: 100%;
+  bottom: 0;
+  height: 1px;
   left: 0;
+  margin: auto;
   position: absolute;
   top: 0;
   transition: width 0.5s ease;
