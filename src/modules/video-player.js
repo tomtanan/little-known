@@ -8,7 +8,7 @@ export default function videoPlayer(el) {
 
   el.innerHTML = `
     <div class="video-screen">
-      <iframe class="video-iframe js-iframe" src="https://player.vimeo.com/video/${vimeoId}?controls=0&amp;dnt=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" data-ready="true"></iframe>
+      <iframe class="video-iframe js-iframe" src="https://player.vimeo.com/video/${vimeoId}?controls=0&dnt=1" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" data-ready="true"></iframe>
       <div class="video-overlay js-overlay"></div>
     </div>
     <div class="video-controls">
