@@ -3,6 +3,8 @@
   transition: opacity 0.3s ease-in;
   position: fixed;
   pointer-events: none;
+  top: 0;
+  z-index: 99;
 }
 .contact.active {
   opacity: 1;
