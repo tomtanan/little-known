@@ -54,6 +54,9 @@
 .no-touch .scroll-button:hover .scroll-text {
   animation: none;
 }
+.no-touch .projects-tabs-content{
+  position: fixed;
+}
 .no-touch .scroll-button:hover .letter {
   background: linear-gradient(
     90deg,

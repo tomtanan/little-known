@@ -1,3 +1,7 @@
+.section.about {
+  position: relative;
+  z-index: 9;
+}
 .about-content::before {
   background-color: var(--white);
   content: '';

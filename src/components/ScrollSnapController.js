@@ -59,14 +59,19 @@ export class ScrollSnapController {
       this.handleScroll(deltaY, false);
     }, 150);
 
-    on(this.scrollContainer, 'touchmove', (event) => {
-      const deltaY = this.startY - event.touches[0].clientY;
-      if (Math.abs(deltaY) > 30 && event.cancelable) { // Check if event is cancelable
-        event.preventDefault();
-        debouncedHandleScroll(deltaY);
-      }
-    });
-    
+    on(
+      this.scrollContainer,
+      'touchmove',
+      (event) => {
+        const deltaY = this.startY - event.touches[0].clientY;
+        if (Math.abs(deltaY) > 30) {
+          event.preventDefault(); // Prevent scroll chaining
+          debouncedHandleScroll(deltaY);
+        }
+      },
+      { passive: false } // Required for iOS to allow preventDefault
+    );
+
     // Scroll buttons for direct section navigation
     this.scrollBtns.forEach((btn) => {
       const targetId = btn.getAttribute('data-snap-scroll-to');

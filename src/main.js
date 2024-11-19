@@ -4,7 +4,8 @@ import { $, $$ } from 'select-dom';
 import 'scripts/init';
 import 'styles/main.css';
 
-if (isTouchDevice()) removeClass($('body'), 'no-touch');
+initScrollSnap($('#sections-wrapper'));
 splitIntoWords($$('.js-text-beautifier'));
 splitIntoLetters($$('.js-text-beautifier a'));
-initScrollSnap($('#sections-wrapper'));
+
+if (isTouchDevice()) removeClass($('body'), 'no-touch');
