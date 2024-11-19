@@ -1,6 +1,6 @@
 {
   "name": "little-known",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "main": "main.js",
   "scripts": {
     "dev": "vite --host",
