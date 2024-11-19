@@ -42,11 +42,7 @@
 @media (min-width: 992px) {
   .modal-title {
     font-size: 32px;
-    left: 60px;
     top: 45px;
-  }
-  .modal-close {
-    right: 60px;
   }
 }
 @supports (-webkit-touch-callout: none) {
