@@ -1,14 +1,23 @@
-.navbar.black .nav-link {
+.navbar:not(.mobile-menu--open).black .nav-link {
   color: var(--black);
 }
-.navbar.black .logo-letter {
+.navbar:not(.mobile-menu--open).black .logo-letter {
   fill: var(--black);
+}
+.navbar:not(.mobile-menu--open).black .nav-line {
+  background-color: var(--black);
 }
 .nav-link {
   transition: color 0.3s ease, opacity 0.2s ease;
 }
+.nav-line {
+  transition: background-color 0.3s ease, opacity 0.2s ease, top 0.2s ease, transform 0.2s ease;
+}
 .no-touch .nav-link:hover {
   opacity: 1;
+}
+.no-touch .nav-link-contact:hover {
+  opacity: 0.5;
 }
 .w-nav-overlay {
   width: 100vw !important;
@@ -30,6 +39,20 @@
   margin: 0 auto;
   position: absolute;
   right: 0 !important;
+}
+.w-nav-button.w--open {
+  background: none !important;
+}
+.w-nav-button.w--open .nav-line.line-2 {
+  transform: rotate(45deg);
+}
+.w-nav-button.w--open .nav-line.line-1, 
+.w-nav-button.w--open .nav-line.line-3 {
+  top: calc(50% - 0.5px);
+  transform: rotate(-45deg);
+}
+.w-nav-button.w--open .nav-line.line-1 {
+  opacity: 0;
 }
 .logo svg {
   display: block;
