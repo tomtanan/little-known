@@ -1,9 +1,17 @@
 .w-webflow-badge {
   display: none !important;
 }
+html, body {
+  overscroll-behavior: none;
+}
 .sections-wrapper {
   height: 100vh;
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.sections-wrapper::-webkit-scrollbar {
+  display: none;
 }
 .section {
   position: relative;
