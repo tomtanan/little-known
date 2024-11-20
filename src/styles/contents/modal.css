@@ -1,7 +1,9 @@
 .modal-title {
   font-size: 25px;
+  font-weight: 400;
   position: absolute;
   left: 20px;
+  letter-spacing: 1px;
   text-transform: lowercase;
   top: 40px;
   z-index: 3;
