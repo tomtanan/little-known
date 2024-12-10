@@ -3,7 +3,7 @@ import { addClass, removeClass, toggleClass, on, getActivePlayer, isTouchDevice 
 import { $ } from 'select-dom';
 import emitter from 'utils/events';
 
-export default function videoPlayer(el) {
+const videoPlayer = (el) => {
   const vimeoId = el.getAttribute('data-video-id');
 
   el.innerHTML = `
@@ -187,4 +187,6 @@ export default function videoPlayer(el) {
   });
 
   emitter.on('resetPlayers', resetPlayer);
-}
+};
+
+export default videoPlayer;

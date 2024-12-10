@@ -3,6 +3,7 @@ import contact from '../modules/contact.js';
 import gallery from '../modules/gallery.js';
 import mosaic from '../modules/mosaic.js';
 import modal from '../modules/modal.js';
+import mouseAction from '../modules/mouse-action.js';
 import projects from '../modules/projects.js';
 import videoPlayer from '../modules/video-player.js';
 
@@ -11,8 +12,9 @@ const modulesMap = {
   'about': about,
   'contact': contact,
   'gallery': gallery,
-  'mosaic': mosaic,
   'modal': modal,
+  'mosaic': mosaic,
+  'mouse-action': mouseAction,
   'projects': projects,
   'video-player': videoPlayer
 };

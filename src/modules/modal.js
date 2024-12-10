@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import emitter from 'utils/events';
 import gallery from 'modules/gallery';
 
-export default function modal(el) {
+const modal = (el) => {
   const modalName = el.getAttribute('data-modal');
   const modal = $(`[data-modal-target="${modalName}"]`);
   let firstTime = true;
@@ -62,4 +62,6 @@ export default function modal(el) {
     e.preventDefault();
     closeModal();
   });
-}
+};
+
+export default modal;

@@ -1,10 +1,8 @@
 .modal-title {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 400;
   position: absolute;
   left: 20px;
-  letter-spacing: 1px;
-  text-transform: lowercase;
   top: 40px;
   z-index: 3;
 }
@@ -43,7 +41,7 @@
 }
 @media (min-width: 992px) {
   .modal-title {
-    font-size: 32px;
+    font-size: 26px;
     top: 45px;
   }
 }

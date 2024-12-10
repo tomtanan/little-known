@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import emitter from 'utils/events';
 import videoPlayer from 'modules/video-player';
 
-export default function gallery(el) {
+const gallery = (el) => {
   const items = handleMediaItems($$('.js-gallery-item', el));
   const totalItems = items.length;
   const prevBtn = $('.js-gallery-prev', el);
@@ -124,4 +124,6 @@ export default function gallery(el) {
   }
 
   if (players.length > 0) players.forEach(videoPlayer);
-}
+};
+
+export default gallery;
