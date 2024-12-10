@@ -3,9 +3,8 @@ import { $, $$ } from 'select-dom';
 import { gsap } from 'gsap';
 import 'intersection-observer';
 
-export default function about(el) {
+const about = (el) => {
   const mobileNavBtn = $('.w-nav-button');
-  const mobileNavMenu = $('.w-nav-menu');
   const nav = $('#nav');
   const words = $$('.word', el);
 
@@ -58,4 +57,6 @@ export default function about(el) {
   on(mobileNavBtn, 'click', () => {
     toggleClass(nav, 'mobile-menu--open');
   });
-}
+};
+
+export default about;

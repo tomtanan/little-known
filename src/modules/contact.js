@@ -3,7 +3,7 @@ import { $, $$ } from 'select-dom';
 import { gsap } from 'gsap';
 import 'intersection-observer';
 
-export default function contact(el) {
+const contact = (el) => {
   const triggerBtn = $('[data-contact-trigger');
   const closeBtn = $('[data-contact-close');
 
@@ -36,4 +36,6 @@ export default function contact(el) {
     removeClass(document.body, 'scroll-lock');
     removeClass(el, 'active');
   });
-}
+};
+
+export default contact;

@@ -1,10 +1,9 @@
 import { $, $$ } from 'select-dom';
-import { isTouchDevice, addClass, removeClass, on, debounce } from 'utils/helpers';
-import { initMouseHover } from 'components/MouseHoverController.js';
+import { addClass, removeClass, on, debounce } from 'utils/helpers';
 import { gsap } from 'gsap';
 import emitter from 'utils/events';
 
-export default function projects(el) {
+const projects = (el) => {
   const tabs = $$('.js-project-tab', el);
   const panes = $$('.js-project-pane', el);
   const videos = $$('.js-project-video', el);
@@ -161,10 +160,7 @@ export default function projects(el) {
     }
   };
 
-  // Only initialize mouse hover effect if the device is not a touch device
-  if (!isTouchDevice()) {
-    initMouseHover(el, '.js-mouse-hover-projects', '.js-projects-content');
-  }
-
   initialize();
-}
+};
+
+export default projects;
