@@ -3,7 +3,7 @@ import { $$ } from 'select-dom';
 import { gsap } from 'gsap';
 import 'intersection-observer';
 
-export default function mosaic(el) {
+const mosaic = (el) => {
   const images = $$('.js-mosaic-image', el);
   const options = {
     speed: 20,
@@ -89,4 +89,6 @@ export default function mosaic(el) {
   };
 
   window.addEventListener('resize', handleResize);
-}
+};
+
+export default mosaic;
