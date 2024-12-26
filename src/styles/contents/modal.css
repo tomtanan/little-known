@@ -8,12 +8,13 @@
 }
 .modal-content {
   align-items: center;
+  bottom: auto;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 70px);
   justify-content: center;
   position: absolute;
-  top: 70px;
+  top: auto;
   width: var(--modal-content-width);
   z-index: 2;
 }
@@ -21,10 +22,13 @@
 .modal-content::after {
   content: none;
 }
+.modal-title {
+  top: 22px;
+}
 .modal-close {
   position: absolute;
   right: 20px;
-  top: 70px;
+  top: 30px;
   transition: opacity 0.2s ease;
   z-index: 9;
 }
@@ -42,7 +46,10 @@
 @media (min-width: 992px) {
   .modal-title {
     font-size: 26px;
-    top: 45px;
+    top: 30px;
+  }
+  .modal-close {
+    top: 35px;
   }
 }
 @supports (-webkit-touch-callout: none) {
